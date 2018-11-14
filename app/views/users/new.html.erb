@@ -6,31 +6,31 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :firstname %>
+      <%= f.label :firstname, 'First Name *' %>
       <%= f.text_field :firstname, class: 'form-control' %>
 
-      <%= f.label :lastname %>
+      <%= f.label :lastname, 'Last Name *' %>
       <%= f.text_field :lastname, class: 'form-control' %>
       
-      <%= f.label :uin, "UIN"%>
+      <%= f.label :uin, "UIN *"%>
       <%= f.text_field :uin, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :email, "Email *" %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "Password *" %>
       <%= f.password_field :password, class: 'form-control' %>
       
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "Confirm Password *" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
-      <%= f.label :semester%>
+      <%= f.label :semester, "Semester *"%>
       <%= f.select :semester ,[['Fall', 'Fall'] ,['Spring' ,'Spring'] ,['Summer' ,'Summer']],:include_blank => {:semester => "Select Semester"} %>
       
-      <%= f.label :year %>
+      <%= f.label :year, "Year *" %>
       <%= f.select :year, (2000..Time.now.year + 10).to_a, :include_blank => {:year => "Select year"} %>
       
-       <%= f.label :course%>
+       <%= f.label :course, "Course *"%>
       <%= f.select :course ,[['CSCE606', 'CSCE606'] ,['CSCE431' ,'CSCE431']] ,:include_blank => {:course => "Select Course"}%>
       
       <div class="col-md-6 col-md-offset-3">

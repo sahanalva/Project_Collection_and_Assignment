@@ -3,7 +3,7 @@
 <tr>
   <% if current_user.admin? && !current_user?(user) %>
 
-  <td><%= gravatar_for user, size: 40 %></td>
+  <!-- <td><%= gravatar_for user, size: 40 %></td> -->
   <td><%= user.uin %></td>
   <td><%= link_to user.name, user %></td>
 
