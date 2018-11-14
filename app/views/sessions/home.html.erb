@@ -1,7 +1,7 @@
 <div class = "center jumbotron"> 
 
   <% if logged_in? %>
-  <b>Howdy  <%= current_user.name%> !! </b>
+  <b>Howdy  <%= current_user.firstname + " " + current_user.lastname %> !! </b>
   <% else %> 	        
   <img src="/images/checklist.png" alt="Logo" height="15%" width="15%" />
   <h2>Welcome to the </h2>

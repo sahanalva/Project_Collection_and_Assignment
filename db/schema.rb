@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505014811) do
+ActiveRecord::Schema.define(version: 20181114050013) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "team_id"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 20180505014811) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "uin"
     t.string "email"
     t.string "year"
@@ -115,6 +114,8 @@ ActiveRecord::Schema.define(version: 20180505014811) do
     t.text "peer_evaluation"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "firstname"
+    t.string "lastname"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

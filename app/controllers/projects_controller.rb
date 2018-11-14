@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
                         end
 
                         user_pe = []
-                        user_pe << user.name
+                        user_pe << user.firstname + user.lastname
 
                         # get team name
                         team = user.is_member_of
@@ -149,7 +149,7 @@ class ProjectsController < ApplicationController
                         end
 
                         user_pe = []
-                        user_pe << user.name
+                        user_pe << user.firstname + user.lastname
 
                         all_users.each do |member|
                                 member_record = User.find_by(id: member.id)
@@ -300,7 +300,7 @@ class ProjectsController < ApplicationController
                         @member_ids = Relationship.where(team_id: @team.id).all
                         @member_ids.each do |member| #TO aggregate the members of each team. But isn't an array clumsy?
                                 tmp = User.find(member.user_id.to_i)
-                        @members << tmp.name.to_s
+                        @members << tmp.firstname.to_s
                         
                         if @team != nil
                                 if current_user.is_member?(@team)
@@ -438,7 +438,7 @@ class ProjectsController < ApplicationController
                         if auser.nil? #For some reason this user has been deleted
                                 @users << [nil, "Deleted User"] #Inform front end that this user no longer exists    
                         else
-                                @users<<([auser.id, auser.name])
+                                @users<<([auser.id, auser.firstname])
                         end
                 end
                 

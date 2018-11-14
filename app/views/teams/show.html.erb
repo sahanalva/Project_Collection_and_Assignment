@@ -24,7 +24,7 @@
 
   <tr>
     <th>Team Leader</th>
-    <td><%= @team.user.name %></td>
+    <td><%= @team.user.firstname + " " + @team.user.lastname %></td>
   </tr>
 
   <tr>
@@ -47,10 +47,10 @@
         <li>
 
           <% if current_user.admin? %>
-            <%= link_to m.name, m %>
+            <%= link_to m.firstname + " " + m.lastname, m %>
 			      <%= button_to "Remove", {action: "remove",  user_id: m.id, team_id: @team} %>
           <% else %>
-            <%= link_to m.name, m %>
+            <%= link_to m.firstname + " " + m.lastname, m %>
           <% end %>
         </li>
       <% end %>

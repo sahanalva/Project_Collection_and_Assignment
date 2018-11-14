@@ -24,7 +24,7 @@ class StaticPagesController < ApplicationController
 			redirect_back_or user
 		else
 			passwd = SecureRandom.hex
-			user = User.new(:name => "Please Update", :email => email, :password_digest => passwd)	
+			user = User.new(:firstname => "Please Update", :email => email, :password_digest => passwd)
 		  if user.save
 		     log_in user
 		     flash[:success] = "Welcome to the ProjectApp"

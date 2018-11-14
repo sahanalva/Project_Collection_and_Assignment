@@ -110,7 +110,7 @@ class UsersController < ApplicationController
 
 		if(!@user.admin)
 			@user.update_attribute(:admin, true)
-			flash[:success]  = @user.name  + " is now an Administrator!"
+			flash[:success]  = @user.firstname  + " is now an Administrator!"
 		
 		else
 			@user.update_attribute(:admin, false)
@@ -150,7 +150,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name,:uin, :email, :password,
+      params.require(:user).permit(:firstname,:lastname, :uin, :email, :password,
                                    :password_confirmation, :semester,:year, :course)
     end
 end

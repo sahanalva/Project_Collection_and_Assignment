@@ -86,7 +86,7 @@ class TeamsController < ApplicationController
 		User.find_each do |user|
   
       if user.admin==false and Relationship.find_by_user_id(user.id)==nil
-			  @user_names << user.name 
+			  @user_names << user.firstname + " " + user.lastname
       end
       @user_names = @user_names.sort_by { |word| word.downcase }
 		end
