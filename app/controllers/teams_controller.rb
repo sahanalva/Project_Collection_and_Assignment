@@ -81,7 +81,7 @@ class TeamsController < ApplicationController
                 @team_members[@relationship.team_id] = []
             end
 
-      		@team_members[@relationship.team_id] << (user.firstname + " " + user.lastname)
+      		@team_members[@relationship.team_id] << user
       	end
     end
 
