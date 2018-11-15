@@ -122,6 +122,23 @@ class UsersController < ApplicationController
 	end
 
 
+  def no_team
+  	@sorting = params[:sort]
+
+  		@users_all = User.all
+        @users = []
+  		@teams = {}
+  		@users_all.each do |user|
+  			res = Relationship.find_by_user_id(user.id)
+  			if res!=nil
+  				@teams[user.id] =  Team.find_by_id(res.team_id)
+  				#@users << user
+  			#else
+  				@teams[user.id]  = nil
+  				@users.push(user)
+  			end
+  		end
+    end
 
 	def admin_download
 		admin_user

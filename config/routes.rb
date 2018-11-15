@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
         get 'users/new'
 
+        get 'users/no_team'
+
         root             'sessions#home'
         get    'help'    => 'static_pages#help'
         get    'about'   => 'static_pages#about'
@@ -93,6 +95,8 @@ Rails.application.routes.draw do
 		post 'delete' => 'assignments#delete'
 		post 'add' => 'assignments#add'
         post 'clear_all_data' => 'assignments#clearall'
+
+        #get ":/users/no_team" => "users#no_team"
 
 
         # The priority is based upon order of creation: first created -> highest priority.

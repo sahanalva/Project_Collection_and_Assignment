@@ -1,6 +1,7 @@
 # Create an admin account
 user = User.find_or_initialize_by(email: 'admin@example.com')
-user.name = 'administrator'
+user.firstname = 'administrator'
+user.lastname = 'admin'
 user.uin = Faker::Number.number(9)
 user.email = "admin@example.com"
 user.password = 'adminadmin'
@@ -12,7 +13,8 @@ user.save!
 
 
 user = User.find_or_initialize_by(email: 'admin@example.com')
-user.name = 'administrator'
+user.firstname = 'administrator'
+user.lastname = 'admin'
 user.uin = Faker::Number.number(9)
 user.email = "master@example.com"
 user.password = 'adminadmin'
@@ -25,13 +27,17 @@ user.save!
 
  100.times do |n|
    offset = rand(0..2)
-   name = nil
+   firstname = nil
+   lastname = nil
    if(offset == 0) 
-     name = Faker::StarWars.character
+     firstname = Faker::StarWars.character
+     lastname = Faker::StarWars.character
    elsif(offset==1)
-     name = Faker::Superhero.name
+     firstname = Faker::Superhero.name
+     lastname = Faker::Superhero.name
    else
-     name = Faker::Name.name
+     firstname = Faker::Name.name
+     lastname = Faker::Name.name
    end
      
 
@@ -41,7 +47,8 @@ user.save!
    semester = n%3 == 0 ? "Spring" : "Fall"
    year = rand(2000..2026).to_s
    course = 'CSCE606'
-   User.create!(name:  name,
+   User.create!(firstname:  firstname,
+                 lastname: lastname,
                  uin: uin,
                  email: email,
                  semester: semester,

@@ -1,0 +1,21 @@
+<% provide(:title, 'Users without any team') %>
+<h1>Users without any team</h1>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+<table class="users">
+
+<th><%="UIN"%></th>
+<th><%="Name"%></th>
+<th><%="Current Team"%> </th>
+<th>Options</th>
+
+
+</th>
+
+  <%= render @users %>
+</table>
+
+</div>
+</div>
