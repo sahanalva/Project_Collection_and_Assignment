@@ -1,4 +1,10 @@
 <% provide(:title, 'All teams') %>
+
+<%=
+  link_to 'Download data as Excel',
+  teams_path(format: :xlsx)
+%>
+
 <h1>All teams</h1>
 
 <div class="row">

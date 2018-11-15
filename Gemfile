@@ -24,6 +24,10 @@ gem 'carrierwave', '~>1.2'
 gem 'rails', '5.1.5'
 gem 'actionpack', '5.1.5'
 
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
+
 
 group :development, :test do
 #  gem 'quiet_assets'	# Deprecated

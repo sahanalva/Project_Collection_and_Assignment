@@ -71,6 +71,30 @@ class TeamsController < ApplicationController
         redirect_to current_user
       end
     end
+
+    @team_members = {}
+    User.all.each do |user|
+        res = Relationship.find_by_user_id(user.id)
+        if res != nil
+            @relationship = Relationship.find_by_user_id(user.id)
+            if @team_members[@relationship.team_id] == nil
+                @team_members[@relationship.team_id] = []
+            end
+
+      		@team_members[@relationship.team_id] << (user.firstname + " " + user.lastname)
+      	end
+    end
+
+    respond_to do |format|
+          format.xlsx {
+            response.headers[
+              'Content-Disposition'
+            ] = "attachment; filename='TeamData.xlsx'"
+          }
+          format.html { render :index }
+        end
+
+
   end
 
   def new
@@ -81,16 +105,20 @@ class TeamsController < ApplicationController
   	@team = Team.find(params[:id])
     @members = @team.members
 
-		@user_names = Array.new
+	@user_names = Array.new
 
-		User.find_each do |user|
+	User.find_each do |user|
   
-      if user.admin==false and Relationship.find_by_user_id(user.id)==nil
-			  @user_names << user.firstname + " " + user.lastname
-      end
-      @user_names = @user_names.sort_by { |word| word.downcase }
-		end
+        if user.admin==false and Relationship.find_by_user_id(user.id)==nil
+            @user_names << user.firstname + " " + user.lastname
+        end
 
+        @user_names = @user_names.sort_by { |word| word.downcase }
+     end
+
+  end
+
+  def data_download
   end
 
 	def remove
