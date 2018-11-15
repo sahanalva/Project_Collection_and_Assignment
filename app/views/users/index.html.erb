@@ -6,10 +6,9 @@
 <%= will_paginate %>
 
 <table class="users">
-<th>
  
 <th><%=link_to "UIN",users_path(:sort => "UIN")%></th>
-<th><%=link_to "Name",users_path(:sort => "name")%></th>
+<th><%=link_to "Name",users_path(:sort => "firstname")%></th>
 <th><%=link_to "Current Team",users_path(:sort => "currteam")%> </th>
 <th>Options</th>
 
