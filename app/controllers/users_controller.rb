@@ -6,47 +6,47 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:show, :edit, :update]
   before_action :admin_user,     only: [:index, :destroy]
 
-  def index
-    #@users = User.order("lower(name) ASC").all.paginate(page: params[:page])
-	#@users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
-	@sorting = params[:sort]
-	    
-			@users = User.all	
+	def index
+		#@users = User.order("lower(name) ASC").all.paginate(page: params[:page])
+		#@users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
+		@sorting = params[:sort]
+
+		@users = User.all
 
 		@teams = {}
-		
+
 		@users.each do |user|
 			res = Relationship.find_by_user_id(user.id)
-			if res!=nil
-				@teams[user.id] =  Team.find_by_id(res.team_id)
+			if res != nil
+				@teams[user.id] = Team.find_by_id(res.team_id)
 			else
-				@teams[user.id]  = nil
+				@teams[user.id] = nil
 			end
 		end
 
 		if !session.key?(:teamorder)
-		session[:teamorder] = nil
+			session[:teamorder] = nil
 		end
 
 		if @sorting == "currteam"
-			nil_team_users = @users.select{|x| @teams[x.id] == nil}
-			other_team_users = @users.select{|x| @teams[x.id] != nil}
+			nil_team_users = @users.select {|x| @teams[x.id] == nil}
+			other_team_users = @users.select {|x| @teams[x.id] != nil}
 
-			if(session[:teamorder] == false)
-							@users = (other_team_users + nil_team_users).paginate(page: params[:page])
-							session[:teamorder] = true
+			if (session[:teamorder] == false)
+				@users = (other_team_users + nil_team_users).paginate(page: params[:page])
+				session[:teamorder] = true
 
 			else
-							@users = (nil_team_users + other_team_users).paginate(page: params[:page])
-							session[:teamorder] = false
+				@users = (nil_team_users + other_team_users).paginate(page: params[:page])
+				session[:teamorder] = false
 
 			end
 		else
 			@users = @users.order(@sorting).paginate(page: params[:page])
 		end
-  end
+	end
 
-  def show
+	def show
     @user = User.find(params[:id])
   end
   
