@@ -15,7 +15,7 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-10">
 <table class="table">
   <tr>
   	<th>Team Name</th>
@@ -34,7 +34,7 @@
 
   <tr>
     <th>Project Preferences Filled?</th>
-    <td><%= @team.preferences_filled %></td>
+    <td><%= @team.preferences_filled == true ? "Yes" :  "No"%></td>
   </tr>
   <tr>
     <th>Team Members</th>
