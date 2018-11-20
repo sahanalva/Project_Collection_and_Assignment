@@ -1,4 +1,10 @@
 <% provide(:title, 'Users without any team') %>
+
+<%=
+  link_to 'Download data as Excel',
+          users_no_team_path(format: :xlsx)
+%>
+
 <h1>Users without any team</h1>
 
 <div class="row">

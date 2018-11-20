@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+wrap_text = wb.styles.add_style({:alignment => {:vertical => :center, :wrap_text => true}}  )
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "User_NoTeam") do |sheet|
+    # Create the header row
+    sheet.add_row ["UIN", "Name", "Email ID"], style: heading
+
+    # Create entries for each user with no team
+    @users.each do |u|
+        if u.uin != "703048617"
+            sheet.add_row [u.uin, u.firstname + " " + u.lastname, u.email], :style => wrap_text
+        end
+    end
+  end
+end

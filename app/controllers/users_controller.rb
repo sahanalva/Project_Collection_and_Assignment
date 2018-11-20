@@ -122,16 +122,25 @@ class UsersController < ApplicationController
 	end
 
 
-  def no_team
-        @users = []
-  		@teams = {}
-  		User.all.each do |user|
-  			res = Relationship.find_by_user_id(user.id)
-  			if res == nil
-  			    @users.push(user)
-  			end
-  		end
-  end
+	def no_team
+		@users = []
+		@teams = {}
+		User.all.each do |user|
+			res = Relationship.find_by_user_id(user.id)
+			if res == nil
+				@users.push(user)
+			end
+		end
+
+		respond_to do |format|
+			format.xlsx {
+				response.headers[
+						'Content-Disposition'
+				] = "attachment; filename='Users_NoTeam_Data.xlsx'"
+			}
+			format.html {render :no_team}
+		end
+	end
 
 	def admin_download
 		admin_user
