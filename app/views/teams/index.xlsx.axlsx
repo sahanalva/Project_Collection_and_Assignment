@@ -6,16 +6,20 @@ wb.styles do |style|
 
   wb.add_worksheet(name: "Teams") do |sheet|
     # Create the header row
-    sheet.add_row ["Team Name", "Team Members", "Member count", "Project Assigned", "Preferences filled"], style: heading
+    sheet.add_row ["Team Name", "Team Members", "UIN", "Email ID", "Member count", "Project Assigned", "Preferences filled"], style: heading
 
     # Create entries for each team
     @teams.each do |team|
       @mem_list = ""
+      @uin_list = ""
+      @mail_list = ""
 
       @team_members[team.id].each_with_index do |m, index|
         @mem_list += (index + 1).to_s + ". " + (m.firstname + " " + m.lastname) + " (" + m.uin + ")" + "\n"
+        @uin_list += m.uin + "\n"
+        @mail_list += m.email + "\n"
       end
-      sheet.add_row [team.name, @mem_list, @counts[team.id], @status[team.id], (team.preferences_filled ? "Yes" : "No")], :style => wrap_text
+      sheet.add_row [team.name, @mem_list, @uin_list, @mail_list, @counts[team.id], @status[team.id], (team.preferences_filled ? "Yes" : "No")], :style => wrap_text
     end
   end
 end
