@@ -125,12 +125,16 @@ class UsersController < ApplicationController
 	def no_team
 		@users = []
 		@teams = {}
+
 		User.all.each do |user|
 			res = Relationship.find_by_user_id(user.id)
 			if res == nil
 				@users.push(user)
 			end
 		end
+
+		@users_all = @users
+		@users = @users.paginate(page: params[:page])
 
 		respond_to do |format|
 			format.xlsx {

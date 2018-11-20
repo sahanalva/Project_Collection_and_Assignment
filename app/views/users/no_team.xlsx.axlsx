@@ -9,8 +9,8 @@ wb.styles do |style|
     sheet.add_row ["UIN", "Name", "Email ID"], style: heading
 
     # Create entries for each user with no team
-    @users.each do |u|
-        if u.uin != "703048617"
+    @users_all.each do |u|
+        if u.uin != "703048617" # don't allow admin
             sheet.add_row [u.uin, u.firstname + " " + u.lastname, u.email], :style => wrap_text
         end
     end
