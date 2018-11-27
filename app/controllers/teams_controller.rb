@@ -72,27 +72,29 @@ class TeamsController < ApplicationController
       end
     end
 
-    @team_members = {}
-    User.all.each do |user|
+    if current_user.admin?
+      @team_members = {}
+      User.all.each do |user|
         res = Relationship.find_by_user_id(user.id)
         if res != nil
-            @relationship = Relationship.find_by_user_id(user.id)
-            if @team_members[@relationship.team_id] == nil
-                @team_members[@relationship.team_id] = []
-            end
+          @relationship = Relationship.find_by_user_id(user.id)
+          if @team_members[@relationship.team_id] == nil
+            @team_members[@relationship.team_id] = []
+          end
 
-      		@team_members[@relationship.team_id] << user
-      	end
-    end
-
-    respond_to do |format|
-          format.xlsx {
-            response.headers[
-              'Content-Disposition'
-            ] = "attachment; filename='TeamData.xlsx'"
-          }
-          format.html { render :index }
+          @team_members[@relationship.team_id] << user
         end
+      end
+
+      respond_to do |format|
+        format.xlsx {
+          response.headers[
+              'Content-Disposition'
+          ] = "attachment; filename='TeamData.xlsx'"
+        }
+        format.html {render :index}
+      end
+    end
 
 
   end
