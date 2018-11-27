@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
                         end
 
                         user_pe = []
-                        user_pe << user.firstname + user.lastname
+                        user_pe << user.firstname + " " + user.lastname
 
                         # get team name
                         team = user.is_member_of
@@ -149,7 +149,7 @@ class ProjectsController < ApplicationController
                         end
 
                         user_pe = []
-                        user_pe << user.firstname + user.lastname
+                        user_pe << user.firstname + " " + user.lastname
 
                         all_users.each do |member|
                                 member_record = User.find_by(id: member.id)
