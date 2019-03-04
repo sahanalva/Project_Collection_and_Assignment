@@ -20,3 +20,8 @@
 #Ignore gemfile
 /Gemfile
 /Gemfile.lock
+
+#Ignore IDE files
+.idea/*
+*.iml
+.DS_Store
