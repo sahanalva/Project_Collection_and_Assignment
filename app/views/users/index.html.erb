@@ -1,4 +1,10 @@
 <% provide(:title, 'All users') %>
+
+<%=
+  link_to 'Download data as Excel',
+          users_path(format: :xlsx)
+%>
+
 <h1>All users</h1>
 
 <div class="row">
