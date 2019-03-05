@@ -86,7 +86,7 @@ class TeamsController < ApplicationController
         format.xlsx do
           response.headers[
             'Content-Disposition'
-          ] = "attachment; filename='TeamData.xlsx'"
+          ] = "attachment; filename=TeamData.xlsx"
         end
         format.html { render :index }
       end

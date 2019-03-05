@@ -123,7 +123,7 @@ class UsersController < ApplicationController
       format.xlsx do
         response.headers[
           'Content-Disposition'
-        ] = "attachment; filename='Users_NoTeam_Data.xlsx'"
+        ] = "attachment; filename=Users_NoTeam_Data.xlsx"
       end
       format.html { render :no_team }
     end
