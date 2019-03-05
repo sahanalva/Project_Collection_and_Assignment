@@ -3,27 +3,25 @@ user = User.find_or_initialize_by(email: 'admin@example.com')
 user.firstname = 'administrator'
 user.lastname = 'admin'
 user.uin = Faker::Number.number(9)
-user.email = "admin@example.com"
+user.email = 'admin@example.com'
 user.password = 'adminadmin'
 user.admin = true
 user.semester = 'Fall'
-user.year =  2016.to_s #Faker::Number.between(2000 ,2026).to_s
+user.year = 2016.to_s # Faker::Number.between(2000 ,2026).to_s
 user.course = 'CSCE606'
 user.save!
-
 
 user = User.find_or_initialize_by(email: 'admin@example.com')
 user.firstname = 'administrator'
 user.lastname = 'admin'
 user.uin = Faker::Number.number(9)
-user.email = "master@example.com"
+user.email = 'master@example.com'
 user.password = 'adminadmin'
 user.admin = true
 user.semester = 'Spring'
-user.year =  2015.to_s #Faker::Number.between(2000 ,2026).to_s
+user.year = 2015.to_s # Faker::Number.between(2000 ,2026).to_s
 user.course = 'CSCE606'
 user.save!
-
 
 #  100.times do |n|
 #    offset = rand(0..2)

@@ -18,9 +18,10 @@ class PreferencesController < ApplicationController
     end
   end
 
- private
-    def team_leader
-      @team = Team.find_by(user_id: current_user.id)
-      redirect_to root_url unless @team.is_leader?(current_user)
-    end
+  private
+
+  def team_leader
+    @team = Team.find_by(user_id: current_user.id)
+    redirect_to root_url unless @team.is_leader?(current_user)
+  end
 end

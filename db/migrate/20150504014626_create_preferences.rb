@@ -8,7 +8,6 @@ class CreatePreferences < ActiveRecord::Migration[5.1]
     end
     add_foreign_key :preferences, :teams
     add_foreign_key :preferences, :projects
-    add_index :preferences, [:team_id, :project_id], unique: true
-
+    add_index :preferences, %i[team_id project_id], unique: true
   end
 end
