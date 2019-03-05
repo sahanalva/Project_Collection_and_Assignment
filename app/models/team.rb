@@ -10,12 +10,10 @@ class Team < ActiveRecord::Base
   validates :user_id, presence: true
 
   def leader
-  	self.user
+    user
   end
 
   def is_leader?(user)
-  	self.leader == user
+    leader == user
   end
-
- 
 end

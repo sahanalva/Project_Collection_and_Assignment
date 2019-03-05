@@ -2,9 +2,9 @@ require 'rspec/core'
 
 RSpec.configure do |config|
   config.mock_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = %i[should expect]
   end
   config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = %i[should expect]
   end
 end

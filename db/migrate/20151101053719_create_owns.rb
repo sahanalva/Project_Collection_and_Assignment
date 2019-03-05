@@ -7,6 +7,6 @@ class CreateOwns < ActiveRecord::Migration[5.1]
     add_foreign_key :owns, :users
     add_foreign_key :owns, :projects
 
-	add_index :owns, [:user_id, :project_id], unique: true
+    add_index :owns, %i[user_id project_id], unique: true
   end
 end

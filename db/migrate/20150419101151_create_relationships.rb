@@ -9,6 +9,6 @@ class CreateRelationships < ActiveRecord::Migration[5.1]
     add_foreign_key :relationships, :users
     add_foreign_key :relationships, :teams
 
-    add_index :relationships, [:user_id, :team_id], unique: true
+    add_index :relationships, %i[user_id team_id], unique: true
   end
 end

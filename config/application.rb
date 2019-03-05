@@ -1,8 +1,8 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 require 'yaml'
-#require 'rspec-rails'
+# require 'rspec-rails'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -23,7 +23,7 @@ module ProjectApp
 
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
-	
+
     config.eager_load = true
   end
 end

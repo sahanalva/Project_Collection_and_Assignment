@@ -1,41 +1,36 @@
 require 'securerandom'
 class StaticPagesController < ApplicationController
-  def home
-  end
+  def home; end
 
-  def help
-  end
+  def help; end
 
-  def about
-  end
+  def about; end
 
-  def contact
-  end
+  def contact; end
 
-	def login
-	end
+  def login; end
 
   def new
-		email = session[:cas_user].to_s+"@tamu.edu"
-		user = User.find_by(email: email)
-		if user
-			log_in user
-			remember(user)
-			redirect_back_or user
-		else
-			passwd = SecureRandom.hex
-			user = User.new(:firstname => "Please Update", :email => email, :password_digest => passwd)
-		  if user.save
-		     log_in user
-		     flash[:success] = "Welcome to the ProjectApp"
-		     redirect_to user
-		  else
-		     render 'new'
-		  end
+    email = session[:cas_user].to_s + '@tamu.edu'
+    user = User.find_by(email: email)
+    if user
+      log_in user
+      remember(user)
+      redirect_back_or user
+    else
+      passwd = SecureRandom.hex
+      user = User.new(firstname: 'Please Update', email: email, password_digest: passwd)
+      if user.save
+        log_in user
+        flash[:success] = 'Welcome to the ProjectApp'
+        redirect_to user
+      else
+        render 'new'
+       end
 
-		end
+    end
   end
-  
+
   # This functionality has been partially repaired - no more crashes
   # Actual NetID login may not work (CAS gem not working?)
   def create # NetID login method
@@ -54,7 +49,6 @@ class StaticPagesController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    #redirect_to root_url
+    # redirect_to root_url
   end
-
 end
