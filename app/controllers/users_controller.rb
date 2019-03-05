@@ -38,6 +38,15 @@ class UsersController < ApplicationController
     else
       @users = @users.order(@sorting).paginate(page: params[:page])
     end
+
+    respond_to do |format|
+      format.xlsx do
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename=Users_Data.xlsx"
+      end
+      format.html { render :index }
+    end
   end
 
   def show
