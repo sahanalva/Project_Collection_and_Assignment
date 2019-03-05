@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
   def preference
     @team = current_user.is_member_of
     if @team
-      
+
       if @team.preferences_filled?
         flash[:warning] = "Preferences have already been submitted"
         redirect_to user_path
@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
       @teams = Team.all
 
       @teams.each do |team|
-        count = (Relationship.where(team_id:team.id).count)  
+        count = (Relationship.where(team_id:team.id).count)
         @counts[team.id]  =  count
         @leaders[team.id] = team.leader
         @preferences[team.id] = (team.preferences_filled)? '&#9989;' : "&#10060;"
@@ -64,7 +64,7 @@ class TeamsController < ApplicationController
 
     else
       @team = current_user.is_member_of
-      if @team 
+      if @team
         redirect_to @team
       else
         flash[:warning] = "You are not yet part of any team"
@@ -110,9 +110,10 @@ class TeamsController < ApplicationController
 	@user_names = Array.new
 
 	User.find_each do |user|
-  
+
         if user.admin==false and Relationship.find_by_user_id(user.id)==nil
-            @user_names << user.firstname + " " + user.lastname
+            full_name = user.lastname + ", " + user.firstname
+            @user_names << full_name
         end
 
         @user_names = @user_names.sort_by { |word| word.downcase }
@@ -139,7 +140,7 @@ class TeamsController < ApplicationController
 
   def set_preference
     @team = current_user.is_member_of
-    
+
     if @team
       @team.preferences_filled = true
       @team.save!
@@ -149,30 +150,30 @@ class TeamsController < ApplicationController
       redirect_to current_user
     end
   end
-  
+
 	def add_user
-		usr = User.find_by_name(params[:user_name].to_s)
+    name_arr = params[:user_name].split(/\s*,\s*/)
+    puts (name_arr)
+		usr = User.find_by(firstname: name_arr[1], lastname: name_arr[0])
+    puts (usr)
 		on_team = Relationship.find_by_user_id(usr.id)
-		
+
 		if on_team != nil
 			flash[:error] = "This user is already on a team"
 			redirect_to teams_path
-			
-
     elsif !current_user.admin? && (Relationship.where(team_id:params[:team_id]).count) >= 6
           flash[:danger]  = "Sorry, this team has already reached the capacity of 6 members. "
           redirect_to teams_path
-    
     else
 		relationship = Relationship.new
 		relationship.team_id = params[:team_id].to_s
-		relationship.user_id = User.find_by_name(params[:user_name].to_s).id
+		relationship.user_id = usr.id
 		relationship.save
 		flash[:success] = "Successfully added user "+ params[:user_name].to_s+" to team"
 		redirect_to teams_path
     end
 	end
-  
+
   def create
     if current_user.teams.count != 0
       flash[:danger] = "You have already created one team"
@@ -190,8 +191,8 @@ class TeamsController < ApplicationController
         if !current_user.admin?
           current_user.join_team(@team)
         end
-        
-        
+
+
         flash[:success] = "Team created successfully"
         redirect_to @team
       else
@@ -228,7 +229,7 @@ class TeamsController < ApplicationController
     flash[:success] = "Team deleted"
     redirect_to teams_path
   end
- 
+
  private
     def team_params
       params.require(:team).permit(:name, :preferences_filled)
