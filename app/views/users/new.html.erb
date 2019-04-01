@@ -28,7 +28,7 @@
       <%= f.select :semester ,[['Fall', 'Fall'] ,['Spring' ,'Spring'] ,['Summer' ,'Summer']],:include_blank => {:semester => "Select Semester"} %>
       
       <%= f.label :year, "Year *" %>
-      <%= f.select :year, (2000..Time.now.year + 10).to_a, :include_blank => {:year => "Select year"} %>
+      <%= f.select :year, (Time.now.year..Time.now.year + 1).to_a %>
       
        <%= f.label :course, "Course *"%>
       <%= f.select :course ,[['CSCE606', 'CSCE606'] ,['CSCE431' ,'CSCE431']] ,:include_blank => {:course => "Select Course"}%>
