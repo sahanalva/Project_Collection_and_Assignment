@@ -31,7 +31,12 @@
         <th>Team Code</th>
         <td><%= @team.code %></td>
       </tr>
-
+      <% if !@project.nil? %>
+        <tr>
+          <th>Project Name</th>
+          <td><%= link_to @project.title, @project %></td>
+        </tr>
+      <% end %>
       <tr>
         <th>Project Preferences Filled?</th>
         <td><%= @team.preferences_filled == true ? "Yes" : "No" %></td>
@@ -39,30 +44,25 @@
       <tr>
         <th>Team Members</th>
         <td>
-          <center>
-            <ol>
-              <% @members.each do |m| %>
-                </center>
-
-                <li>
-
-                  <% if current_user.admin? %>
-                    <%= link_to m.firstname + " " + m.lastname, m %>
-                    <%= button_to "Remove", {action: "remove", user_id: m.id, team_id: @team} %>
-                  <% else %>
-                    <%= link_to m.firstname + " " + m.lastname, m %>
-                  <% end %>
-                </li>
-              <% end %>
-              <% if current_user.admin? %>
-                <%= form_tag({action: :add_user, team_id: @team.id}) do %>
-                  <%= select_tag(:user_name, options_for_select(@user_names)) %>
-                  <%= submit_tag("Add user") %>
+          <ol>
+            <% @members.each do |m| %>
+              <li>
+                <% if current_user.admin? %>
+                  <%= link_to m.firstname + " " + m.lastname, m %>
+                  <%= button_to "Remove", {action: "remove", user_id: m.id, team_id: @team} %>
+                <% else %>
+                  <%= link_to m.firstname + " " + m.lastname, m %>
                 <% end %>
+              </li>
+            <% end %>
+            <% if current_user.admin? %>
+              <%= form_tag({action: :add_user, team_id: @team.id}) do %>
+                <%= select_tag(:user_name, options_for_select(@user_names)) %>
+                <%= submit_tag("Add user") %>
               <% end %>
-              </ol>
-
-              </td>
+            <% end %>
+          </ol>
+        </td>
       </tr>
     </table>
 

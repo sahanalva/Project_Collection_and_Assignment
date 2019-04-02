@@ -100,7 +100,10 @@ class TeamsController < ApplicationController
     def show
         @team = Team.find(params[:id])
         @members = @team.members
+        @assignment = Assignment.find_by_team_id(@team.id)
 
+
+        @project = @assignment.nil? ? nil : Project.find(@assignment.project_id)
         @user_names = []
 
         User.find_each do |user|
