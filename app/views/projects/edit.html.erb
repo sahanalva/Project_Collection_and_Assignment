@@ -42,10 +42,18 @@
       <%= f.text_area :contact, :readonly => @readonly_flag, class: "form_control", rows: 4 %>
 
       <%= f.label :semester %>
-      <%= f.select :semester, [['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer']], :include_blank => {:semester => "Select Semester"} %>
+      <% if @semester.nil? %>
+        <%= f.select :semester, [['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer']], :selected => 'Fall' %>
+      <% else %>
+        <%= f.select :semester, [@semester], :selected => @semester %>
+      <% end %>
 
       <%= f.label :year %>
-      <%= f.select :year, (2000..Time.now.year + 10).to_a, :include_blank => {:year => "Select year"} %>
+      <% if @year.nil? %>
+        <%= f.select :year, (Time.now.year - 3..Time.now.year + 3).to_a, :selected => Time.now.year %>
+      <% else %>
+        <%= f.select :year, [@year], :selected => @year %>
+      <% end %>
 
       <%= f.label :description %><br>
       <%= f.text_area :description, :readonly => @readonly_flag, class: "form_control", rows: 8 %>
@@ -72,10 +80,10 @@
       <%= f.label :legacy_id, "Legacy Project Link (optional)", :readonly => @readonly_flag, class: "legacy_ip" %><br/>
       <%= f.select :legacy_id, @options, {:prompt => "Select legacy project"}, {:class => "form_control legacy_ip"} %>
 
-
-
       <div class="col-md-6 col-md-offset-3">
         <%= f.submit "Submit", class: "btn btn-primary" %>
       </div>
 
     <% end %>
+  </div>
+</div>

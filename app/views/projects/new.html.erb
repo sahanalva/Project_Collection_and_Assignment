@@ -38,10 +38,18 @@
       <%= f.text_area :contact, class: "form_control", rows: 4 %>
 
       <%= f.label :semester %>
-      <%= f.select :semester, [['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer']], :include_blank => {:semester => "Select Semester"} %>
+      <% if @semester.nil? %>
+        <%= f.select :semester, [['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer']], :selected => 'Fall' %>
+      <% else %>
+        <%= f.select :semester, [@semester], :selected => @semester %>
+      <% end %>
 
       <%= f.label :year %>
-      <%= f.select :year, (2000..Time.now.year + 10).to_a, :include_blank => {:year => "Select year"} %>
+      <% if @year.nil? %>
+        <%= f.select :year, (Time.now.year - 3..Time.now.year + 3).to_a, :selected => Time.now.year %>
+      <% else %>
+        <%= f.select :year, [@year], :selected => @year %>
+      <% end %>
 
       <%= f.label :description %><br>
       <%= f.text_area :description, class: "form_control", rows: 8 %>
@@ -85,7 +93,7 @@
 </div>
 
 <br/><br/> <br/>
-<i><b>*On-Campus Project</i>: </b>
+<i><b>*On-Campus Project:</b></i>
 A project whose customer location is reachable by the
 <a href="http://transport.tamu.edu/busroutes/" target="_blank">Texas A&M Bus Network.</a><br/>
-<i><b>*Legacy Project </i>: </b> A project which is already in production. The proposal is for the enhancement. <br/>
+<i><b>*Legacy Project </b> :</i> A project which is already in production. The proposal is for the enhancement. <br/>

@@ -306,6 +306,9 @@ class ProjectsController < ApplicationController
         @project = Project.new
         @opt = Project.all.order('title')
         @options = @opt.collect {|p| [p.title, p.id]}
+
+        @semester = current_user.admin? ? nil : current_user.semester
+        @year = current_user.admin? ? nil : current_user.year
     end
 
     def create
@@ -339,6 +342,9 @@ class ProjectsController < ApplicationController
         @readonly_flag = true
         @readonly_flag = false if current_user.admin?
         @readonly_flag = false if !owned.nil? && current_user.id == owned.user_id
+
+        @semester = current_user.admin? ? nil : current_user.semester
+        @year = current_user.admin? ? nil : current_user.year
     end
 
     def update
