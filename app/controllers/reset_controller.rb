@@ -41,5 +41,47 @@ class ResetController < ApplicationController
 
     def migrate
         puts "Migration in progress"
+        all_projects = Project.all
+        clones = []
+        all_projects.each do |project|
+            clone_project = project.dup
+            clone_project.islegacy = true
+            clone_project.legacy_id = project.id
+
+            # Handle migration of semester to the next.
+            # TODO: User should choose the next semester.
+            # TODO: This currently clones all older projects as well, creating 2^number_of_migrate clones.
+            if project.semester == "Winter"
+                clone_project.semester = 'Spring'
+                clone_project.year = project.year.to_i + 1
+            elsif project.semester == "Spring"
+                clone_project.semester = "Summer"
+            elsif project.semester == "Summer"
+                clone_project.semester = "Fall"
+            elsif project.semester == "Fall"
+                clone_project.semester = 'Spring'
+                clone_project.year = project.year.to_i + 1
+            end
+            clones << clone_project
+        end
+
+        puts "Length of projects before clone = "
+        puts Project.all.length
+        Project.import clones
+
+        puts "Length of projects after clone = "
+        puts Project.all.length
+
+        # reset the DBs
+        Assignment.delete_all
+        User.where(admin: false).delete_all
+        Preassignment.delete_all
+        Preference.delete_all
+        Project.where(islegacy: false).delete_all
+        Relationship.delete_all
+        Team.delete_all
+
+        puts "Length of projects after deleting non-legacy = "
+        puts Project.all.length
     end
 end

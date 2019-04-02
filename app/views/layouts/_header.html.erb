@@ -87,7 +87,7 @@
               <li><%= link_to "Update Profile", edit_user_path(current_user) %></li>
               <% if current_user.admin? %>
                 <li class="divider"></li>
-                <li><%= link_to "Migrate Semester", resetDB_path, data: {confirm: "Are you sure you want to migrate to a new semester? \n\n[WARNING] All data from this semester will be lost !!\n"} %></li>
+                <li><%= link_to "Migrate Semester", migrate_path, data: {confirm: "Are you sure you want to migrate to a new semester? \n\n[WARNING] All data from this semester will be lost !!\n"} %></li>
               <% end %>
               <li class="divider"></li>
               <li>
