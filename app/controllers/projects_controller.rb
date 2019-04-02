@@ -274,6 +274,10 @@ class ProjectsController < ApplicationController
         @members = []
         @team = nil
 
+        @owned = Own.find_by_project_id(params[:id])
+        @owner = User.find_by_id(@owned.user_id) unless @owned.nil?
+        @created_user_or_admin = true if current_user.admin? or current_user.id == @owner.id
+
         unless @assignment.nil?
 
             @team = Team.find(@assignment.team_id)
@@ -288,10 +292,6 @@ class ProjectsController < ApplicationController
                 @assigned_user = true if current_user.is_member?(@team)
             end
         end
-
-        @owned = Own.find_by_project_id(params[:id])
-
-        @owner = User.find_by_id(@owned.user_id) unless @owned.nil?
 
         @legacy_project = Project.find_by_id(@project.legacy_id)
 
@@ -343,6 +343,9 @@ class ProjectsController < ApplicationController
         @readonly_flag = false if current_user.admin?
         @readonly_flag = false if !owned.nil? && current_user.id == owned.user_id
 
+        if @readonly_flag
+            redirect_to(@project)
+        end
         @semester = current_user.admin? ? nil : current_user.semester
         @year = current_user.admin? ? nil : current_user.year
     end
