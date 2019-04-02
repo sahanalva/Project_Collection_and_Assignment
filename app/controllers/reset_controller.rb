@@ -38,4 +38,8 @@ class ResetController < ApplicationController
         Relationship.delete_all
         Team.delete_all
     end
+
+    def migrate
+        puts "Migration in progress"
+    end
 end

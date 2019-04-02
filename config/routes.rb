@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get    'resetDB' => 'reset#downloadAndReset'
+  get    'migrate' => 'reset#migrate'
   resources :users
   resources :projects
   resources :documents
