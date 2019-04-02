@@ -4,9 +4,9 @@
       The form contains <%= pluralize(@project.errors.count, "error") %>.
     </div>
     <ul>
-    <% @project.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>

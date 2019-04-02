@@ -1,19 +1,19 @@
 class Team < ActiveRecord::Base
-  belongs_to :user
-  has_many :relationships, dependent: :destroy
-  has_many :members, through: :relationships, source: :user
+    belongs_to :user
+    has_many :relationships, dependent: :destroy
+    has_many :members, through: :relationships, source: :user
 
-  has_many :preferences, dependent: :destroy
-  has_many :prefers, through: :preferences, source: :project
+    has_many :preferences, dependent: :destroy
+    has_many :prefers, through: :preferences, source: :project
 
-  validates :name, presence: true, uniqueness: true
-  validates :user_id, presence: true
+    validates :name, presence: true, uniqueness: true
+    validates :user_id, presence: true
 
-  def leader
-    user
-  end
+    def leader
+        user
+    end
 
-  def is_leader?(user)
-    leader == user
-  end
+    def is_leader?(user)
+        leader == user
+    end
 end

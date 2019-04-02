@@ -6,12 +6,12 @@
 
       <%#= f.label :name %>
       <%#= f.text_field :name, class: 'form-control' %>
-      
-      <%= f.label :name%>
+
+      <%= f.label :name %>
       <% options = options_from_collection_for_select(@all_teams, 'id', 'name') %>
-      <%= f.select :all_val,  options %>
-      
-      
+      <%= f.select :all_val, options %>
+
+
 
 
       <%= f.label "Please enter your team's code" %>

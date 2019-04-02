@@ -5,14 +5,14 @@
   <div class="col-md-4 col-md-offset-4">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      
+
       <%= f.label :firstname, 'First Name *' %>
       <%= f.text_field :firstname, class: 'form-control' %>
 
       <%= f.label :lastname, 'Last Name *' %>
       <%= f.text_field :lastname, class: 'form-control' %>
-      
-      <%= f.label :uin, "UIN *"%>
+
+      <%= f.label :uin, "UIN *" %>
       <%= f.text_field :uin, class: 'form-control' %>
 
       <%= f.label :email, "Email *" %>
@@ -20,19 +20,19 @@
 
       <%= f.label :password, "Password *" %>
       <%= f.password_field :password, class: 'form-control' %>
-      
+
       <%= f.label :password_confirmation, "Confirm Password *" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-      
-      <%= f.label :semester, "Semester *"%>
-      <%= f.select :semester ,[['Fall', 'Fall'] ,['Spring' ,'Spring'] ,['Summer' ,'Summer']],:include_blank => {:semester => "Select Semester"} %>
-      
+
+      <%= f.label :semester, "Semester *" %>
+      <%= f.select :semester, [['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer']], :include_blank => {:semester => "Select Semester"} %>
+
       <%= f.label :year, "Year *" %>
       <%= f.select :year, (Time.now.year..Time.now.year + 1).to_a %>
-      
-       <%= f.label :course, "Course *"%>
-      <%= f.select :course ,[['CSCE606', 'CSCE606'] ,['CSCE431' ,'CSCE431']] ,:include_blank => {:course => "Select Course"}%>
-      
+
+      <%= f.label :course, "Course *" %>
+      <%= f.select :course, [['CSCE606', 'CSCE606'], ['CSCE431', 'CSCE431']], :include_blank => {:course => "Select Course"} %>
+
       <div class="col-md-6 col-md-offset-3">
         <%= f.submit "Create my account", class: "btn btn-primary" %>
       </div>
