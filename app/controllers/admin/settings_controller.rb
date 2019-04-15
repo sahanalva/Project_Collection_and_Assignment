@@ -1,5 +1,7 @@
 module Admin
     class SettingsController < ApplicationController
+        before_action :logged_in_user
+        before_action :admin_user
         before_action :get_setting, only: [:edit, :update]
 
         def index
