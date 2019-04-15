@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     member do
       get :approve, :unapprove
       patch :toggle
+      patch :toggle_active
     end
 
     # get :legacy

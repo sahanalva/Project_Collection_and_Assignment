@@ -276,7 +276,7 @@ class ProjectsController < ApplicationController
 
         @owned = Own.find_by_project_id(params[:id])
         @owner = User.find_by_id(@owned.user_id) unless @owned.nil?
-        @created_user_or_admin = true if current_user.admin? or current_user.id == @owner.id
+        @created_user_or_admin = true if current_user.admin? or current_user.id == @owner.id unless @owner.nil?
 
         unless @assignment.nil?
 
@@ -456,13 +456,24 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def toggle_active
+        @project = Project.find(params[:id])
+        @project.toggle(:isactive)
+        @project.save
+        respond_to do |format|
+            format.html {redirect_to projects_url}
+            format.js
+        end
+    end
+
     private
 
     def project_params
         if current_user && current_user.admin?
-            params.require(:project).permit(:title, :organization, :contact, :description, :oncampus, :islegacy, :approved, :semester, :year, :legacy_id, :github_link, :heroku_link, :pivotal_link)
+            params.require(:project).permit(:title, :organization, :contact, :description, :oncampus, :islegacy, :approved, :semester, :year, :legacy_id, :github_link, :heroku_link, :pivotal_link, :isactive)
         else
             params.require(:project).permit(:title, :organization, :contact, :description, :oncampus, :islegacy, :semester, :year, :legacy_id, :github_link, :heroku_link, :pivotal_link)
         end
     end
+
 end
