@@ -30,6 +30,8 @@ gem 'rubocop', '~> 0.65.0', require: false
 gem 'rubyzip', '>= 1.2.1'
 gem 'activerecord-import'
 
+gem "rails-settings-cached"
+
 group :development, :test do
   #  gem 'quiet_assets'  # Deprecated
   gem 'byebug'
