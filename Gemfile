@@ -28,6 +28,9 @@ gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
 gem 'rubocop', '~> 0.65.0', require: false
 gem 'rubyzip', '>= 1.2.1'
+gem 'activerecord-import'
+
+gem "rails-settings-cached"
 
 group :development, :test do
   #  gem 'quiet_assets'  # Deprecated

@@ -38,4 +38,25 @@ class ResetController < ApplicationController
         Relationship.delete_all
         Team.delete_all
     end
+
+    def migrate
+        puts "Migration in progress"
+        active_projects = Project.where(isactive: true)
+        active_projects.each do |project|
+            project.islegacy = true
+            # Handle migration of semester to the next.
+            # TODO: First update the semester/year as part of migration UI.
+            project.semester = Setting.semester
+            project.year = Setting.year
+            project.save
+        end
+
+        # reset the DBs
+        Assignment.delete_all
+        User.where(admin: false).delete_all
+        Preassignment.delete_all
+        Preference.delete_all
+        Relationship.delete_all
+        Team.delete_all
+    end
 end

@@ -19,9 +19,9 @@ class ProjectsController < ApplicationController
         @path = 'approved_projects_path'
         @sorting = params[:sort]
         if @sorting == 'year'
-            @projects = Project.order('year DESC,semester DESC').where('approved = ?', true).paginate(page: params[:page])
+            @projects = Project.order('year DESC,semester DESC').where('approved = ?', true).where('isactive = ?', true).paginate(page: params[:page])
         else
-            @projects = Project.order(@sorting).where('approved = ?', true).paginate(page: params[:page])
+            @projects = Project.order(@sorting).where('approved = ?', true).where('isactive = ?', true).paginate(page: params[:page])
         end
         render 'index'
     end
@@ -31,9 +31,9 @@ class ProjectsController < ApplicationController
         @path = 'unapproved_projects_path'
         @sorting = params[:sort]
         if @sorting == 'year'
-            @projects = Project.order('year DESC,semester DESC').where('approved = ?', false).paginate(page: params[:page])
+            @projects = Project.order('year DESC,semester DESC').where('approved = ?', false).where('isactive = ?', true).paginate(page: params[:page])
         else
-            @projects = Project.order(@sorting).where('approved = ?', false).paginate(page: params[:page])
+            @projects = Project.order(@sorting).where('approved = ?', false).where('isactive = ?', true).paginate(page: params[:page])
         end
         render 'index'
     end
@@ -215,7 +215,7 @@ class ProjectsController < ApplicationController
             if @team.nil?
                 flash[:danger] = 'Failed to retrieve the peer evaluation form because the team is missing.'
                 @title = 'Approved Projects'
-                @projects = Project.where('approved = ?', true).paginate(page: params[:page])
+                @projects = Project.where('approved = ?', true).where('isactive = ?', true).paginate(page: params[:page])
                 redirect_back fallback_location: root_path # Refactored for Rails 5
                 return
             end
@@ -304,7 +304,7 @@ class ProjectsController < ApplicationController
 
     def new
         @project = Project.new
-        @opt = Project.all.order('title')
+        @opt = Project.all.order('title').where('isactive = ?', true)
         @options = @opt.collect {|p| [p.title, p.id]}
 
         @semester = current_user.admin? ? nil : current_user.semester
@@ -335,7 +335,7 @@ class ProjectsController < ApplicationController
     def edit
         @project = Project.find(params[:id])
 
-        @opt = Project.all.order('title')
+        @opt = Project.all.order('title').where('isactive = ?', true)
         @options = @opt.collect {|p| [p.title, p.id]}
 
         owned = Own.find_by_project_id(params[:id])
@@ -456,13 +456,24 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def toggle_active
+        @project = Project.find(params[:id])
+        @project.toggle(:isactive)
+        @project.save
+        respond_to do |format|
+            format.html {redirect_to projects_url}
+            format.js
+        end
+    end
+
     private
 
     def project_params
         if current_user && current_user.admin?
-            params.require(:project).permit(:title, :organization, :contact, :description, :oncampus, :islegacy, :approved, :semester, :year, :legacy_id, :github_link, :heroku_link, :pivotal_link)
+            params.require(:project).permit(:title, :organization, :contact, :description, :oncampus, :islegacy, :approved, :semester, :year, :legacy_id, :github_link, :heroku_link, :pivotal_link, :isactive)
         else
             params.require(:project).permit(:title, :organization, :contact, :description, :oncampus, :islegacy, :semester, :year, :legacy_id, :github_link, :heroku_link, :pivotal_link)
         end
     end
+
 end

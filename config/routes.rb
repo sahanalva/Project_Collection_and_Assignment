@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get    'resetDB' => 'reset#downloadAndReset'
+  get    'migrate' => 'reset#migrate'
   resources :users
   resources :projects
   resources :documents
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     member do
       get :approve, :unapprove
       patch :toggle
+      patch :toggle_active
     end
 
     # get :legacy
@@ -150,4 +152,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  namespace :admin do
+    resources :settings
+  end
 end

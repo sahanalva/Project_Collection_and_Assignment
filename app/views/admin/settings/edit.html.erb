@@ -1,0 +1,13 @@
+<%= form_for(@setting, url: admin_setting_path(@setting.var), method: 'patch') do |f| %>
+  <label><%= @setting.var %></label>
+  <% if @setting.var == "year" %>
+    <%= f.select :value, ((Time.now.year - 10)..(Time.now.year + 10)).to_a, selected: Setting[@setting.var] %>
+    <%= f.submit %>
+  <% elsif @setting.var == "semester" %>
+    <%= f.select :value, [['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer']], selected: Setting[@setting.var] %>
+    <%= f.submit %>
+  <% else %>
+    <%= f.text_field :value, class: 'form-control', placeholder: Setting[@setting.var]%>
+    <%= f.submit %>
+  <% end %>
+<% end %>

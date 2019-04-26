@@ -1,4 +1,4 @@
-<% linkvalue = @project.approved? ? "Unapprove" : "Approve" %>
-$("#toggle_switch_<%= @project.id %>").html("<%= linkvalue %>")
+<% linkvalue_active = @project.isactive ? "Archive" : "Unarchive" %>
+$("#toggle_switch_active_<%= @project.id %>").html("<%= linkvalue_active %>")
 $("#listitemproject_<%= @project.id %>").animate({backgroundColor: '#dff0d8'}, 500)
 $("#listitemproject_<%= @project.id %>").animate({backgroundColor: '#FFFFFF'}, 500)

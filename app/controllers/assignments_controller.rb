@@ -43,7 +43,7 @@ class AssignmentsController < ApplicationController
             return
         end
 
-        projects = Project.where.not(id: reserved_projects).where(approved: true)
+        projects = Project.where.not(id: reserved_projects).where(approved: true).where(isactive: true)
 
         # Handle admin sad path in case of "too few projects"
         if teams.size > projects.size

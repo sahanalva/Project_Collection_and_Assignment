@@ -1,0 +1,17 @@
+<h1> Administrator Settings</h1>
+<table>
+  <tr>
+    <th colspan="3" style="text-align:center;">Global Configuration</th>
+  </tr>
+  <% @settings.each_pair do |key, value| %>
+    <tr>
+      <td><b><%="Current " + key.camelize %></b></td>
+      <td><%= value %></td>
+      <td><%= link_to 'edit', edit_admin_setting_path(key) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<%= link_to "Migrate Semester", migrate_path, data: {confirm: "Are you sure you want to migrate to a new semester? \n\n[WARNING] All data from this semester will be lost !!\n"}, class: "btn btn-primary" %>

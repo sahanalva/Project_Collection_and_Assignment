@@ -68,6 +68,11 @@
       <%= f.label :heroku_link %><br>
       <%= f.text_area :heroku_link, class: "form_control", rows: 1 %>
 
+      <% if current_user.admin? %>
+        <%= f.label :isactive, "*Is Active (Not Archived) ?" %><br/>
+        <%= f.check_box :isactive, :readonly => @readonly_flag, class: "form_control" %>
+      <% end %>
+
       <%= f.label :oncampus, "*Is On-Campus ?" %><br/>
       <%= f.check_box :oncampus, :readonly => @readonly_flag, class: "form_control" %>
 
