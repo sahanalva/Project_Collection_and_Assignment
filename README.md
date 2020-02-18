@@ -1,6 +1,6 @@
 #Project Collection and Assignment
 
-This is a fork of "Project Collection and Assignment". Now, the RubyThons are working on this project.
+This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now (Spring 2020), the FellowshipOfTheRing is working on this project.
 
 Iteration 1 : Updates
 ===================
