@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'pg'
 # Version specifications below are up-to-date as of 3/22, but arbitrary otherwise
 gem 'bcrypt', '~>3.1'
 gem 'bootstrap-sass', '~>3.3'
