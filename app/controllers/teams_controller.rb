@@ -194,6 +194,7 @@ class TeamsController < ApplicationController
 
     def edit
         @team = Team.find(params[:id])
+        redirect_to teams_path
     end
 
     def update
