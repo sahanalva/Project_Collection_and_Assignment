@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 
         end
 
-        # redirect_to @user
+        redirect_to @user
     end
 
     def no_team
@@ -160,7 +160,7 @@ class UsersController < ApplicationController
             flash[:warning] = 'This user is a team leader! You need to delete his team first'
         end
         # redirect_to users_url
-        redirect_to :back
+        # redirect_to :back
     end
 
     private
