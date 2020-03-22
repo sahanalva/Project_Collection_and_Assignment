@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 
         end
 
-        redirect_to @user
+        # redirect_to @user
     end
 
     def no_team
