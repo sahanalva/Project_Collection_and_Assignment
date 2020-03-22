@@ -88,6 +88,11 @@ class User < ActiveRecord::Base
     def send_password_reset_email
         UserMailer.password_reset(self).deliver_now
     end
+    
+    #Reset password to uin
+    def reset_password_to_uin
+        update_attribute(:password, self.uin)
+    end
 
     private
 
