@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RelationshipsController, type: :controller do
   include Devise::Test::ControllerHelpers
   before(:each) do
-    @user = User.create(name: 'David', email: 'david@xyz.com', password: '1234567', uin: '456728360', semester: 'Fall', year: '2016', course: 'csce606')
+    @user = User.create(firstname: 'David', lastname: 'Smith', email: 'david@xyz.com', password: '1234567', uin: '456728360', semester: 'Fall', year: '2016', course: 'csce606')
     sign_in :user
   end
   describe '#create' do
