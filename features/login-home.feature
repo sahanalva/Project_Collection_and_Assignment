@@ -193,24 +193,6 @@ Feature: Login home page
       And I should see "AdminAccount"
       And I should see "master@example.com"
    
-    # This next scenario currently tests the workaround.
-    # Implement the real NetID login test once it works
-    Scenario: Login NetID
-      Given an admin
-      | Name         | AdminAccount|
-      |Email|master@example.com|
-       |Password|adminadmin|
-      Given I am on home_page
-      When I click "Log In (NetID)"
-      Then I should see "Log in (NetID)"
-      When I fill in the details:
-       |Email|master@example.com|
-       |Password|adminadmin|
-      When I press "Log In"
-      Then I should see "User Details"
-      And I should see "AdminAccount"
-      And I should see "master@example.com"     
-   
     Scenario: Test
       Given I am on projects
       Then I should see "Help"
