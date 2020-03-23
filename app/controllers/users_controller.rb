@@ -159,7 +159,8 @@ class UsersController < ApplicationController
         else
             flash[:warning] = 'This user is a team leader! You need to delete his team first'
         end
-        redirect_to users_url
+        # redirect_to users_url
+        redirect_back fallback_location: users_url
     end
 
     private

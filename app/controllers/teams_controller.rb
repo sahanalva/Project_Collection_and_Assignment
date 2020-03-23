@@ -200,7 +200,7 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
         if @team.update_attributes(team_params)
             flash[:success] = 'Team updated'
-            redirect_to @team
+            redirect_to teams_path
         else
             render 'edit'
         end
