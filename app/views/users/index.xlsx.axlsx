@@ -10,7 +10,7 @@ wb.styles do |style|
 
     # Create entries for each user with no team
     @users.each do |u|
-      if u.uin != '703048617' # don't allow admin
+      if !u.admin # don't allow admin
         teamname = "N/A"
         if @teams[u.id].present?
           teamname = @teams[u.id].name

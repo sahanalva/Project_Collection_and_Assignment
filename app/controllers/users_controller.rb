@@ -27,16 +27,16 @@ class UsersController < ApplicationController
             other_team_users = @users.reject {|x| @teams[x.id].nil?}
 
             if session[:teamorder] == false
-                @users = (other_team_users + nil_team_users).paginate(page: params[:page])
+                @users = (other_team_users + nil_team_users)
                 session[:teamorder] = true
 
             else
-                @users = (nil_team_users + other_team_users).paginate(page: params[:page])
+                @users = (nil_team_users + other_team_users)
                 session[:teamorder] = false
 
             end
         else
-            @users = @users.order(@sorting).paginate(page: params[:page])
+            @users = @users.order(@sorting)
         end
 
         respond_to do |format|
@@ -45,7 +45,10 @@ class UsersController < ApplicationController
                     'Content-Disposition'
                 ] = "attachment; filename=Users_Data.xlsx"
             end
-            format.html {render :index}
+            format.html do
+                @users = @users.paginate(page: params[:page])
+                render :index
+            end
         end
     end
 
