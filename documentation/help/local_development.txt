@@ -1,0 +1,6 @@
+To set up a server locally, follow these steps:
+
+gem install bundler:2.0.1
+bundle install --without production
+rails db:migrate
+rails server -p $PORT -b $IP
