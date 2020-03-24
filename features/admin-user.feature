@@ -2,9 +2,11 @@ Feature: Admin userView functionalities
   
      Background: Admin login
       Given an admin
-      | Name         | AdminAccount        |
+      | Firstname         | Admin        |
+      | Lastname     | Account            |
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
+      | UIN          | 555555555           |
 
       Given a user
       | Name         | User1Account        |
@@ -26,14 +28,14 @@ Feature: Admin userView functionalities
       And I am logged in as:
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
-      Then I should be on AdminAccount's user details page
+      Then I should be on 555555555's user details page
       Given there exists a project
       |Title|ProjectA|
       | Semester|Fall|
       | Year|2018|
       Given there exists a team
       |Name|Navi|
-      |User|User1Account|
+      |User_UIN|555555555|
 
     Scenario: All users view
     Given I am on home_page
@@ -76,3 +78,10 @@ Feature: Admin userView functionalities
     When I press "Save Changes"
     Then I should see "Profile updated"
     And I should be on User1Account's user details page
+    
+    Scenario: Download all users
+    Given I am on home_page
+    When I click "All Users"
+    Then I should be on users_page
+    When I click "Download data as Excel"
+    Then I should get a download with the filename "Users_Data.xlsx"

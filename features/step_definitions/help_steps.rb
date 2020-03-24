@@ -100,7 +100,7 @@ end
 
 Given (/^there exists a team$/) do |table|
   data = table.rows_hash
-  @user = User.find_by_name(data['User']) if data['User']
+  @user = User.find_by_uin(data['User_UIN']) if data['User_UIN']
   Team.create!(name: data['Name'] || 'TeamName',
                user_id: @user.id)
 end
@@ -188,4 +188,8 @@ end
 Then(/^I fill the team code:$/) do |table|
   data = table.rows_hash
   fill_in 'relationship_code', with: data['Code'], visible: false
+end
+
+Then(/^I should get a download with the filename "([^\"]*)"$/) do |filename|
+  page.response_headers['Content-Disposition'].should include("filename=#{filename}")
 end

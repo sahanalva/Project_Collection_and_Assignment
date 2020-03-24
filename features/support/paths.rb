@@ -56,7 +56,7 @@ module NavigationHelpers
     #    when /user_details/ then '/users/1'
 
     when /^(.*)'s user details page$/i
-      user_path(User.find_by(name: Regexp.last_match(1)))
+      user_path(User.find_by(uin: Regexp.last_match(1)))
 
     when /^(.*)'s user edit page$/i
       edit_user_path(User.find_by(name: Regexp.last_match(1)))
