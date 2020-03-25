@@ -126,11 +126,12 @@ end
 
 Given(/^I fill in the following details:$/) do |table|
   data = table.rows_hash
-  fill_in 'Name', with: data['Name']
+  fill_in 'First Name', with: data['Firstname']
+  fill_in 'Last Name', with: data['Lastname']
   fill_in 'UIN', with: data['UIN']
   fill_in 'Email', with: data['Email']
-  fill_in 'Password', with: data['Password']
-  fill_in 'Confirmation', with: data['Confirmation']
+  fill_in 'Password', with: data['Password'], match: :first
+  fill_in 'Confirm Password', with: data['Confirm Password']
   select data['Semester'], from: 'Semester'
   select data['Year'], from: 'Year'
   select data['Course'], from: 'Course'
@@ -169,7 +170,8 @@ end
 
 Then(/^I fill the updated details:$/) do |table|
   data = table.rows_hash
-  fill_in 'Name', with: data['Name']
+  fill_in 'First Name', with: data['Firstname']
+  fill_in 'Last Name', with: data['Lastname']
   fill_in 'Email', with: data['Email']
   fill_in 'UIN', with: data['UIN']
   fill_in 'New Password', with: data['New Password']
