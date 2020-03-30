@@ -100,4 +100,14 @@ class User < ActiveRecord::Base
     def downcase_email
         self.email = email.downcase
     end
+
+    def self.search(search)
+        if search
+            user = User.where(firstname: search)
+        else
+            User.all
+        end
+    end
+
+
 end

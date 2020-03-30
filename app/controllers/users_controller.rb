@@ -11,7 +11,17 @@ class UsersController < ApplicationController
         # @users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
         @sorting = params[:sort]
 
-        @users = User.all
+        '''
+        @search = params[:search]
+        if @search
+            @users = User.search(@search)
+        else
+            @users = User.all
+        end
+        '''
+
+        #@users = User.all
+        @users = User.search(params[:search])
 
         @teams = {}
 
@@ -171,5 +181,9 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:firstname, :lastname, :uin, :email, :password,
                                      :password_confirmation, :semester, :year, :course)
+    end
+
+    def search_params
+        params.require(:user).permit(:firstname, :search)
     end
 end
