@@ -103,13 +103,34 @@ class User < ActiveRecord::Base
         self.email = email.downcase
     end
 
-    def self.search(search)
+    def self.search_by_uin(search)
         if search.to_s.strip.empty?
             User.all
         else
-            user = User.where(firstname: search)
+            user = User.where(uin: search)
         end
     end
 
+    def self.search_by_name(search)
+        if search.to_s.strip.empty?
+            User.all
+        else
+            user = User.where('firstname LIKE ?', "%" + search.to_s + "%").or(User.where('lastname LIKE ?', "%" + search.to_s + "%"))
+        end
+    end
+
+    def self.search_by_currteam(search)
+        if search.to_s.strip.empty?
+            User.all
+        else
+            team_leader = Team.find_by(name: search).id
+            team_members = Relationship.where(team_id: team_leader)
+            member_ids = []
+            team_members.each do |member|
+                member_ids.append(member.user_id)
+            end
+            user = User.where(id: member_ids)
+        end
+    end
 
 end

@@ -10,18 +10,18 @@ class UsersController < ApplicationController
         # @users = User.order("lower(name) ASC").all.paginate(page: params[:page])
         # @users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
         @sorting = params[:sort]
-
-        '''
-        @search = params[:search]
-        if @search
-            @users = User.search(@search)
-        else
-            @users = User.all
-        end
-        '''
+        @search_by = params[:search_by]
 
         #@users = User.all
-        @users = User.search(params[:search])
+        if @search_by == '1' # Search using UIN
+            @users = User.search_by_uin(params[:search])
+        elsif @search_by == '2' # Search using Name
+            @users = User.search_by_name(params[:search])
+        elsif @search_by == '3' #Search using Team Name
+            @users = User.search_by_currteam(params[:search])
+        else
+            @users = User.all
+        end 
 
         @teams = {}
 
