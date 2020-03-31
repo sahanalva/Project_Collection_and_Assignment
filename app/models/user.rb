@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
     validates :year, presence: true
     validates :course, presence: true
 
+    SEARCH_LIST = ["UIN", "Name", "Current Team"]
+
     # Returns the hash digest of the given string.
     def self.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -102,10 +104,10 @@ class User < ActiveRecord::Base
     end
 
     def self.search(search)
-        if search
-            user = User.where(firstname: search)
-        else
+        if search.to_s.strip.empty?
             User.all
+        else
+            user = User.where(firstname: search)
         end
     end
 
