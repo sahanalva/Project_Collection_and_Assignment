@@ -9,8 +9,10 @@ class UsersController < ApplicationController
     def index
         # @users = User.order("lower(name) ASC").all.paginate(page: params[:page])
         # @users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
-        @sorting = params[:sort]
-        @search_by = params[:search_by]
+        @sorting = params[:sort] || session[:sort_by]
+        @search_by = params[:search_by] || session[:search_by]  # If 1st expression is not nil/true, return it. If the 1st expression is nil/false, return the 2nd expression
+        session[:search_by] = @search_by 
+        session[:sort_by] = @sort_by
 
         #@users = User.all
         if @search_by == '1' # Search using UIN
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
         else
             @users = User.all
         end 
-
+    
         @teams = {}
 
         @users.each do |user|

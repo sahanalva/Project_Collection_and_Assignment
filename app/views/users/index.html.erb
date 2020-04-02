@@ -9,7 +9,7 @@
 
 <h4> Search by User:</h4>
   <%= form_tag(users_path, method: :get) do %>
-    <%= select_tag(:search_by,  options_for_select([['UIN', 1], ['Name', 2], ['Team', 3]]))%>
+    <%= select_tag(:search_by,  options_for_select([['UIN', 1], ['Name', 2], ['Team', 3]], params[:search_by]))%>
     <%= text_field_tag(:search, params[:search]) %>
     <%= submit_tag ("Search") %>
   <% end %>
