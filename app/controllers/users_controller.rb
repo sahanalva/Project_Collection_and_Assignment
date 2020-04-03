@@ -24,17 +24,6 @@ class UsersController < ApplicationController
         session[:search_by] = @search_by 
         session[:search] = @search
 
-        #@users = User.all
-        #if @search_by == '1' # Search using UIN
-        #    @users = User.search_by_uin(@search)
-        #elsif @search_by == '2' # Search using Name
-        #    @users = User.search_by_name(@search)
-        #elsif @search_by == '3' #Search using Team Name
-        #    @users = User.search_by_currteam(@search)
-        #else
-        #    @users = User.all
-        #end 
-
         if session[:search_by] == '1' # Search using UIN
             @users = User.search_by_uin(session[:search])
         elsif session[:search_by] == '2' # Search using Name
