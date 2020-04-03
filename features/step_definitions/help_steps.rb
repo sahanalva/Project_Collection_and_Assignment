@@ -72,6 +72,7 @@ Given (/^an admin$/) do |table|
   @user = User.create!(
     admin: true,
     email: data['Email'] || 'admin1@test.com',
+    personal_email: data['Personal Email'] || 'admin1@test.com',
     firstname: data['Firstname'] || 'TestFirstName',
     lastname: data['Lastname'] || 'TestLastName',
     password: data['Password'] || 'password',
@@ -129,7 +130,8 @@ Given(/^I fill in the following details:$/) do |table|
   fill_in 'First Name', with: data['Firstname']
   fill_in 'Last Name', with: data['Lastname']
   fill_in 'UIN', with: data['UIN']
-  fill_in 'Email', with: data['Email']
+  fill_in 'Email', with: data['Email'], match: :first
+  fill_in 'Personal Email', with: data['Personal Email']
   fill_in 'Password', with: data['Password'], match: :first
   fill_in 'Confirm Password', with: data['Confirm Password']
   select data['Semester'], from: 'Semester'

@@ -40,6 +40,10 @@
         <th>Email ID</th>
         <td><%= @user.email %></td>
       </tr>
+      <tr>
+        <th>Personal Email ID</th>
+        <td><%= @user.personal_email %></td>
+      </tr>
       <% if !@user.admin? %>
         <tr>
           <th>Semester</th>
