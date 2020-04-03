@@ -7,24 +7,44 @@ class UsersController < ApplicationController
     before_action :admin_user, only: %i[index destroy]
 
     def index
+        if params[:search_by].nil? and params[:sort_by].nil?
+            session[:search_by] = nil
+            session[:search_by] = nil
+            session[:search] = nil
+        end 
+        session[:search_by] = nil unless session.key?(:search_by)
+        session[:search] = nil unless session.key?(:search)
         # @users = User.order("lower(name) ASC").all.paginate(page: params[:page])
         # @users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
-        @sorting = params[:sort] || session[:sort_by]
+        @sorting = params[:sort_by] 
+
+        @search = params[:search] || session[:search]
         @search_by = params[:search_by] || session[:search_by]  # If 1st expression is not nil/true, return it. If the 1st expression is nil/false, return the 2nd expression
+        
         session[:search_by] = @search_by 
-        session[:sort_by] = @sort_by
+        session[:search] = @search
 
         #@users = User.all
-        if @search_by == '1' # Search using UIN
-            @users = User.search_by_uin(params[:search])
-        elsif @search_by == '2' # Search using Name
-            @users = User.search_by_name(params[:search])
-        elsif @search_by == '3' #Search using Team Name
-            @users = User.search_by_currteam(params[:search])
+        #if @search_by == '1' # Search using UIN
+        #    @users = User.search_by_uin(@search)
+        #elsif @search_by == '2' # Search using Name
+        #    @users = User.search_by_name(@search)
+        #elsif @search_by == '3' #Search using Team Name
+        #    @users = User.search_by_currteam(@search)
+        #else
+        #    @users = User.all
+        #end 
+
+        if session[:search_by] == '1' # Search using UIN
+            @users = User.search_by_uin(session[:search])
+        elsif session[:search_by] == '2' # Search using Name
+            @users = User.search_by_name(session[:search])
+        elsif session[:search_by] == '3' #Search using Team Name
+            @users = User.search_by_currteam(session[:search])
         else
             @users = User.all
         end 
-    
+
         @teams = {}
 
         @users.each do |user|
