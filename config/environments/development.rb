@@ -2,29 +2,28 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # ails.logger.debug('My objectcreate inside mail')
 
-  #   config.action_mailer.delivery_method = :smtp
-  # # SMTP settings for gmail
-  # config.action_mailer.smtp_settings = {
-  # :address              => "smtp.gmail.com",
-  # :port                 => 587,
-  # :user_name            => 'saasapp@digveer.com',
-  # :password             => 'rubathons',
-  # :authentication       => "plain",
-  # :enable_starttls_auto => true
-  # }
-
+config.action_mailer.default_url_options = { :host => '29cac6f24d9a499b88bea463d0b8f151.vfs.cloud9.us-east-1.amazonaws.com', :protocol => 'http' }
   config.action_mailer.delivery_method = :smtp
-  # SMTP settings for mailgun
+  
+
   ActionMailer::Base.smtp_settings = {
-    port: 587,
-    address: 'smtp.mailgun.org',
-    domain: ENV['domain'],
-    user_name: ENV['username'],
-    password: ENV['password'],
-    authentication: :plain
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    domain: '29cac6f24d9a499b88bea463d0b8f151.vfs.cloud9.us-east-1.amazonaws.com',
+    authentication: :plain,
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
+    enable_starttls_auto: true
   }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = '29cac6f24d9a499b88bea463d0b8f151.vfs.cloud9.us-east-1.amazonaws.com' # Don't use this literally; use your local dev host instead
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -36,12 +35,6 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'iter3-digveer.c9users.io' # Don't use this literally; use your local dev host instead
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

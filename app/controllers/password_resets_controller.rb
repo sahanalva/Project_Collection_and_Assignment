@@ -11,10 +11,8 @@ class PasswordResetsController < ApplicationController
         Rails.logger.debug("My objectcreate: #{@user.inspect}")
         if @user
             @user.create_reset_digest
-            # @user.send_password_reset_email
-            @user.reset_password_to_uin
-            # flash[:info] = 'Email sent with password reset instructions'
-            flash[:info] = 'Password Reset to UIN'
+            @user.send_password_reset_email
+            flash[:info] = 'Email sent with password reset instructions'
             redirect_to root_url
         else
             flash.now[:danger] = 'Email address not found'
