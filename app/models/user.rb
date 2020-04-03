@@ -123,13 +123,18 @@ class User < ActiveRecord::Base
         if search.to_s.strip.empty?
             User.all
         else
-            team_leader = Team.find_by(name: search).id
-            team_members = Relationship.where(team_id: team_leader)
-            member_ids = []
-            team_members.each do |member|
-                member_ids.append(member.user_id)
+            team = Team.find_by(name: search)
+            if !team.nil?
+                team_leader = team.id
+                team_members = Relationship.where(team_id: team_leader)
+                member_ids = []
+                team_members.each do |member|
+                    member_ids.append(member.user_id)
+                end
+                user = User.where(id: member_ids)
+            else 
+                user = User.none
             end
-            user = User.where(id: member_ids)
         end
     end
 

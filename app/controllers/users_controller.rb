@@ -45,32 +45,34 @@ class UsersController < ApplicationController
             @users = User.all
         end 
 
-        @teams = {}
+        if !@users.nil?
+            @teams = {}
 
-        @users.each do |user|
-            res = Relationship.find_by_user_id(user.id)
-            @teams[user.id] = (Team.find_by_id(res.team_id) unless res.nil?)
-        end
-
-        session[:teamorder] = nil unless session.key?(:teamorder)
-
-        if @sorting == 'currteam'
-            nil_team_users = @users.select {|x| @teams[x.id].nil?}
-            other_team_users = @users.reject {|x| @teams[x.id].nil?}
-
-            if session[:teamorder] == false
-                @users = (other_team_users + nil_team_users)
-                session[:teamorder] = true
-
-            else
-                @users = (nil_team_users + other_team_users)
-                session[:teamorder] = false
-
+            @users.each do |user|
+                res = Relationship.find_by_user_id(user.id)
+                @teams[user.id] = (Team.find_by_id(res.team_id) unless res.nil?)
             end
-        else
-            @users = @users.order(@sorting)
-        end
 
+            session[:teamorder] = nil unless session.key?(:teamorder)
+
+            if @sorting == 'currteam'
+                nil_team_users = @users.select {|x| @teams[x.id].nil?}
+                other_team_users = @users.reject {|x| @teams[x.id].nil?}
+
+                if session[:teamorder] == false
+                    @users = (other_team_users + nil_team_users)
+                    session[:teamorder] = true
+
+                else
+                    @users = (nil_team_users + other_team_users)
+                    session[:teamorder] = false
+
+                end
+            else
+                @users = @users.order(@sorting)
+            end
+        end 
+        
         respond_to do |format|
             format.xlsx do
                 response.headers[
