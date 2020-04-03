@@ -12,10 +12,10 @@ class UsersController < ApplicationController
             session[:search_by] = nil
             session[:search] = nil
         end 
+
         session[:search_by] = nil unless session.key?(:search_by)
         session[:search] = nil unless session.key?(:search)
-        # @users = User.order("lower(name) ASC").all.paginate(page: params[:page])
-        # @users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
+
         @sorting = params[:sort_by] 
 
         @search = params[:search] || session[:search]
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
                 @users = @users.order(@sorting)
             end
         end 
-        
+
         respond_to do |format|
             format.xlsx do
                 response.headers[
