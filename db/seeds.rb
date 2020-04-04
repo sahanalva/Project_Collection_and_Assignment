@@ -4,6 +4,7 @@ user.firstname = 'administrator'
 user.lastname = 'admin'
 user.uin = Faker::Number.number(9)
 user.email = 'admin@example.com'
+user.personal_email = 'admin@example.com'
 user.password = 'adminadmin'
 user.admin = true
 user.semester = 'Fall'
@@ -16,6 +17,7 @@ user.firstname = 'administrator'
 user.lastname = 'admin'
 user.uin = Faker::Number.number(9)
 user.email = 'master@example.com'
+user.personal_email = 'master@example.com'
 user.password = 'adminadmin'
 user.admin = true
 user.semester = 'Spring'
@@ -41,6 +43,7 @@ user.save!
 
     uin   = Faker::Number.number(9)
     email = "example-#{n+1}@railstutorial.org"
+    personal_email = "example-#{firstname+1}@railstutorial.org"
     password = "password"
     semester = n%3 == 0 ? "Spring" : "Fall"
     year = rand(2000..2026).to_s
@@ -49,6 +52,7 @@ user.save!
                   lastname: lastname,
                   uin: uin,
                   email: email,
+                  personal_email: personal_email,
                   semester: semester,
                   year: year,
                   course: course,

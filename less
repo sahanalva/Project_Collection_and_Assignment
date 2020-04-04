@@ -1,0 +1,1118 @@
+Using the default profile...
+Feature: About page
+
+  Scenario: View About page                                                # features/about-page.feature:3
+    Given I am on the home_page                                            # features/step_definitions/help_steps.rb:35
+    When I click "About"                                                   # features/step_definitions/help_steps.rb:7
+    Then I should see "This app is designed for the allotment of projects" # features/step_definitions/help_steps.rb:39
+    And I should see "until December 2016"                                 # features/step_definitions/help_steps.rb:39
+    And I should see "between January 2017 and May 2017"                   # features/step_definitions/help_steps.rb:39
+    And I should see "between January 2018 and May 2018"                   # features/step_definitions/help_steps.rb:39
+    And I should see "latest Agile project management history"             # features/step_definitions/help_steps.rb:39
+
+Feature: Admin project functionalities
+
+  Background: Admin login                                # features/admin-project.feature:3
+    Given an admin                                       # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount     |
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/admin-project.feature:4:in `Given an admin'
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | UserAccount |
+      | Email    | ak@tamu.edu |
+      | Password | password    |
+      | UIN      | 111111111   |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User2Account |
+      | Email    | ak2@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111112    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User3Account |
+      | Email    | ak3@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111113    |
+    And I am logged in as:                               # features/step_definitions/help_steps.rb:159
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+    Then I should be on AdminAccount's user details page # features/step_definitions/help_steps.rb:26
+    Given there exists a project                         # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectA |
+      | Semester | Fall     |
+      | Year     | 2018     |
+    Given there exists a team                            # features/step_definitions/help_steps.rb:99
+      | Name | Navi        |
+      | User | UserAccount |
+
+  Scenario: Project Indexing         # features/admin-project.feature:37
+    Given I am on home_page          # features/step_definitions/help_steps.rb:35
+    When I click "Projects"          # features/step_definitions/help_steps.rb:7
+    And I click "All Projects"       # features/step_definitions/help_steps.rb:7
+    Then I should see "All Projects" # features/step_definitions/help_steps.rb:39
+    And I should see "Semester"      # features/step_definitions/help_steps.rb:39
+    And I should see "Title"         # features/step_definitions/help_steps.rb:39
+    And I should see "Legacy"        # features/step_definitions/help_steps.rb:39
+    And I should see "On Campus"     # features/step_definitions/help_steps.rb:39
+    Then I click "Semester"          # features/step_definitions/help_steps.rb:7
+      #Add code to check if it actually got sorted
+    Then I click "Title"             # features/step_definitions/help_steps.rb:7
+      #Add code to check if it actually got sorted
+    Then I click "ProjectA"          # features/step_definitions/help_steps.rb:7
+
+  Scenario: Project Deletion                            # features/admin-project.feature:52
+    Given I am on home_page                             # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                             # features/step_definitions/help_steps.rb:7
+    And I click "All Projects"                          # features/step_definitions/help_steps.rb:7
+    Then I should see "All Projects"                    # features/step_definitions/help_steps.rb:39
+    Then I click "ProjectA"                             # features/step_definitions/help_steps.rb:7
+    Then I should see "Project Details"                 # features/step_definitions/help_steps.rb:39
+    Then I should be on ProjectA's project details page # features/step_definitions/help_steps.rb:26
+    Then I click "Delete"                               # features/step_definitions/help_steps.rb:7
+    Then I should see "Project deleted"                 # features/step_definitions/help_steps.rb:39
+    And I should not see "ProjectA"                     # features/step_definitions/help_steps.rb:43
+
+  Scenario: Project Update                              # features/admin-project.feature:64
+    Given I am on home_page                             # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                             # features/step_definitions/help_steps.rb:7
+    And I click "All Projects"                          # features/step_definitions/help_steps.rb:7
+    Then I should see "All Projects"                    # features/step_definitions/help_steps.rb:39
+    Then I click "ProjectA"                             # features/step_definitions/help_steps.rb:7
+    Then I should see "Project Details"                 # features/step_definitions/help_steps.rb:39
+    Then I should be on ProjectA's project details page # features/step_definitions/help_steps.rb:26
+    Then I click "Edit"                                 # features/step_definitions/help_steps.rb:7
+    Then I should see "Enter Project Proposal"          # features/step_definitions/help_steps.rb:39
+    And I should be on ProjectA's project edit page     # features/step_definitions/help_steps.rb:26
+      #Actual edit case to be added
+    And I press "Submit"                                # features/step_definitions/help_steps.rb:47
+
+  Scenario: Project Documentation                       # features/admin-project.feature:78
+    Given I am on home_page                             # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                             # features/step_definitions/help_steps.rb:7
+    And I click "All Projects"                          # features/step_definitions/help_steps.rb:7
+    Then I should see "All Projects"                    # features/step_definitions/help_steps.rb:39
+    Then I click "ProjectA"                             # features/step_definitions/help_steps.rb:7
+    Then I should see "Project Details"                 # features/step_definitions/help_steps.rb:39
+    Then I should be on ProjectA's project details page # features/step_definitions/help_steps.rb:26
+    Then I click "View"                                 # features/step_definitions/help_steps.rb:7
+    Then I should see "Documentation for ProjectA"      # features/step_definitions/help_steps.rb:39
+
+  Scenario: Unapproved Project              # features/admin-project.feature:89
+    Given I am on home_page                 # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                 # features/step_definitions/help_steps.rb:7
+    And I click "Unapproved Projects"       # features/step_definitions/help_steps.rb:7
+    Then I should see "Unapproved Projects" # features/step_definitions/help_steps.rb:39
+    And I should see "Semester"             # features/step_definitions/help_steps.rb:39
+    And I should see "Title"                # features/step_definitions/help_steps.rb:39
+    And I should see "Legacy"               # features/step_definitions/help_steps.rb:39
+    And I should see "On Campus"            # features/step_definitions/help_steps.rb:39
+    And I should see "ProjectA"             # features/step_definitions/help_steps.rb:39
+    When I click "Semester"                 # features/step_definitions/help_steps.rb:7
+    When I click "Title"                    # features/step_definitions/help_steps.rb:7
+
+  Scenario: Unapprove project             # features/admin-project.feature:102
+    Given I am on home_page               # features/step_definitions/help_steps.rb:35
+    When I click "Projects"               # features/step_definitions/help_steps.rb:7
+    And I click "Unapproved Projects"     # features/step_definitions/help_steps.rb:7
+    And I should see "ProjectA"           # features/step_definitions/help_steps.rb:39
+    When I click "Approve"                # features/step_definitions/help_steps.rb:7
+    When I visit unapproved_projects_page # features/step_definitions/help_steps.rb:22
+    Then I should not see "ProjectA"      # features/step_definitions/help_steps.rb:43
+
+  Scenario: Approve project          # features/admin-project.feature:113
+    Given there exists a project     # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectB |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+    When I visit approved_projects   # features/step_definitions/help_steps.rb:22
+    Then I should see "ProjectB"     # features/step_definitions/help_steps.rb:39
+    When I click "Unapprove"         # features/step_definitions/help_steps.rb:7
+    When I visit approved_projects   # features/step_definitions/help_steps.rb:22
+    Then I should not see "ProjectA" # features/step_definitions/help_steps.rb:43
+
+  Scenario: Unapproved Project                 # features/admin-project.feature:125
+    Given I am on home_page                    # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                    # features/step_definitions/help_steps.rb:7
+    And I click "Peer Evaluation Result"       # features/step_definitions/help_steps.rb:7
+    Then I should see "Peer Evaluation Result" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Peer Evaluation (sad case)                                                           # features/admin-project.feature:131
+    When I am on home_page                                                                       # features/step_definitions/help_steps.rb:35
+    And I click "Peer Evaluation Result"                                                         # features/step_definitions/help_steps.rb:7
+    Then I should be on peer_evaluation_page                                                     # features/step_definitions/help_steps.rb:26
+    And I should see "Peer Evaluation Result"                                                    # features/step_definitions/help_steps.rb:39
+    And I should see "Score"                                                                     # features/step_definitions/help_steps.rb:39
+    And I should see "User Name"                                                                 # features/step_definitions/help_steps.rb:39
+    And I should see "UserAccount"                                                               # features/step_definitions/help_steps.rb:39
+    And I click "UserAccount"                                                                    # features/step_definitions/help_steps.rb:7
+    Then I should see "Failed to retrieve the peer evaluation form because the team is missing." # features/step_definitions/help_steps.rb:39
+
+  Scenario: Peer Evaluation (happy case)                    # features/admin-project.feature:142
+    When I am on teams_page                                 # features/step_definitions/help_steps.rb:35
+    And I click "Navi"                                      # features/step_definitions/help_steps.rb:7
+    And I select "User2Account"                             # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                  # features/step_definitions/help_steps.rb:47
+    And I click "Peer Evaluation Result"                    # features/step_definitions/help_steps.rb:7
+    Then I should be on peer_evaluation_page                # features/step_definitions/help_steps.rb:26
+    And I should see "Peer Evaluation Result"               # features/step_definitions/help_steps.rb:39
+    And I should see "Score"                                # features/step_definitions/help_steps.rb:39
+    And I should see "User Name"                            # features/step_definitions/help_steps.rb:39
+    And I click "Navi"                                      # features/step_definitions/help_steps.rb:7
+    Then I should see "Peer Evaluation Result of Team Navi" # features/step_definitions/help_steps.rb:39
+    And I should see "User2Account"                         # features/step_definitions/help_steps.rb:39
+    When I visit peer_evaluation_page                       # features/step_definitions/help_steps.rb:22
+    And I click "User2Account"                              # features/step_definitions/help_steps.rb:7
+    Then I should see "Peer Evaluation"                     # features/step_definitions/help_steps.rb:39
+
+  Scenario: Assign Project (Happy path)                      # features/admin-project.feature:159
+    Given there exists a team                                # features/step_definitions/help_steps.rb:99
+      | Name | MYM          |
+      | User | AdminAccount |
+    Given there exists a project                             # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectB |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+    Given there exists a project                             # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectC |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+      | OnCampus | false    |
+      | IsLegacy | true     |
+    Given I am on home_page                                  # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                                  # features/step_definitions/help_steps.rb:7
+    And I click "Assign Projects"                            # features/step_definitions/help_steps.rb:7
+    Then I should be on assign_projects_path                 # features/step_definitions/help_steps.rb:26
+    And I should see "Assignment Details"                    # features/step_definitions/help_steps.rb:39
+    And I should see "Assignment algorithm ran successfully" # features/step_definitions/help_steps.rb:39
+    When I visit home_page                                   # features/step_definitions/help_steps.rb:22
+    And I click "Download Assignment"                        # features/step_definitions/help_steps.rb:7
+    Then I should be on download                             # features/step_definitions/help_steps.rb:26
+      #And I press "Save"
+    When I am on home_page                                   # features/step_definitions/help_steps.rb:35
+      #check I should be able to download
+    When I visit teams_page                                  # features/step_definitions/help_steps.rb:22
+    Then I should see "Project Assigned"                     # features/step_definitions/help_steps.rb:39
+
+  #shoukld actually check if the column value is Yes
+  Scenario: Assign Project (Sad path1: more teams less projects)                                                                                # features/admin-project.feature:191
+    Given there exists a team                                                                                                                   # features/step_definitions/help_steps.rb:99
+      | Name | MYM          |
+      | User | AdminAccount |
+    Given I am on home_page                                                                                                                     # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                                                                                                                     # features/step_definitions/help_steps.rb:7
+    And I click "Assign Projects"                                                                                                               # features/step_definitions/help_steps.rb:7
+    Then I should be on assign_projects_path                                                                                                    # features/step_definitions/help_steps.rb:26
+    And I should see "Assignment Details"                                                                                                       # features/step_definitions/help_steps.rb:39
+    And I should see "Cannot proceed with Assignment Algorithm, Number of Unassigned Teams more than number of Approved and available Projects" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Assign Project (Sad path2: less than 2 teams)                                 # features/admin-project.feature:202
+    Given I am on home_page                                                               # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                                                               # features/step_definitions/help_steps.rb:7
+    And I click "Assign Projects"                                                         # features/step_definitions/help_steps.rb:7
+    Then I should be on assign_projects_path                                              # features/step_definitions/help_steps.rb:26
+    And I should see "Assignment Details"                                                 # features/step_definitions/help_steps.rb:39
+    And I should see "Cannot proceed with Assignment Algorithm, less than 2 teams exist." # features/step_definitions/help_steps.rb:39
+
+  Scenario: Reset Database                  # features/admin-project.feature:211
+    When I am on home_page                  # features/step_definitions/help_steps.rb:35
+    And I click "ResetDB"                   # features/step_definitions/help_steps.rb:7
+    Then I should be on reset_database_page # features/step_definitions/help_steps.rb:26
+
+  #Check for 0 users/projects/teams
+  Scenario: Clear Assignments                         # features/admin-project.feature:217
+    Given there exists a team                         # features/step_definitions/help_steps.rb:99
+      | Name | MYM          |
+      | User | AdminAccount |
+    Given there exists a project                      # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectB |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+    Given there exists a project                      # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectC |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+      | OnCampus | false    |
+      | IsLegacy | true     |
+    And I click "Assign Projects"                     # features/step_definitions/help_steps.rb:7
+    When I visit home_page                            # features/step_definitions/help_steps.rb:22
+    And I click "View Assignment"                     # features/step_definitions/help_steps.rb:7
+    And I press "Clear All Assignments"               # features/step_definitions/help_steps.rb:47
+    Then I should be on assign_projects_path          # features/step_definitions/help_steps.rb:26
+    When I press "Add Assignment"                     # features/step_definitions/help_steps.rb:47
+    Then I should see "Successfully assigned project" # features/step_definitions/help_steps.rb:39
+    When I press "Delete Assignment"                  # features/step_definitions/help_steps.rb:47
+    Then I should see "Delete successful"             # features/step_definitions/help_steps.rb:39
+
+  Scenario: Upload Documentation                             # features/admin-project.feature:244
+    Given there exists a project                             # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectB |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+    Given there exists a project                             # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectC |
+      | Semester | Fall     |
+      | Year     | 2018     |
+      | Approved | true     |
+      | OnCampus | false    |
+      | IsLegacy | true     |
+    And I click "Log Out"                                    # features/step_definitions/help_steps.rb:7
+    And I am logged in as:                                   # features/step_definitions/help_steps.rb:159
+      | Email | ak3@tamu.edu |
+    When I am on home_page                                   # features/step_definitions/help_steps.rb:35
+    And I create a team                                      # features/step_definitions/help_steps.rb:177
+      | Name | NewTeam |
+    When I click "Log Out"                                   # features/step_definitions/help_steps.rb:7
+    And I am logged in as:                                   # features/step_definitions/help_steps.rb:159
+      | Email | akapale@tamu.edu |
+    When I am on home_page                                   # features/step_definitions/help_steps.rb:35
+    And I click "Assign Projects"                            # features/step_definitions/help_steps.rb:7
+    And I click "Log Out"                                    # features/step_definitions/help_steps.rb:7
+    When I am logged in as:                                  # features/step_definitions/help_steps.rb:159
+      | Email | ak3@tamu.edu |
+    When I visit home_page                                   # features/step_definitions/help_steps.rb:22
+    And I click "View Assigned Project"                      # features/step_definitions/help_steps.rb:7
+    Then I should see "Project Details"                      # features/step_definitions/help_steps.rb:39
+    When I click "View"                                      # features/step_definitions/help_steps.rb:7
+    Then I should see "Documentation for"                    # features/step_definitions/help_steps.rb:39
+    When I click "Add/Upload documentation for this project" # features/step_definitions/help_steps.rb:7
+    Then I should see "Add Project Documentation"            # features/step_definitions/help_steps.rb:39
+    When I select "Link"                                     # features/step_definitions/help_steps.rb:51
+    And I press "Submit"                                     # features/step_definitions/help_steps.rb:47
+    Then I should see "Documentation Added"                  # features/step_definitions/help_steps.rb:39
+    When I click "Add/Upload documentation for this project" # features/step_definitions/help_steps.rb:7
+    And I select "File Upload"                               # features/step_definitions/help_steps.rb:51
+    And I press "Submit"                                     # features/step_definitions/help_steps.rb:47
+    Then I should see "Documentation Added"                  # features/step_definitions/help_steps.rb:39
+
+Feature: Admin login functionalities
+
+  Background: Admin login                                # features/admin-team.feature:3
+    Given an admin                                       # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount     |
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/admin-team.feature:4:in `Given an admin'
+      #7 users
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User1Account |
+      | Email    | ak1@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111111    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User2Account |
+      | Email    | ak2@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111112    |
+    And I am logged in as:                               # features/step_definitions/help_steps.rb:159
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+    Then I should be on AdminAccount's user details page # features/step_definitions/help_steps.rb:26
+    Given there exists a project                         # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectA |
+      | Semester | Fall     |
+      | Year     | 2018     |
+    Given there exists a team                            # features/step_definitions/help_steps.rb:99
+      | Name | Navi         |
+      | User | User1Account |
+
+  Scenario: All teams view             # features/admin-team.feature:32
+    Given I am on home_page            # features/step_definitions/help_steps.rb:35
+    When I click "All Teams"           # features/step_definitions/help_steps.rb:7
+    Then I should be on teams_page     # features/step_definitions/help_steps.rb:26
+    And I should see "All teams"       # features/step_definitions/help_steps.rb:39
+    And I should see "Team Name"       # features/step_definitions/help_steps.rb:39
+    And I should see "No. of Students" # features/step_definitions/help_steps.rb:39
+    And I should see "Navi"            # features/step_definitions/help_steps.rb:39
+    When I click "Team Name"           # features/step_definitions/help_steps.rb:7
+      #check if Sorted by team name
+    When I click "Project Assigned"    # features/step_definitions/help_steps.rb:7
+
+  #check if Sorted by team assigned
+  Scenario: Delete team by admin     # features/admin-team.feature:46
+    Given I am on home_page          # features/step_definitions/help_steps.rb:35
+    When I click "All Teams"         # features/step_definitions/help_steps.rb:7
+    Then I should be on teams_page   # features/step_definitions/help_steps.rb:26
+    And I click "Delete"             # features/step_definitions/help_steps.rb:7
+    Then I should see "Team deleted" # features/step_definitions/help_steps.rb:39
+    And I should be on teams_page    # features/step_definitions/help_steps.rb:26
+    And I should not see "Navi"      # features/step_definitions/help_steps.rb:43
+
+  Scenario: Edit team by admin                   # features/admin-team.feature:56
+    Given I am on home_page                      # features/step_definitions/help_steps.rb:35
+    When I click "All Teams"                     # features/step_definitions/help_steps.rb:7
+    Then I should be on teams_page               # features/step_definitions/help_steps.rb:26
+    And I should see "Navi"                      # features/step_definitions/help_steps.rb:39
+    And I click "Edit"                           # features/step_definitions/help_steps.rb:7
+    Then I should see "Edit Team"                # features/step_definitions/help_steps.rb:39
+    And I should be on Navi's update team page   # features/step_definitions/help_steps.rb:26
+    And I fill the team name:                    # features/step_definitions/help_steps.rb:154
+      | Name | Navi2 |
+    And I press "Save changes"                   # features/step_definitions/help_steps.rb:47
+    Then I should see "Team updated"             # features/step_definitions/help_steps.rb:39
+    And I should be on Navi2's team details page # features/step_definitions/help_steps.rb:26
+    And I should see "Team Details"              # features/step_definitions/help_steps.rb:39
+
+  Scenario: Add person to a team                                     # features/admin-team.feature:71
+    Given I am on home_page                                          # features/step_definitions/help_steps.rb:35
+    When I click "All Teams"                                         # features/step_definitions/help_steps.rb:7
+    Then I should be on teams_page                                   # features/step_definitions/help_steps.rb:26
+    Then I should see "Navi"                                         # features/step_definitions/help_steps.rb:39
+    And I click "Navi"                                               # features/step_definitions/help_steps.rb:7
+    Then I should be on Navi's team details page                     # features/step_definitions/help_steps.rb:26
+    And I select "User2Account"                                      # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                           # features/step_definitions/help_steps.rb:47
+    Then I should see "Successfully added user User2Account to team" # features/step_definitions/help_steps.rb:39
+    And I should be on teams_page                                    # features/step_definitions/help_steps.rb:26
+
+  Scenario: Remove person from a team                                # features/admin-team.feature:83
+    Given I am on home_page                                          # features/step_definitions/help_steps.rb:35
+    When I click "All Teams"                                         # features/step_definitions/help_steps.rb:7
+    Then I should be on teams_page                                   # features/step_definitions/help_steps.rb:26
+    Then I should see "Navi"                                         # features/step_definitions/help_steps.rb:39
+    And I click "Navi"                                               # features/step_definitions/help_steps.rb:7
+    And I should be on Navi's team details page                      # features/step_definitions/help_steps.rb:26
+    And I select "User2Account"                                      # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                           # features/step_definitions/help_steps.rb:47
+    Then I should see "Successfully added user User2Account to team" # features/step_definitions/help_steps.rb:39
+    And I click "Navi"                                               # features/step_definitions/help_steps.rb:7
+    And I press 1th "Remove"                                         # features/step_definitions/help_steps.rb:17
+    Then I should be on teams_page                                   # features/step_definitions/help_steps.rb:26
+    And I should see "Remove successful"                             # features/step_definitions/help_steps.rb:39
+
+  Scenario: Delete team (admin)                # features/admin-team.feature:98
+    Given there exists a team                  # features/step_definitions/help_steps.rb:99
+      | Name | AdminTeam    |
+      | User | AdminAccount |
+    When I visit AdminTeam's team details page # features/step_definitions/help_steps.rb:22
+    And I click "Delete"                       # features/step_definitions/help_steps.rb:7
+    Then I should see "Team deleted"           # features/step_definitions/help_steps.rb:39
+
+Feature: Admin userView functionalities
+
+  Background: Admin login                                # features/admin-user.feature:3
+    Given an admin                                       # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount     |
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/admin-user.feature:4:in `Given an admin'
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User1Account |
+      | Email    | ak1@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111111    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User2Account |
+      | Email    | ak2@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111112    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User3Account |
+      | Email    | ak3@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111113    |
+    And I am logged in as:                               # features/step_definitions/help_steps.rb:159
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+    Then I should be on AdminAccount's user details page # features/step_definitions/help_steps.rb:26
+    Given there exists a project                         # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectA |
+      | Semester | Fall     |
+      | Year     | 2018     |
+    Given there exists a team                            # features/step_definitions/help_steps.rb:99
+      | Name | Navi         |
+      | User | User1Account |
+
+  Scenario: All users view           # features/admin-user.feature:38
+    Given I am on home_page          # features/step_definitions/help_steps.rb:35
+    When I click "Users"             # features/step_definitions/help_steps.rb:7
+    Then I should be on users_page   # features/step_definitions/help_steps.rb:26
+    And I should see "All users"     # features/step_definitions/help_steps.rb:39
+    And I should see "User1Account"  # features/step_definitions/help_steps.rb:39
+    And I should see "User2Account"  # features/step_definitions/help_steps.rb:39
+    When I click "UIN"               # features/step_definitions/help_steps.rb:7
+    Then I should see "111111111"    # features/step_definitions/help_steps.rb:39
+    And I click "Name"               # features/step_definitions/help_steps.rb:7
+    Then I should see "User1Account" # features/step_definitions/help_steps.rb:39
+    And I click "Current Team"       # features/step_definitions/help_steps.rb:7
+    Then I should see "Unassigned"   # features/step_definitions/help_steps.rb:39
+
+  # TODO check if they are sorted
+  Scenario: Make/Unmake a User Admin                          # features/admin-user.feature:53
+    Given I am on home_page                                   # features/step_definitions/help_steps.rb:35
+    When I click "Users"                                      # features/step_definitions/help_steps.rb:7
+    Then I should be on users_page                            # features/step_definitions/help_steps.rb:26
+    When I click "User1Account"                               # features/step_definitions/help_steps.rb:7
+    Then I should be on User1Account's user details page      # features/step_definitions/help_steps.rb:26
+    When I click "Make Admin"                                 # features/step_definitions/help_steps.rb:7
+    Then I should see "User1Account is now an Administrator!" # features/step_definitions/help_steps.rb:39
+    When I click "Remove Admin"                               # features/step_definitions/help_steps.rb:7
+    Then I should see "This administrator has been removed"   # features/step_definitions/help_steps.rb:39
+
+  Scenario: Delete user by admin                                                      # features/admin-user.feature:65
+    Given I am on users_page                                                          # features/step_definitions/help_steps.rb:35
+    When I click 1th "Delete"                                                         # features/step_definitions/help_steps.rb:11
+    Then I should see "This user is a team leader! You need to delete his team first" # features/step_definitions/help_steps.rb:39
+    When I click 2th "Delete"                                                         # features/step_definitions/help_steps.rb:11
+    Then I should see "User Deleted Permanently!"                                     # features/step_definitions/help_steps.rb:39
+
+  Scenario: Edit user by admin                          # features/admin-user.feature:72
+    Given I am on users_page                            # features/step_definitions/help_steps.rb:35
+    When I click 1th "Edit"                             # features/step_definitions/help_steps.rb:11
+    Then I should be on User1Account's user edit page   # features/step_definitions/help_steps.rb:26
+    When I press "Save Changes"                         # features/step_definitions/help_steps.rb:47
+    Then I should see "Profile updated"                 # features/step_definitions/help_steps.rb:39
+    And I should be on User1Account's user details page # features/step_definitions/help_steps.rb:26
+
+#@home_pagemainfeature
+Feature: Homepage
+
+  Scenario: See About Page         # features/home.feature:4
+    Given I am on home_page        # features/step_definitions/help_steps.rb:35
+    When I click "About"           # features/step_definitions/help_steps.rb:7
+    Then I should be on about_page # features/step_definitions/help_steps.rb:26
+
+  Scenario: See Contact Page                # features/home.feature:9
+    Given I am on the contact_page          # features/step_definitions/help_steps.rb:35
+    Then I should see "walker@cse.tamu.edu" # features/step_definitions/help_steps.rb:39
+
+  Scenario: See Help Page         # features/home.feature:13
+    Given I am on home_page       # features/step_definitions/help_steps.rb:35
+    When I click "Help"           # features/step_definitions/help_steps.rb:7
+    Then I should be on help_page # features/step_definitions/help_steps.rb:26
+
+  Scenario: See Login Page     # features/home.feature:18
+    Given I am on about_page   # features/step_definitions/help_steps.rb:35
+    When I click "Log In"      # features/step_definitions/help_steps.rb:7
+    Then I should see "Log in" # features/step_definitions/help_steps.rb:39
+
+  Scenario: See Login Page             # features/home.feature:23
+    Given I am on home_page            # features/step_definitions/help_steps.rb:35
+    When I click "Log In (NetID)"      # features/step_definitions/help_steps.rb:7
+    Then I should see "Log in (NetID)" # features/step_definitions/help_steps.rb:39
+
+  Scenario: See Sign Up Page        # features/home.feature:28
+    Given I am on home_page         # features/step_definitions/help_steps.rb:35
+    When I click "Sign Up"          # features/step_definitions/help_steps.rb:7
+    Then I should be on signup_page # features/step_definitions/help_steps.rb:26
+
+  Scenario: Github code                                 # features/home.feature:33
+    Given I am on home_page                             # features/step_definitions/help_steps.rb:35
+    Then I should see "Source code available at GitHub" # features/step_definitions/help_steps.rb:39
+
+Feature: Login home page
+
+  Scenario: Signup                       # features/login-home.feature:3
+    Given I am on signup_page            # features/step_definitions/help_steps.rb:35
+    And I fill in the following details: # features/step_definitions/help_steps.rb:125
+      | Name         | admin1              |
+      | UIN          | 123456789           |
+      | Email        | karthi1@karthik.com |
+      | Password     | karthi123           |
+      | Confirmation | karthi123           |
+      | Semester     | Fall                |
+      | Year         | 2016                |
+      | Course       | CSCE606             |
+      Ambiguous match, found 2 elements matching visible field "Name" that is not disabled (Capybara::Ambiguous)
+      ./features/step_definitions/help_steps.rb:127:in `/^I fill in the following details:$/'
+      features/login-home.feature:5:in `And I fill in the following details:'
+    When I press "Create my account"     # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"     # features/step_definitions/help_steps.rb:39
+    When I click "Home"                  # features/step_definitions/help_steps.rb:7
+    Then I should see "Howdy admin1 !!"  # features/step_definitions/help_steps.rb:39
+
+  Scenario: Signup and Remember Me Feature           # features/login-home.feature:19
+    Given an admin                                   # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount       |
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/login-home.feature:20:in `Given an admin'
+    When I am on home_page                           # features/step_definitions/help_steps.rb:35
+    And I should see "Log In (Local)"                # features/step_definitions/help_steps.rb:39
+    When I click "Log In (Local)"                    # features/step_definitions/help_steps.rb:7
+    And I fill in the following login details:       # features/step_definitions/help_steps.rb:119
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+    Then I should see "Remember me on this computer" # features/step_definitions/help_steps.rb:39
+    And I check "Remember me on this computer"       # features/step_definitions/help_steps.rb:3
+    When I press "Log In"                            # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"                 # features/step_definitions/help_steps.rb:39
+
+  #Need to add code to simulate closing browswer and actual testing remember me
+  Scenario: Team tab, logout                                                    # features/login-home.feature:36
+    Given I am on signup_page                                                   # features/step_definitions/help_steps.rb:35
+    And I fill in the following details:                                        # features/step_definitions/help_steps.rb:125
+      | Name         | admin2              |
+      | UIN          | 123456789           |
+      | Email        | karthi2@karthik.com |
+      | Password     | karthi123           |
+      | Confirmation | karthi123           |
+      | Semester     | Fall                |
+      | Year         | 2016                |
+      | Course       | CSCE606             |
+      Ambiguous match, found 2 elements matching visible field "Name" that is not disabled (Capybara::Ambiguous)
+      ./features/step_definitions/help_steps.rb:127:in `/^I fill in the following details:$/'
+      features/login-home.feature:38:in `And I fill in the following details:'
+    When I press "Create my account"                                            # features/step_definitions/help_steps.rb:47
+    When I click "My Team"                                                      # features/step_definitions/help_steps.rb:7
+    Then I should see "You are not yet part of any team"                        # features/step_definitions/help_steps.rb:39
+    When I click "Join Team"                                                    # features/step_definitions/help_steps.rb:7
+    Then I should see "Join a Team"                                             # features/step_definitions/help_steps.rb:39
+    When I press "Join Team"                                                    # features/step_definitions/help_steps.rb:47
+    Then I should see "Code is wrong"                                           # features/step_definitions/help_steps.rb:39
+      #When I click "Leave Team"
+      #Then I should visit home_page
+    When I click "Create Team"                                                  # features/step_definitions/help_steps.rb:7
+    Then I should see "Create a Team"                                           # features/step_definitions/help_steps.rb:39
+    When I fill the team name:                                                  # features/step_definitions/help_steps.rb:154
+      | Name | Karthikkkkk |
+    Then I press "Create Team"                                                  # features/step_definitions/help_steps.rb:47
+    Then I should see "Team created successfully"                               # features/step_definitions/help_steps.rb:39
+    When I click "Log Out"                                                      # features/step_definitions/help_steps.rb:7
+    Then I should see "Welcome to the Project Submission and Assignment System" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Create team, attempt leave team as leader, then delete team # features/login-home.feature:65
+    Given I am on signup_page                                           # features/step_definitions/help_steps.rb:35
+    And I fill in the following details:                                # features/step_definitions/help_steps.rb:125
+      | Name         | admin3              |
+      | UIN          | 123456789           |
+      | Email        | karthi3@karthik.com |
+      | Password     | karthi123           |
+      | Confirmation | karthi123           |
+      | Semester     | Fall                |
+      | Year         | 2016                |
+      | Course       | CSCE606             |
+      Ambiguous match, found 2 elements matching visible field "Name" that is not disabled (Capybara::Ambiguous)
+      ./features/step_definitions/help_steps.rb:127:in `/^I fill in the following details:$/'
+      features/login-home.feature:67:in `And I fill in the following details:'
+    When I press "Create my account"                                    # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"                                    # features/step_definitions/help_steps.rb:39
+    When I click "Create Team"                                          # features/step_definitions/help_steps.rb:7
+    And I fill the team name:                                           # features/step_definitions/help_steps.rb:154
+      | Name | Team Leavers |
+    When I press "Create Team"                                          # features/step_definitions/help_steps.rb:47
+    Then I should see "Team created successfully"                       # features/step_definitions/help_steps.rb:39
+    And I should see "Team Details"                                     # features/step_definitions/help_steps.rb:39
+    And I should see "Team Leavers"                                     # features/step_definitions/help_steps.rb:39
+    When I click "Leave Team"                                           # features/step_definitions/help_steps.rb:7
+    Then I should see "Team leader cannot leave team"                   # features/step_definitions/help_steps.rb:39
+    When I click "Delete"                                               # features/step_definitions/help_steps.rb:7
+    Then I should see "You are not yet part of any team"                # features/step_definitions/help_steps.rb:39
+    And I should see "User Details"                                     # features/step_definitions/help_steps.rb:39
+
+  Scenario: Project tab                               # features/login-home.feature:91
+    Given I am on signup_page                         # features/step_definitions/help_steps.rb:35
+    And I fill in the following details:              # features/step_definitions/help_steps.rb:125
+      | Name         | admin4              |
+      | UIN          | 123456789           |
+      | Email        | karthi4@karthik.com |
+      | Password     | karthi123           |
+      | Confirmation | karthi123           |
+      | Semester     | Fall                |
+      | Year         | 2016                |
+      | Course       | CSCE606             |
+      Ambiguous match, found 2 elements matching visible field "Name" that is not disabled (Capybara::Ambiguous)
+      ./features/step_definitions/help_steps.rb:127:in `/^I fill in the following details:$/'
+      features/login-home.feature:93:in `And I fill in the following details:'
+    When I press "Create my account"                  # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"                  # features/step_definitions/help_steps.rb:39
+    When I click "Approved Projects"                  # features/step_definitions/help_steps.rb:7
+    Then I should see "Approved Projects"             # features/step_definitions/help_steps.rb:39
+    And I should see "Semester"                       # features/step_definitions/help_steps.rb:39
+    And I should see "Title"                          # features/step_definitions/help_steps.rb:39
+    And I should see "Legacy"                         # features/step_definitions/help_steps.rb:39
+    And I should see "On Campus"                      # features/step_definitions/help_steps.rb:39
+    Then I click "Semester"                           # features/step_definitions/help_steps.rb:7
+    Then I click "Title"                              # features/step_definitions/help_steps.rb:7
+    When I click "Add Project Proposal"               # features/step_definitions/help_steps.rb:7
+    Then I should see "Enter Project Proposal"        # features/step_definitions/help_steps.rb:39
+    And I should see "Title"                          # features/step_definitions/help_steps.rb:39
+    And I should see "Organization"                   # features/step_definitions/help_steps.rb:39
+    And I should see "Contact"                        # features/step_definitions/help_steps.rb:39
+    And I should see "Semester"                       # features/step_definitions/help_steps.rb:39
+    And I should see "Year"                           # features/step_definitions/help_steps.rb:39
+    And I should see "Description"                    # features/step_definitions/help_steps.rb:39
+    And I should see "Is On-Campus?"                  # features/step_definitions/help_steps.rb:39
+    And I should see "Is Legacy Project?"             # features/step_definitions/help_steps.rb:39
+    When I click "My Project Proposal"                # features/step_definitions/help_steps.rb:7
+    Then I should see "My Proposals"                  # features/step_definitions/help_steps.rb:39
+    Then I should see "Created At"                    # features/step_definitions/help_steps.rb:39
+    Then I should see "Proposal Title"                # features/step_definitions/help_steps.rb:39
+    Then I should see "Status"                        # features/step_definitions/help_steps.rb:39
+    Then I should see "Actions"                       # features/step_definitions/help_steps.rb:39
+    When I click "View Assigned Project"              # features/step_definitions/help_steps.rb:7
+    Then I should see "You still have no team"        # features/step_definitions/help_steps.rb:39
+    When I click "Create Team"                        # features/step_definitions/help_steps.rb:7
+    And I fill the team name:                         # features/step_definitions/help_steps.rb:154
+      | Name | Team Assigner |
+    And I press "Create Team"                         # features/step_definitions/help_steps.rb:47
+    When I click "View Assigned Project"              # features/step_definitions/help_steps.rb:7
+    Then I should see "Project has not been assigned" # features/step_definitions/help_steps.rb:39
+    When I click "Peer Evaluation"                    # features/step_definitions/help_steps.rb:7
+    Then I should see "Peer Evaluation"               # features/step_definitions/help_steps.rb:39
+    And I should see "assign a total score of 10"     # features/step_definitions/help_steps.rb:39
+    And I should see "Member #1: admin4 **"           # features/step_definitions/help_steps.rb:39
+
+  Scenario: Account tab                                                         # features/login-home.feature:141
+    Given I am on signup_page                                                   # features/step_definitions/help_steps.rb:35
+    And I fill in the following details:                                        # features/step_definitions/help_steps.rb:125
+      | Name         | admin5              |
+      | UIN          | 123456789           |
+      | Email        | karthi5@karthik.com |
+      | Password     | karthi123           |
+      | Confirmation | karthi123           |
+      | Semester     | Fall                |
+      | Year         | 2016                |
+      | Course       | CSCE606             |
+      Ambiguous match, found 2 elements matching visible field "Name" that is not disabled (Capybara::Ambiguous)
+      ./features/step_definitions/help_steps.rb:127:in `/^I fill in the following details:$/'
+      features/login-home.feature:143:in `And I fill in the following details:'
+    When I press "Create my account"                                            # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"                                            # features/step_definitions/help_steps.rb:39
+    When I click "View Profile"                                                 # features/step_definitions/help_steps.rb:7
+    Then I should see "User Details"                                            # features/step_definitions/help_steps.rb:39
+    And I should see "admin5"                                                   # features/step_definitions/help_steps.rb:39
+    And I should see "Currently not a member of any team"                       # features/step_definitions/help_steps.rb:39
+    When I click "Update Profile"                                               # features/step_definitions/help_steps.rb:7
+    Then I should see "Update Profile"                                          # features/step_definitions/help_steps.rb:39
+    And I should see "Name"                                                     # features/step_definitions/help_steps.rb:39
+    And I should see "Email"                                                    # features/step_definitions/help_steps.rb:39
+    And I should see "UIN"                                                      # features/step_definitions/help_steps.rb:39
+    And I should see "New"                                                      # features/step_definitions/help_steps.rb:39
+    And I should see "Confirm"                                                  # features/step_definitions/help_steps.rb:39
+    When I fill the updated details:                                            # features/step_definitions/help_steps.rb:168
+      | Name             | karthi5a                     |
+      | Email            | karthi5a-changed@karthik.com |
+      | UIN              | 123123123                    |
+      | New Password     | karth123                     |
+      | Confirm Password | karth123                     |
+    When I press "Save Changes"                                                 # features/step_definitions/help_steps.rb:47
+    Then I should see "Profile updated"                                         # features/step_definitions/help_steps.rb:39
+    And I should see "User Details"                                             # features/step_definitions/help_steps.rb:39
+    And I should see "karthi5a"                                                 # features/step_definitions/help_steps.rb:39
+    And I should see "karthi5a-changed@karthik.com"                             # features/step_definitions/help_steps.rb:39
+    And I should see "123123123"                                                # features/step_definitions/help_steps.rb:39
+    When I click "Log Out"                                                      # features/step_definitions/help_steps.rb:7
+    Then I should see "Welcome to the Project Submission and Assignment System" # features/step_definitions/help_steps.rb:39
+
+  Scenario: LoginNN                       # features/login-home.feature:180
+    Given an admin                        # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount       |
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/login-home.feature:181:in `Given an admin'
+    When I am on home_page                # features/step_definitions/help_steps.rb:35
+    And I click "Log In (Local)"          # features/step_definitions/help_steps.rb:7
+    Then I should see "Log in"            # features/step_definitions/help_steps.rb:39
+    When I fill in the details:           # features/step_definitions/help_steps.rb:113
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+    And I press "Log In"                  # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"      # features/step_definitions/help_steps.rb:39
+    And I should see "AdminAccount"       # features/step_definitions/help_steps.rb:39
+    And I should see "master@example.com" # features/step_definitions/help_steps.rb:39
+
+  # This next scenario currently tests the workaround.
+  # Implement the real NetID login test once it works
+  Scenario: Login NetID                   # features/login-home.feature:198
+    Given an admin                        # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount       |
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/login-home.feature:199:in `Given an admin'
+    Given I am on home_page               # features/step_definitions/help_steps.rb:35
+    When I click "Log In (NetID)"         # features/step_definitions/help_steps.rb:7
+    Then I should see "Log in (NetID)"    # features/step_definitions/help_steps.rb:39
+    When I fill in the details:           # features/step_definitions/help_steps.rb:113
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+    When I press "Log In"                 # features/step_definitions/help_steps.rb:47
+    Then I should see "User Details"      # features/step_definitions/help_steps.rb:39
+    And I should see "AdminAccount"       # features/step_definitions/help_steps.rb:39
+    And I should see "master@example.com" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Test             # features/login-home.feature:214
+    Given I am on projects   # features/step_definitions/help_steps.rb:35
+    Then I should see "Help" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Sign up                 # features/login-home.feature:218
+    Given I am on login_page        # features/step_definitions/help_steps.rb:35
+    And I click "Sign up now!"      # features/step_definitions/help_steps.rb:7
+    Then I should see "Sign Up"     # features/step_definitions/help_steps.rb:39
+    And I should see "Name"         # features/step_definitions/help_steps.rb:39
+    And I should see "UIN"          # features/step_definitions/help_steps.rb:39
+    And I should see "Email"        # features/step_definitions/help_steps.rb:39
+    And I should see "Password"     # features/step_definitions/help_steps.rb:39
+    And I should see "Confirmation" # features/step_definitions/help_steps.rb:39
+      expected to find text "Confirmation" in "Pro Assign Home Sign Up Log In Sign Up First Name * Last Name * UIN * Email * Password * Confirm Password * Semester * Fall Spring Summer Year * 2020 2021 Course * CSCE606 CSCE431 Source code available at GitHub About Help Contact" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/help_steps.rb:40:in `/^I should see "([^\"]*)"$/'
+      features/login-home.feature:226:in `And I should see "Confirmation"'
+    And I should see "Semester"     # features/step_definitions/help_steps.rb:39
+    And I should see "Year"         # features/step_definitions/help_steps.rb:39
+    And I should see "Course"       # features/step_definitions/help_steps.rb:39
+
+  Scenario: Forgot Password             # features/login-home.feature:231
+    Given I am on login_page            # features/step_definitions/help_steps.rb:35
+    When I click "forgot password"      # features/step_definitions/help_steps.rb:7
+    Then I should see "Forgot Password" # features/step_definitions/help_steps.rb:39
+    And I should see "Email"            # features/step_definitions/help_steps.rb:39
+
+  Scenario: Password Reset (Sad case)           # features/login-home.feature:237
+    Given I am on forgot_password_page          # features/step_definitions/help_steps.rb:35
+    And I fill the mail id:                     # features/step_definitions/help_steps.rb:149
+      | Email | master@example.com |
+    When I press "Submit"                       # features/step_definitions/help_steps.rb:47
+    Then I should see "Email address not found" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Password Reset (Happy case)                                        # features/login-home.feature:244
+    Given an admin                                                             # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount       |
+      | Email    | master@example.com |
+      | Password | adminadmin         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/login-home.feature:245:in `Given an admin'
+    Given I am on forgot_password_page                                         # features/step_definitions/help_steps.rb:35
+    And I fill the mail id:                                                    # features/step_definitions/help_steps.rb:149
+      | Email | master@example.com |
+    When I press "Submit"                                                      # features/step_definitions/help_steps.rb:47
+    Then I should see "Password Reset to UIN"                                  # features/step_definitions/help_steps.rb:39
+    And I should see "Welcome to the Project Submission and Assignment System" # features/step_definitions/help_steps.rb:39
+
+  # This was never implemented? Or just not tested?
+  Scenario: Remember me      # features/login-home.feature:257
+    Given I am on login_page # features/step_definitions/help_steps.rb:35
+
+Feature: Preferences related features
+
+  Background: User is logged_in and has created a team  # features/preferences.feature:3
+    Given a user                                        # features/step_definitions/help_steps.rb:55
+      | Name  | UserAccount |
+      | Email | ak@tamu.edu |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:57:in `/^a user$/'
+      features/preferences.feature:4:in `Given a user'
+    And I am logged in as:                              # features/step_definitions/help_steps.rb:159
+      | Email | ak@tamu.edu |
+    Then I should be on UserAccount's user details page # features/step_definitions/help_steps.rb:26
+    Given there exists a project                        # features/step_definitions/help_steps.rb:83
+      | Title | ProjectA |
+    When I click "Team"                                 # features/step_definitions/help_steps.rb:7
+    And I click "Create Team"                           # features/step_definitions/help_steps.rb:7
+    And I fill the team name:                           # features/step_definitions/help_steps.rb:154
+      | Name | Navi |
+    And I press "Create Team"                           # features/step_definitions/help_steps.rb:47
+    Then I should see "Team created successfully"       # features/step_definitions/help_steps.rb:39
+
+  Scenario: Fill Project Preferences                    # features/preferences.feature:20
+    Given I am on home_page                             # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                             # features/step_definitions/help_steps.rb:7
+    When I click "Project Preference"                   # features/step_definitions/help_steps.rb:7
+      #When I check "Positive"
+      #Cant do as the tags are invisible
+    Then I press "Submit Final Preferences"             # features/step_definitions/help_steps.rb:47
+    Then I should see "Preferences Saved"               # features/step_definitions/help_steps.rb:39
+    Then I should be on UserAccount's user details page # features/step_definitions/help_steps.rb:26
+
+  Scenario: Fill Project Preferences (second time)              # features/preferences.feature:30
+    When I click "Projects"                                     # features/step_definitions/help_steps.rb:7
+    When I click "Project Preference"                           # features/step_definitions/help_steps.rb:7
+      #Then I choose('A Radio Button')
+    Then I press "Submit Final Preferences"                     # features/step_definitions/help_steps.rb:47
+    Then I should see "Preferences Saved"                       # features/step_definitions/help_steps.rb:39
+    Then I should be on UserAccount's user details page         # features/step_definitions/help_steps.rb:26
+    When I click "Projects"                                     # features/step_definitions/help_steps.rb:7
+    When I click "Project Preference"                           # features/step_definitions/help_steps.rb:7
+    Then I should see "Preferences have already been submitted" # features/step_definitions/help_steps.rb:39
+    And I should be on UserAccount's user details page          # features/step_definitions/help_steps.rb:26
+
+  Scenario: Submit Team Peer Evaluation (Happy)                 # features/preferences.feature:42
+     Given: I am on home_page
+    When I click "Project"                                      # features/step_definitions/help_steps.rb:7
+    And I click "Peer Evaluation"                               # features/step_definitions/help_steps.rb:7
+    And I fill the peer evaluation:                             # features/step_definitions/help_steps.rb:106
+      | Score    | 10              |
+      | Comments | 'He is Awesome' |
+    And I press "Submit"                                        # features/step_definitions/help_steps.rb:47
+    Then I should see "Peer evaluation results have been saved" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Submit Team Peer Evaluation (Sad1)   # features/preferences.feature:52
+     Given: I am on home_page
+    When I click "Project"                       # features/step_definitions/help_steps.rb:7
+    And I click "Peer Evaluation"                # features/step_definitions/help_steps.rb:7
+    And I press "Submit"                         # features/step_definitions/help_steps.rb:47
+    Then I should see "The scores should sum to" # features/step_definitions/help_steps.rb:39
+
+Feature: User Project features
+
+  Background: User is logged_in                         # features/user-project.feature:3
+    Given a user                                        # features/step_definitions/help_steps.rb:55
+      | Name  | UserAccount |
+      | Email | ak@tamu.edu |
+      | UIN   | 111111111   |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:57:in `/^a user$/'
+      features/user-project.feature:4:in `Given a user'
+    Given an admin                                      # features/step_definitions/help_steps.rb:69
+      | Name  | AdminAccount     |
+      | Email | akapale@tamu.edu |
+    Given a user                                        # features/step_definitions/help_steps.rb:55
+      | Name  | User2Account |
+      | Email | ak2@tamu.edu |
+      | UIN   | 111111112    |
+    And I am logged in as:                              # features/step_definitions/help_steps.rb:159
+      | Email | ak@tamu.edu |
+    Then I should be on UserAccount's user details page # features/step_definitions/help_steps.rb:26
+    Given there exists a project                        # features/step_definitions/help_steps.rb:83
+      | Title | ProjectA |
+
+  Scenario: Create Project Proposal (sad path)             # features/user-project.feature:22
+    Given I am on home_page                                # features/step_definitions/help_steps.rb:35
+    When I click "Projects"                                # features/step_definitions/help_steps.rb:7
+    When I click "Add Project Proposal"                    # features/step_definitions/help_steps.rb:7
+    Then I should see "Enter Project Proposal"             # features/step_definitions/help_steps.rb:39
+    When I press "Submit"                                  # features/step_definitions/help_steps.rb:47
+    Then I should be on add_projects_page                  # features/step_definitions/help_steps.rb:26
+    Then I should see "ERROR: Missing required parameters" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Create Project Proposal (happy path)   # features/user-project.feature:31
+    Given I am on add_projects_page                # features/step_definitions/help_steps.rb:35
+    Then I should see "Enter Project Proposal"     # features/step_definitions/help_steps.rb:39
+    And I fill in the following project details:   # features/step_definitions/help_steps.rb:136
+      | Title        | My Project Name     |
+      | Organization | 123456789           |
+      | Contact      | karthi1@karthik.com |
+      | Semester     | Fall                |
+      | Year         | 2018                |
+      | Description  | Project desc        |
+      | Github link  | URL                 |
+      | Heroku link  | URL                 |
+      | Pivotal link | URL                 |
+    When I press "Submit"                          # features/step_definitions/help_steps.rb:47
+    Then I should be on myproposals_projects_page  # features/step_definitions/help_steps.rb:26
+    Then I should see "Project Added for Approval" # features/step_definitions/help_steps.rb:39
+    Then I should see "My Project Name"            # features/step_definitions/help_steps.rb:39
+
+  Scenario: Check github/heroku/pivotal links      # features/user-project.feature:49
+    Given I am on add_projects_page                # features/step_definitions/help_steps.rb:35
+    Then I should see "Enter Project Proposal"     # features/step_definitions/help_steps.rb:39
+    And I fill in the following project details:   # features/step_definitions/help_steps.rb:136
+      | Title        | Project1234         |
+      | Organization | 123456789           |
+      | Contact      | karthi1@karthik.com |
+      | Semester     | Fall                |
+      | Year         | 2018                |
+      | Description  | Project desc        |
+      | Github link  | Github_URL          |
+      | Heroku link  | Heroku_URL          |
+      | Pivotal link | Pivotal_URL         |
+    When I press "Submit"                          # features/step_definitions/help_steps.rb:47
+    Then I should be on myproposals_projects_page  # features/step_definitions/help_steps.rb:26
+    Then I should see "Project Added for Approval" # features/step_definitions/help_steps.rb:39
+    Then I should see "Project1234"                # features/step_definitions/help_steps.rb:39
+    When I click "Project1234"                     # features/step_definitions/help_steps.rb:7
+    Then I should see "GitHub Link"                # features/step_definitions/help_steps.rb:39
+    And I should see "Pivotal Link"                # features/step_definitions/help_steps.rb:39
+    And I should see "Heroku Link"                 # features/step_definitions/help_steps.rb:39
+
+  Scenario: Peer Evaluation (sad case)                                                           # features/user-project.feature:71
+    Given I am on home_page                                                                      # features/step_definitions/help_steps.rb:35
+    When I click "Peer Evaluation"                                                               # features/step_definitions/help_steps.rb:7
+    Then I should see "Failed to retrieve the peer evaluation form because the team is missing." # features/step_definitions/help_steps.rb:39
+
+  Scenario: Peer Evaluation (happy case)                         # features/user-project.feature:76
+    When I am on home_page                                       # features/step_definitions/help_steps.rb:35
+    And I create a team                                          # features/step_definitions/help_steps.rb:177
+      | Name | Navi2 |
+    And I click "Peer Evaluation"                                # features/step_definitions/help_steps.rb:7
+      #And I should see "aasas"
+    And I fill the peer evaluation:                              # features/step_definitions/help_steps.rb:106
+      | Score    | 10                  |
+      | Comments | 'Great work by him' |
+    And I press "Submit"                                         # features/step_definitions/help_steps.rb:47
+    Then I should see "Peer evaluation results have been saved." # features/step_definitions/help_steps.rb:39
+    And I should be on pest                                      # features/step_definitions/help_steps.rb:26
+
+Feature: User Team functionalities
+
+  Background: User login                                 # features/user-team.feature:3
+    Given an admin                                       # features/step_definitions/help_steps.rb:69
+      | Name     | AdminAccount     |
+      | Email    | akapale@tamu.edu |
+      | Password | password         |
+      unknown attribute 'name' for User. (ActiveModel::UnknownAttributeError)
+      ./features/step_definitions/help_steps.rb:71:in `/^an admin$/'
+      features/user-team.feature:4:in `Given an admin'
+      #7 users
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User1Account |
+      | Email    | ak1@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111111    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User2Account |
+      | Email    | ak2@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111112    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User3Account |
+      | Email    | ak3@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111113    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User4Account |
+      | Email    | ak4@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111114    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User5Account |
+      | Email    | ak5@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111115    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User6Account |
+      | Email    | ak6@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111116    |
+    Given a user                                         # features/step_definitions/help_steps.rb:55
+      | Name     | User7Account |
+      | Email    | ak7@tamu.edu |
+      | Password | password     |
+      | UIN      | 111111117    |
+    And I am logged in as:                               # features/step_definitions/help_steps.rb:159
+      | Email | ak1@tamu.edu |
+    Then I should be on User1Account's user details page # features/step_definitions/help_steps.rb:26
+    And I create a team                                  # features/step_definitions/help_steps.rb:177
+      | Name | Navi |
+    Given there exists a project                         # features/step_definitions/help_steps.rb:83
+      | Title    | ProjectA |
+      | Semester | Fall     |
+      | Year     | 2018     |
+
+  Scenario: Add more than 6 persons to a team (user case) # features/user-team.feature:54
+    Given I am on home_page                               # features/step_definitions/help_steps.rb:35
+    And I click "Log Out"                                 # features/step_definitions/help_steps.rb:7
+    And I am logged in as:                                # features/step_definitions/help_steps.rb:159
+      | Email | akapale@tamu.edu |
+    Then I visit teams_page                               # features/step_definitions/help_steps.rb:22
+    Then I should see "Navi"                              # features/step_definitions/help_steps.rb:39
+    And I click "Navi"                                    # features/step_definitions/help_steps.rb:7
+    And I select "User2Account"                           # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                # features/step_definitions/help_steps.rb:47
+    And I click "Navi"                                    # features/step_definitions/help_steps.rb:7
+    And I select "User3Account"                           # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                # features/step_definitions/help_steps.rb:47
+    And I click "Navi"                                    # features/step_definitions/help_steps.rb:7
+    And I select "User4Account"                           # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                # features/step_definitions/help_steps.rb:47
+    And I click "Navi"                                    # features/step_definitions/help_steps.rb:7
+    And I select "User5Account"                           # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                # features/step_definitions/help_steps.rb:47
+    And I click "Navi"                                    # features/step_definitions/help_steps.rb:7
+    And I select "User6Account"                           # features/step_definitions/help_steps.rb:51
+    And I press "Add user"                                # features/step_definitions/help_steps.rb:47
+    Then I click "Log Out"                                # features/step_definitions/help_steps.rb:7
+    And I am logged in as:                                # features/step_definitions/help_steps.rb:159
+      | Email | ak7@tamu.edu |
+    When I visit home_page                                # features/step_definitions/help_steps.rb:22
+    And I click "Join Team"                               # features/step_definitions/help_steps.rb:7
+    And I select "Navi"                                   # features/step_definitions/help_steps.rb:51
+    And I fill the team code:                             # features/step_definitions/help_steps.rb:186
+      | Code | ABCD |
+    And I press "Join Team"                               # features/step_definitions/help_steps.rb:47
+    Then I should see "Code is wrong"                     # features/step_definitions/help_steps.rb:39
+
+  #And I fill the team code:
+  #|Code|ABCD|
+  #And I press "Join Team"
+  #Then I should see "Sorry, this team has already reached the capacity of 6 members."
+  #Need to know the code to do this
+  Scenario: Remove leader from team (sad case)                         # features/user-team.feature:92
+    Given I am on home_page                                            # features/step_definitions/help_steps.rb:35
+    And I click "Log Out"                                              # features/step_definitions/help_steps.rb:7
+    And I am logged in as:                                             # features/step_definitions/help_steps.rb:159
+      | Email | akapale@tamu.edu |
+    When I click "All Teams"                                           # features/step_definitions/help_steps.rb:7
+    Then I should be on teams_page                                     # features/step_definitions/help_steps.rb:26
+    Then I should see "Navi"                                           # features/step_definitions/help_steps.rb:39
+    When I click "Navi"                                                # features/step_definitions/help_steps.rb:7
+    Then I should be on Navi's team details page                       # features/step_definitions/help_steps.rb:26
+    And I press "Remove"                                               # features/step_definitions/help_steps.rb:47
+    And I should see "Error . . .  You cannot remove the team leader!" # features/step_definitions/help_steps.rb:39
+
+  Scenario: Leave team for a leader (admin)           # features/user-team.feature:105
+    When I visit Navi's team details page             # features/step_definitions/help_steps.rb:22
+    And I click "Leave Team"                          # features/step_definitions/help_steps.rb:7
+    Then I should see "Team leader cannot leave team" # features/step_definitions/help_steps.rb:39
+
+Failing Scenarios:
+cucumber features/admin-project.feature:37 # Scenario: Project Indexing
+cucumber features/admin-project.feature:52 # Scenario: Project Deletion
+cucumber features/admin-project.feature:64 # Scenario: Project Update
+cucumber features/admin-project.feature:78 # Scenario: Project Documentation
+cucumber features/admin-project.feature:89 # Scenario: Unapproved Project
+cucumber features/admin-project.feature:102 # Scenario: Unapprove project
+cucumber features/admin-project.feature:113 # Scenario: Approve project
+cucumber features/admin-project.feature:125 # Scenario: Unapproved Project
+cucumber features/admin-project.feature:131 # Scenario: Peer Evaluation (sad case)
+cucumber features/admin-project.feature:142 # Scenario: Peer Evaluation (happy case)
+cucumber features/admin-project.feature:159 # Scenario: Assign Project (Happy path)
+cucumber features/admin-project.feature:191 # Scenario: Assign Project (Sad path1: more teams less projects)
+cucumber features/admin-project.feature:202 # Scenario: Assign Project (Sad path2: less than 2 teams)
+cucumber features/admin-project.feature:211 # Scenario: Reset Database
+cucumber features/admin-project.feature:217 # Scenario: Clear Assignments
+cucumber features/admin-project.feature:244 # Scenario: Upload Documentation
+cucumber features/admin-team.feature:32 # Scenario: All teams view
+cucumber features/admin-team.feature:46 # Scenario: Delete team by admin
+cucumber features/admin-team.feature:56 # Scenario: Edit team by admin
+cucumber features/admin-team.feature:71 # Scenario: Add person to a team
+cucumber features/admin-team.feature:83 # Scenario: Remove person from a team
+cucumber features/admin-team.feature:98 # Scenario: Delete team (admin)
+cucumber features/admin-user.feature:38 # Scenario: All users view
+cucumber features/admin-user.feature:53 # Scenario: Make/Unmake a User Admin
+cucumber features/admin-user.feature:65 # Scenario: Delete user by admin
+cucumber features/admin-user.feature:72 # Scenario: Edit user by admin
+cucumber features/login-home.feature:3 # Scenario: Signup
+cucumber features/login-home.feature:19 # Scenario: Signup and Remember Me Feature
+cucumber features/login-home.feature:36 # Scenario: Team tab, logout
+cucumber features/login-home.feature:65 # Scenario: Create team, attempt leave team as leader, then delete team
+cucumber features/login-home.feature:91 # Scenario: Project tab
+cucumber features/login-home.feature:141 # Scenario: Account tab
+cucumber features/login-home.feature:180 # Scenario: LoginNN
+cucumber features/login-home.feature:198 # Scenario: Login NetID
+cucumber features/login-home.feature:218 # Scenario: Sign up
+cucumber features/login-home.feature:244 # Scenario: Password Reset (Happy case)
+cucumber features/preferences.feature:20 # Scenario: Fill Project Preferences
+cucumber features/preferences.feature:30 # Scenario: Fill Project Preferences (second time)
+cucumber features/preferences.feature:42 # Scenario: Submit Team Peer Evaluation (Happy)
+cucumber features/preferences.feature:52 # Scenario: Submit Team Peer Evaluation (Sad1)
+cucumber features/user-project.feature:22 # Scenario: Create Project Proposal (sad path)
+cucumber features/user-project.feature:31 # Scenario: Create Project Proposal (happy path)
+cucumber features/user-project.feature:49 # Scenario: Check github/heroku/pivotal links
+cucumber features/user-project.feature:71 # Scenario: Peer Evaluation (sad case)
+cucumber features/user-project.feature:76 # Scenario: Peer Evaluation (happy case)
+cucumber features/user-team.feature:54 # Scenario: Add more than 6 persons to a team (user case)
+cucumber features/user-team.feature:92 # Scenario: Remove leader from team (sad case)
+cucumber features/user-team.feature:105 # Scenario: Leave team for a leader (admin)
+
+60 scenarios (48 failed, 12 passed)
+834 steps (48 failed, 737 skipped, 49 passed)
+0m1.512s
+Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/Project_Collection_and_Assignment/coverage. 208 / 1169 LOC (17.79%) covered.

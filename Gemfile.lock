@@ -131,6 +131,11 @@ GEM
     docile (1.3.0)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (5.1.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.1.1)
+      factory_bot (~> 5.1.0)
+      railties (>= 4.2.0)
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.23)
@@ -281,6 +286,9 @@ GEM
       rdoc (>= 5.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
+    simple_form (5.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -335,6 +343,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise (~> 4.4)
+  factory_bot_rails
   faker (~> 1.8)
   guard-minitest
   jbuilder (~> 2.7)
@@ -357,6 +366,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc
   shoulda-matchers
+  simple_form
   simplecov
   spring
   sqlite3
@@ -365,4 +375,4 @@ DEPENDENCIES
   will_paginate (~> 3.1)
 
 BUNDLED WITH
-   2.0.1
+   2.1.4

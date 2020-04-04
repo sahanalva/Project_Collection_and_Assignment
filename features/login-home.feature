@@ -3,30 +3,31 @@ Feature: Login home page
     Scenario: Signup
       Given I am on signup_page
       And I fill in the following details:
-       |Name|admin1|
+       |Firstname|test|
+       |Lastname|admin1|
        |UIN|123456789|
        |Email|karthi1@karthik.com|
+       |Personal Email|karthi1@karthik.com|
        |Password|karthi123|
-       |Confirmation|karthi123|
+       |Confirm Password|karthi123|
        |Semester|Fall|
-       |Year|2016|
+       |Year|2020|
        |Course|CSCE606|
       When I press "Create my account"
       Then I should see "User Details"
       When I click "Home"
-      Then I should see "Howdy admin1 !!"
+      Then I should see "Howdy test admin1 !!"
       
     Scenario: Signup and Remember Me Feature
       Given an admin
-      | Name         | AdminAccount|
       |Email|master@example.com|
-       |Password|adminadmin|
+      |Password|adminadmin|
       When I am on home_page
       And I should see "Log In (Local)"
       When I click "Log In (Local)"
       And I fill in the following login details:
       |Email|master@example.com|
-       |Password|adminadmin|
+      |Password|adminadmin|
       Then I should see "Remember me on this computer"
       And I check "Remember me on this computer"
       When I press "Log In"
@@ -36,17 +37,18 @@ Feature: Login home page
   	Scenario: Team tab, logout
   	  Given I am on signup_page
       And I fill in the following details:
-       |Name|admin2|
+       |Firstname|test|
+       |Lastname|admin2|
        |UIN|123456789|
        |Email|karthi2@karthik.com|
+       |Personal Email|karthi2@karthik.com|
        |Password|karthi123|
-       |Confirmation|karthi123|
+       |Confirm Password|karthi123|
        |Semester|Fall|
-       |Year|2016|
+       |Year|2020|
        |Course|CSCE606|
       When I press "Create my account"
-      When I click "My Team"
-      Then I should see "You are not yet part of any team"
+      Then I should see "Currently not a member of any team"
   	  When I click "Join Team"
   	  Then I should see "Join a Team"
   	  When I press "Join Team"
@@ -65,13 +67,15 @@ Feature: Login home page
 	Scenario: Create team, attempt leave team as leader, then delete team
       Given I am on signup_page
       And I fill in the following details:
-       |Name|admin3|
+       |Firstname|test|
+       |Lastname|admin3|
        |UIN|123456789|
        |Email|karthi3@karthik.com|
+       |Personal Email|karthi2@karthik.com|
        |Password|karthi123|
-       |Confirmation|karthi123|
+       |Confirm Password|karthi123|
        |Semester|Fall|
-       |Year|2016|
+       |Year|2020|
        |Course|CSCE606|
       When I press "Create my account"
       Then I should see "User Details"
@@ -91,13 +95,15 @@ Feature: Login home page
   	Scenario: Project tab
   	  Given I am on signup_page
       And I fill in the following details:
-       |Name|admin4|
+       |Firstname|test|
+       |Lastname|admin4|
        |UIN|123456789|
        |Email|karthi4@karthik.com|
+       |Personal Email|karthi2@karthik.com|
        |Password|karthi123|
-       |Confirmation|karthi123|
+       |Confirm Password|karthi123|
        |Semester|Fall|
-       |Year|2016|
+       |Year|2020|
        |Course|CSCE606|
       When I press "Create my account"
       Then I should see "User Details"
@@ -136,24 +142,26 @@ Feature: Login home page
       When I click "Peer Evaluation"
       Then I should see "Peer Evaluation"
       And I should see "assign a total score of 10"
-      And I should see "Member #1: admin4 **"
+      And I should see "Member #1: test admin4 **"
     
   	Scenario: Account tab
   	  Given I am on signup_page
       And I fill in the following details:
-       |Name|admin5|
+       |Firstname|test|
+       |Lastname|admin5|
        |UIN|123456789|
        |Email|karthi5@karthik.com|
+       |Personal Email|karthi2@karthik.com|
        |Password|karthi123|
-       |Confirmation|karthi123|
+       |Confirm Password|karthi123|
        |Semester|Fall|
-       |Year|2016|
+       |Year|2020|
        |Course|CSCE606|
       When I press "Create my account"
       Then I should see "User Details"
       When I click "View Profile"
       Then I should see "User Details"
-      And I should see "admin5"
+      And I should see "test admin5"
       And I should see "Currently not a member of any team"
       When I click "Update Profile"
       Then I should see "Update Profile"
@@ -163,7 +171,8 @@ Feature: Login home page
       And I should see "New"
       And I should see "Confirm"
       When I fill the updated details:
-       |Name|karthi5a|
+       |Firstname|test|
+       |Lastname|admin6|
        |Email|karthi5a-changed@karthik.com|
        |UIN|123123123| 
        |New Password|karth123|
@@ -171,7 +180,7 @@ Feature: Login home page
       When I press "Save Changes"
       Then I should see "Profile updated"
       And I should see "User Details"
-      And I should see "karthi5a"
+      And I should see "test admin6"
       And I should see "karthi5a-changed@karthik.com"
       And I should see "123123123"
       When I click "Log Out"
@@ -179,7 +188,6 @@ Feature: Login home page
       
     Scenario: LoginNN
       Given an admin
-      | Name         | AdminAccount|
       |Email|master@example.com|
        |Password|adminadmin|
       When I am on home_page
@@ -190,7 +198,7 @@ Feature: Login home page
        |Password|adminadmin|
       And I press "Log In"
       Then I should see "User Details"
-      And I should see "AdminAccount"
+      And I should see "Administrator"
       And I should see "master@example.com"
    
     Scenario: Test
@@ -201,11 +209,13 @@ Feature: Login home page
       Given I am on login_page
       And I click "Sign up now!"
       Then I should see "Sign Up"
-      And I should see "Name"
+      And I should see "First Name"
+      And I should see "Last Name"
       And I should see "UIN"
       And I should see "Email"
+      And I should see "Personal Email"
       And I should see "Password"
-      And I should see "Confirmation"
+      And I should see "Confirm Password"
       And I should see "Semester"
       And I should see "Year"
       And I should see "Course"
@@ -225,14 +235,13 @@ Feature: Login home page
     
     Scenario: Password Reset (Happy case)
       Given an admin
-      | Name         | AdminAccount|
       |Email|master@example.com|
-       |Password|adminadmin|
+      |Password|adminadmin|
       Given I am on forgot_password_page
       And I fill the mail id:
        |Email|master@example.com|
       When I press "Submit"
-      Then I should see "Email sent with password reset instructions"
+      Then I should see "Password Reset to UIN"
       And I should see "Welcome to the Project Submission and Assignment System"
    
     # This was never implemented? Or just not tested?
