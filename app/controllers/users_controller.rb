@@ -7,37 +7,60 @@ class UsersController < ApplicationController
     before_action :admin_user, only: %i[index destroy]
 
     def index
-        # @users = User.order("lower(name) ASC").all.paginate(page: params[:page])
-        # @users = User.order("lower(uin) ASC").all.paginate(page: params[:page])
-        @sorting = params[:sort]
+        if params[:search_by].nil? and params[:sort_by].nil?
+            session[:search_by] = nil
+            session[:search_by] = nil
+            session[:search] = nil
+        end 
 
-        @users = User.all
+        session[:search_by] = nil unless session.key?(:search_by)
+        session[:search] = nil unless session.key?(:search)
 
-        @teams = {}
+        @sorting = params[:sort_by] 
 
-        @users.each do |user|
-            res = Relationship.find_by_user_id(user.id)
-            @teams[user.id] = (Team.find_by_id(res.team_id) unless res.nil?)
-        end
+        @search = params[:search] || session[:search]
+        @search_by = params[:search_by] || session[:search_by]  # If 1st expression is not nil/true, return it. If the 1st expression is nil/false, return the 2nd expression
+        
+        session[:search_by] = @search_by 
+        session[:search] = @search
 
-        session[:teamorder] = nil unless session.key?(:teamorder)
-
-        if @sorting == 'currteam'
-            nil_team_users = @users.select {|x| @teams[x.id].nil?}
-            other_team_users = @users.reject {|x| @teams[x.id].nil?}
-
-            if session[:teamorder] == false
-                @users = (other_team_users + nil_team_users)
-                session[:teamorder] = true
-
-            else
-                @users = (nil_team_users + other_team_users)
-                session[:teamorder] = false
-
-            end
+        if session[:search_by] == '1' # Search using UIN
+            @users = User.search_by_uin(session[:search])
+        elsif session[:search_by] == '2' # Search using Name
+            @users = User.search_by_name(session[:search])
+        elsif session[:search_by] == '3' #Search using Team Name
+            @users = User.search_by_currteam(session[:search])
         else
-            @users = @users.order(@sorting)
-        end
+            @users = User.all
+        end 
+
+        if !@users.nil?
+            @teams = {}
+
+            @users.each do |user|
+                res = Relationship.find_by_user_id(user.id)
+                @teams[user.id] = (Team.find_by_id(res.team_id) unless res.nil?)
+            end
+
+            session[:teamorder] = nil unless session.key?(:teamorder)
+
+            if @sorting == 'currteam'
+                nil_team_users = @users.select {|x| @teams[x.id].nil?}
+                other_team_users = @users.reject {|x| @teams[x.id].nil?}
+
+                if session[:teamorder] == false
+                    @users = (other_team_users + nil_team_users)
+                    session[:teamorder] = true
+
+                else
+                    @users = (nil_team_users + other_team_users)
+                    session[:teamorder] = false
+
+                end
+            else
+                @users = @users.order(@sorting)
+            end
+        end 
 
         respond_to do |format|
             format.xlsx do
@@ -171,5 +194,9 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:firstname, :lastname, :uin, :email, :personal_email, :password,
                                      :password_confirmation, :semester, :year, :course)
+    end
+
+    def search_params
+        params.require(:user).permit(:firstname, :search)
     end
 end

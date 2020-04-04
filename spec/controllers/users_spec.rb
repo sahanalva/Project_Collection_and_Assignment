@@ -12,4 +12,13 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template('new')
     end
   end
+
+  describe 'find user with given search attribute' do
+    before :each do
+      @user1 = create(:user)
+      @user2 = create(:user, firstname: "Bob", lastname:"Builder", email: "bob@example.com", uin: "1234567")
+    end
+    
+  end
+
 end

@@ -7,15 +7,22 @@
 
 <h1>All users</h1>
 
+<h4> Search by User:</h4>
+  <%= form_tag(users_path, method: :get) do %>
+    <%= select_tag(:search_by,  options_for_select([['UIN', 1], ['Name', 2], ['Team', 3]], session[:search_by]))%>
+    <%= text_field_tag(:search, session[:search]) %>
+    <%= submit_tag ("Search") %>
+  <% end %>
+
 <div class="row">
   <div class="col-md-10">
     <%= will_paginate %>
 
     <table class="users">
 
-      <th><%= link_to "UIN", users_path(:sort => "UIN") %></th>
-      <th><%= link_to "Name", users_path(:sort => "firstname") %></th>
-      <th><%= link_to "Current Team", users_path(:sort => "currteam") %> </th>
+      <th><%= link_to "UIN", users_path(:sort_by => "UIN") %></th>
+      <th><%= link_to "Name", users_path(:sort_by => "firstname") %></th>
+      <th><%= link_to "Current Team", users_path(:sort_by => "currteam") %> </th>
       <th>Options</th>
 
       <%= render @users %>

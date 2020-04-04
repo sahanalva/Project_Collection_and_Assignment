@@ -31,6 +31,8 @@ gem 'rubyzip', '>= 1.2.1'
 gem 'activerecord-import'
 
 gem "rails-settings-cached"
+gem 'simple_form'
+gem 'factory_bot_rails'
 
 group :development, :test do
   #  gem 'quiet_assets'  # Deprecated
