@@ -9,8 +9,11 @@ class TeamsController < ApplicationController
         if @team
 
             if @team.preferences_filled?
+                @projects = Project.where('approved = ?', true)
+                @title = 'Preference Selector'
+                render 'preference'
                 flash[:warning] = 'Preferences have already been submitted'
-                redirect_to user_path
+
                 return
             end
             @title = 'Preference Selector'
