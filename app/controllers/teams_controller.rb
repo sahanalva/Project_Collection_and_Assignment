@@ -7,22 +7,26 @@ class TeamsController < ApplicationController
     def preference
         @team = current_user.is_member_of
         if @team
-
-            if @team.preferences_filled?
-                flash[:warning] = 'Preferences have already been submitted'
-                @projects = Project.where('approved = ?', true)
-                @title = 'Preference Selector'
-                if  @team.is_leader?(current_user)
+            
+            if  @team.is_leader?(current_user)    
+                if @team.preferences_filled?
+                    flash[:warning] = 'Preferences have already been submitted'
+                    @projects = Project.where('approved = ?', true)
+                    @title = 'Preference Selector'
                     render 'preference'
                     return
-                else
-                    render 'preference_user'
-                    return
+                
                 end
+                @title = 'Preference Selector'
+                @projects = Project.where('approved = ?', true)
+                render 'preference'
+            else
+                flash[:warning] = 'Only team leader can change preferences'
+                @projects = Project.where('approved = ?', true)
+                @title = 'Preference Selector'
+                render 'preference_user'
+                return
             end
-            @title = 'Preference Selector'
-            @projects = Project.where('approved = ?', true)
-            render 'preference'
         else
             flash[:warning] = 'You are not yet part of any team'
             redirect_to current_user
