@@ -2,20 +2,31 @@ class TeamsController < ApplicationController
     before_action :logged_in_user, only: %i[index new create destroy]
     before_action :valid_viewer, only: [:show]
     before_action :team_leader_or_admin, only: [:destroy]
-    before_action :team_leader, only: [:preference]
+#    before_action :team_leader, only: [:preference]
 
     def preference
         @team = current_user.is_member_of
         if @team
-
-            if @team.preferences_filled?
-                flash[:warning] = 'Preferences have already been submitted'
-                redirect_to user_path
+            
+            if  @team.is_leader?(current_user)    
+                if @team.preferences_filled?
+                    flash[:warning] = 'Preferences have already been submitted'
+                    @projects = Project.where('approved = ?', true)
+                    @title = 'Preference Selector'
+                    render 'preference'
+                    return
+                
+                end
+                @title = 'Preference Selector'
+                @projects = Project.where('approved = ?', true)
+                render 'preference'
+            else
+                flash[:warning] = 'Only team leader can change preferences'
+                @projects = Project.where('approved = ?', true)
+                @title = 'Preference Selector'
+                render 'preference_user'
                 return
             end
-            @title = 'Preference Selector'
-            @projects = Project.where('approved = ?', true)
-            render 'preference'
         else
             flash[:warning] = 'You are not yet part of any team'
             redirect_to current_user

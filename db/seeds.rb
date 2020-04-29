@@ -43,7 +43,7 @@ user.save!
 
     uin   = Faker::Number.number(9)
     email = "example-#{n+1}@railstutorial.org"
-    personal_email = "example-#{firstname+1}@railstutorial.org"
+    personal_email = "example-#{n+1}@personal.org"
     password = "password"
     semester = n%3 == 0 ? "Spring" : "Fall"
     year = rand(2000..2026).to_s

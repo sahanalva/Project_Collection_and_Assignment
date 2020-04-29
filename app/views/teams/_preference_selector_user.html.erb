@@ -19,18 +19,16 @@
   
   <%= form_for(:preference, url: preferences_path, remote: true) do |f| %>
     <div class="col-md-2">
-      <%= f.radio_button :value, "1", :onchange => "$(\'#listitemproject_#{project.id} form\').submit()", checked: check1 %>
+      <%= f.radio_button :value, "1", checked: check1, disabled: true %>
     </div>
 
     <div class="col-md-2">
-      <%= f.radio_button :value, "0", :onchange => "$(\'#listitemproject_#{project.id} form\').submit()", checked: check2 %>
+      <%= f.radio_button :value, "0",  checked: check2, disabled: true %>
     </div>
 
     <div class="col-md-2">
-      <%= f.radio_button :value, "-1", :onchange => "$(\'#listitemproject_#{project.id} form\').submit()", checked: check3 %>
-    </div>
-    <%= hidden_field_tag :project_id, project.id %>
-    <%= f.submit "Submit", :class => "hidden" %>
+      <%= f.radio_button :value, "-1",  checked: check3, disabled: true %>
+
   <% end %>
 
 
