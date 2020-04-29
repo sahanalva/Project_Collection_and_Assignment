@@ -174,6 +174,16 @@ class UsersController < ApplicationController
         system(cmd)
         send_file('./public/uploads/' + team_id.to_s + '.tar.gz', filename: team_id.to_s + '.tar.gz', type: 'application/x-tar')
     end
+    
+    def delete_all
+        User.all.each do |user|
+            if !user.admin
+                User.find(user.id).destroy
+            end
+        end
+        flash[:success] = 'All Users Deleted Permanently!'
+        redirect_back fallback_location: users_url
+    end
 
     def destroy
         team = Team.find_by_user_id(params[:id])
