@@ -94,7 +94,7 @@ Feature: Admin login functionalities
     And I click "Navi"
     And I press 1th "Remove"
     Then I should be on teams_page
-    And I should see "Remove successful"
+    And I should see "You cannot remove the team leader!"
     
     Scenario: Delete team (admin)
     Given there exists a team

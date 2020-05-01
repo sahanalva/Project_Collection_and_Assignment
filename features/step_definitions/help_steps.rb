@@ -60,7 +60,6 @@ Given (/^a user$/) do |table|
     personal_email: data['Email'] || 'user1@test.com',
     firstname: data['Firstname'] || 'TestFirstName',
     lastname: data['Lastname'] || 'TestLastName',
-    personal_email: data['Personal Email'] || 'personal@personal.com',
     password: data['Password'] || 'password',
     uin: data['UIN'] || '111111111',
     year: data['Year'] || '2018',
