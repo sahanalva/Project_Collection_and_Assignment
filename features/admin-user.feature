@@ -110,4 +110,11 @@ Feature: Admin userView functionalities
     When I click "Download data as Excel"
     Then I should get a download with the filename "Users_Data.xlsx"
 
+    Scenario: Search user by UIN
+    Given I am on users_page
+    When I select "UIN" in "selection"
+    And I enter "555555551" into "information"
+    And I press "Search"
+    Then I should be on users_page
+    Then I should see "User1Account"
     

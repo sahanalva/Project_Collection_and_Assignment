@@ -54,7 +54,13 @@ end
 #   render @users
 # end
 
+When("I enter {string} into {string}") do |string, string2|
+  find_field("#{string2}").set(string)
+end
 
+When("I select {string} in {string}") do |string, string2|
+  find_field("#{string2}").set(string)
+end
 
 When(/^I select "([^"]*)"$/) do |arg1|
   select arg1
