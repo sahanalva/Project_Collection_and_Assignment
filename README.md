@@ -2,28 +2,31 @@
 
 This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now (Spring 2020), the FellowshipOfTheRing is working on this project.
 
-Iteration 1 : Updates
+Iteration 1 
 ===================
-#### Update at 12/01/2015
+#### Update at 03/23/2020
  
  - admin can see the final result of peer evaluation
  - admin can also reassign projects
  - admin can remove / add users from a team
 
+Iteration 2
 ===================
-#### Update at 11/13/2015
+#### Update at 03/04/2020
 
  - add peer evaluation
  - update herokuapp code
  - add notice to peer evaluation
 
+Iteration 3
 ===================
-#### Update at 11/01/2015
+#### Update at 04/17/2020
 
  - [NOTE] Currently the CAS is set to cas-dev for testing on local machine.
 
+Iteration 4
 ===================
-#### Update at 10/25/2015
+#### Update at 5/01/2020
 
 More user stories are implemented. 
 
@@ -33,19 +36,6 @@ More user stories are implemented.
 
  - Some new columns are also added to projects table to give more details. 
 
-
-===================
-#### Update at 10/15/2015
-
-Implemnted the feature "Login with NetID"
-
- - A global variable in application_controller.rb, named `CAS_ENABLED`, is added to enble CAS. For the testing propose, you can make it false to disable CAS
-
- - [NOTE] RubyCAS : https://github.com/rubycas/rubycas-client
-
-
-===================
-#### Update
 
 Useful links:
 
