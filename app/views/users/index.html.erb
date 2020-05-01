@@ -7,7 +7,7 @@
 
 <h1>All users</h1>
 
-<h4> Search by User:</h4>
+<h4> Search User by:</h4>
   <%= form_tag(users_path, method: :get) do %>
     <%= select_tag(:search_by,  options_for_select([['UIN', 1], ['Name', 2], ['Team', 3]], session[:search_by]))%>
     <%= text_field_tag(:search, session[:search]) %>
