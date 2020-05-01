@@ -241,7 +241,7 @@ Feature: Login home page
       And I fill the mail id:
        |Email|master@example.com|
       When I press "Submit"
-      Then I should see "Password Reset to UIN"
+      Then I should see "Email sent with password reset instructions"
       And I should see "Welcome to the Project Submission and Assignment System"
    
     # This was never implemented? Or just not tested?
