@@ -1,57 +1,42 @@
-#Project Collection and Assignment
+# Project Collection and Assignment (Spring 2020)
 
-This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now (Spring 2020), the FellowshipOfTheRing is working on this project.
+This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now, the FellowshipOfTheRing is working on this project.
 
-Iteration 1 : Updates
+Heroku Link     - https://glacial-shelf-67800.herokuapp.com/
+Pivotal Tracker - https://www.pivotaltracker.com/n/projects/2436883
+
+Iteration 1 
 ===================
-#### Update at 12/01/2015
+#### Update at 03/23/2020
  
- - admin can see the final result of peer evaluation
- - admin can also reassign projects
- - admin can remove / add users from a team
+ - Reset Passwork to UIN (temporary fix to Reset Password feature)
+ - Removed login using NETID 
+ - Fixed download XLSX feature which previously downloaded the first page of users
+ - After deleting a user without a team, the admin is redirected to the list of users without a team
+ - After editing a team, the admin is redirected back to the list of all teams
 
+Iteration 2
 ===================
-#### Update at 11/13/2015
+#### Update at 03/04/2020
 
- - add peer evaluation
- - update herokuapp code
- - add notice to peer evaluation
+ - Implemented Reset Password using link sent via email
+ - Implemented Search Bar to find students using UIN, Name or Team Name
+ - Added personal email attribute to users so there is a non-tamu email in record 
 
+Iteration 3
 ===================
-#### Update at 11/01/2015
+#### Update at 04/17/2020
 
- - [NOTE] Currently the CAS is set to cas-dev for testing on local machine.
+ - Admins can grant admin priviledges to other users
+ - Team Leader can change project preferences
 
+Iteration 4
 ===================
-#### Update at 10/25/2015
+#### Update at 5/01/2020
 
-More user stories are implemented. 
+ - Semester Migration page - moves all legacy projects to semester specified by admin. 
+ - Team leaders cannot delete team if there are members
+ - A team with assigned project cannot be deleted
+ - Admins can see project selections made by each team
+ 
 
- - A new webpage for students is created, where students can view their project and upload related files. This can be accessed by clicking My Account > My Project on the header.
-
- - Now admin can also add any project folders. 
-
- - Some new columns are also added to projects table to give more details. 
-
-
-===================
-#### Update at 10/15/2015
-
-Implemnted the feature "Login with NetID"
-
- - A global variable in application_controller.rb, named `CAS_ENABLED`, is added to enble CAS. For the testing propose, you can make it false to disable CAS
-
- - [NOTE] RubyCAS : https://github.com/rubycas/rubycas-client
-
-
-===================
-#### Update
-
-Useful links:
-
- - Ruby intro.     https://github.com/saasbook/ruby-calisthenics
- - Rails Intro.    https://github.com/saasbook/hw-rails-intro
- - BDD & Cucumber. https://github.com/saasbook/hw-bdd-cucumber
- - BDD+TDD Cycle.  https://github.com/saasbook/bdd-tdd-cycle
-
- - Ruby API DOC    http://api.rubyonrails.org/

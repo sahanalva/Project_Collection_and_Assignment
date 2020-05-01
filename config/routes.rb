@@ -29,8 +29,10 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  get    'resetDB' => 'reset#downloadAndReset'
-  get    'migrate' => 'reset#migrate'
+  get    'sem_info' => 'reset#downloadAndReset'
+  get    'migrate' => 'reset#index'
+  get 'sem_migrate' => 'reset#migrate'
+
   resources :users
   resources :projects
   resources :documents
@@ -47,6 +49,7 @@ Rails.application.routes.draw do
     # get :legacy_add
     get :documentation
   end
+
   resources :password_resets,     only: %i[new create edit update]
 
   get 'add_project'               => 'projects#new'

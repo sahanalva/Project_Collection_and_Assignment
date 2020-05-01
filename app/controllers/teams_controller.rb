@@ -112,6 +112,7 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
         @members = @team.members
         @assignment = Assignment.find_by_team_id(@team.id)
+        @member_count = @members.count
 
 
         @project = @assignment.nil? ? nil : Project.find(@assignment.project_id)

@@ -3,8 +3,10 @@
 
 <% if @team.is_leader?(current_user) || current_user.admin? %>
   <h2><%= link_to "Edit", edit_team_path(@team) %>
+  <% if @member_count <=1 and !@assignment %>
     | <%= link_to "Delete", @team, method: :delete,
                   data: {confirm: "You sure?"} %>
+  <% end %>
   </h2>
 <% end %>
 <% if current_user.is_member?(@team) %><%# && !@team.is_leader?(current_user) %>
