@@ -2,7 +2,8 @@
 
 This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now, the FellowshipOfTheRing is working on this project.
 
-Heroku Link - https://glacial-shelf-67800.herokuapp.com/
+Heroku Link     - https://glacial-shelf-67800.herokuapp.com/
+Pivotal Tracker - https://www.pivotaltracker.com/n/projects/2436883
 
 Iteration 1 
 ===================
