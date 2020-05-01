@@ -48,6 +48,14 @@ When(/^I press "([^"]*)"$/) do |arg1|
   click_button arg1
 end
 
+# When("I search {string} by UIN") do |string|
+#   @users = User.find_by_uin(string)
+#   @users = @users.paginate(page: params[:page])
+#   render @users
+# end
+
+
+
 When(/^I select "([^"]*)"$/) do |arg1|
   select arg1
 end
@@ -197,3 +205,4 @@ end
 Then(/^I should get a download with the filename "([^\"]*)"$/) do |filename|
   page.response_headers['Content-Disposition'].should include("filename=#{filename}")
 end
+

@@ -85,3 +85,5 @@ Feature: Admin userView functionalities
     Then I should be on users_page
     When I click "Download data as Excel"
     Then I should get a download with the filename "Users_Data.xlsx"
+
+    
