@@ -8,7 +8,8 @@
     |
     <% if !@user.admin? %>
       <%= link_to "Make Admin", user_make_admin_path(@user),
-                  data: {confirm: "This will give the user unlimited power. Sure? "} %>
+                  data: {confirm: "This will make the user an administrator of this platform. Are you sure? "} %>        
+                  <%-# user is assigned to a team and is possibly a student. Are you sure you want to give them unlimited power? -%>
 
     <% else %>
       <%= link_to "Remove Admin", user_make_admin_path(@user),
