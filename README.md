@@ -1,6 +1,6 @@
-# Project Collection and Assignment
+# Project Collection and Assignment (Spring 2020)
 
-This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now (Spring 2020), the FellowshipOfTheRing is working on this project.
+This is a fork of "Project Collection and Assignment" from https://github.com/PuneetKohli/Project_Collection_and_Assignment. Now, the FellowshipOfTheRing is working on this project.
 
 Iteration 1 
 ===================
