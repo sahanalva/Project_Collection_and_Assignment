@@ -128,17 +128,17 @@ class UsersController < ApplicationController
 
     def make_admin
         @user = User.find(params[:user_id])
-
-        if !@user.admin
+        if current_user?(@user)
+            flash[:danger] = 'To prevent accidental lockout, you cannot alter user role for yourself. Contact a different administrator.'
+        elsif @user.is_member_of.present?
+            flash[:danger] = 'User is a member of a team and is probably a student. Cannot make them an administrator.'
+        elsif !@user.admin
             @user.update_attribute(:admin, true)
             flash[:success] = @user.firstname + ' is now an Administrator!'
-
         else
             @user.update_attribute(:admin, false)
             flash[:success] = 'This administrator has been removed'
-
         end
-
         redirect_to @user
     end
 
@@ -183,7 +183,7 @@ class UsersController < ApplicationController
             flash[:success] = 'User Deleted Permanently!'
 
         else
-            flash[:warning] = 'This user is a team leader! You need to delete his team first'
+            flash[:warning] = 'This user is a team leader! You need to delete their team first'
         end
         # redirect_to users_url
         redirect_back fallback_location: users_url

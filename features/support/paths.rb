@@ -59,7 +59,7 @@ module NavigationHelpers
       user_path(User.find_by(uin: Regexp.last_match(1)))
 
     when /^(.*)'s user edit page$/i
-      edit_user_path(User.find_by(name: Regexp.last_match(1)))
+      edit_user_path(User.find_by(uin: Regexp.last_match(1)))
 
     when /^(.*)'s project details page$/i
       project_path(Project.find_by(title: Regexp.last_match(1)))

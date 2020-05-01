@@ -59,6 +59,7 @@ Given (/^a user$/) do |table|
     email: data['Email'] || 'user1@test.com',
     firstname: data['Firstname'] || 'TestFirstName',
     lastname: data['Lastname'] || 'TestLastName',
+    personal_email: data['Personal Email'] || 'personal@personal.com',
     password: data['Password'] || 'password',
     uin: data['UIN'] || '111111111',
     year: data['Year'] || '2018',
@@ -103,6 +104,14 @@ Given (/^there exists a team$/) do |table|
   data = table.rows_hash
   @user = User.find_by_uin(data['User_UIN']) if data['User_UIN']
   Team.create!(name: data['Name'] || 'TeamName',
+               user_id: @user.id)
+end
+
+Given (/^there exists a relationship/) do |table|
+  data = table.rows_hash
+  @user = User.find_by_uin(data['User_UIN'])
+  @team = Team.find_by_name(data['TeamName'])
+  Relationship.create!(team_id: @team.id,
                user_id: @user.id)
 end
 
