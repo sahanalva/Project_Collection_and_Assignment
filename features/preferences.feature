@@ -30,7 +30,7 @@ Feature: Preferences related features
       When I click "Project Preference"
       Then I press "Submit Final Preferences"
       Then I should see "Preferences Saved"
-      Then I should be on 111111111's user details page
+      Then I should be on UserAccount's user details page
      
   	  Scenario: View Project Preferences (second time)
   	  Given I am on home_page
@@ -38,7 +38,7 @@ Feature: Preferences related features
       When I click "Project Preference"
       Then I press "Submit Final Preferences"
       Then I should see "Preferences Saved"
-      Then I should be on 111111111's user details page
+      Then I should be on UserAccount's user details page
   	  When I click "Projects"
       When I click "Project Preference"
       Then I should see "Preferences have already been submitted"
@@ -50,7 +50,7 @@ Feature: Preferences related features
       When I click "Project Preference"
       Then I press "Submit Final Preferences"
       Then I should see "Preferences Saved"
-      Then I should be on 111111111's user details page
+      Then I should be on UserAccount's user details page
       Given I am on home_page
       And I click "Log Out"
       Then I am logged in as:

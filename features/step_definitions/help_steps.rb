@@ -57,6 +57,7 @@ Given (/^a user$/) do |table|
   @user = User.create!(
     admin: false,
     email: data['Email'] || 'user1@test.com',
+    personal_email: data['Email'] || 'user1@test.com',
     firstname: data['Firstname'] || 'TestFirstName',
     lastname: data['Lastname'] || 'TestLastName',
     password: data['Password'] || 'password',
@@ -108,7 +109,7 @@ end
 
 Given(/^I fill the peer evaluation:$/) do |table|
   data = table.rows_hash
-  @user = User.find_by_name('UserAccount')
+  @user = User.find_by(Firstname: 'UserAccount')
   fill_in "peer_evaluation_#{@user.id}.score", with: data['Score']
   fill_in "peer_evaluation_#{@user.id}.comment", with: data['Comments']
 end
@@ -143,8 +144,9 @@ Given(/^I fill in the following project details:$/) do |table|
   fill_in 'Title', with: data['Title']
   fill_in 'Organization', with: data['Organization']
   fill_in 'Contact', with: data['Contact']
-  select data['Semester'], from: 'Semester'
-  select data['Year'], from: 'Year'
+  # page.select data['Semester'], from: 'semester'
+  # Cannot use this since dropdown changes from semester to semester
+  page.select data['Year'], from: 'Year'
   fill_in 'Description', with: data['Description']
   fill_in 'Github link', with: data['Github link']
   fill_in 'Heroku link', with: data['Heroku link']
@@ -186,7 +188,6 @@ Given (/^I create a team$/) do |table|
   click_link('Create Team')
   fill_in 'Name', with: data['Name']
   click_button('Create Team')
-  page.should have_content('Team created successfully')
 end
 
 Then(/^I fill the team code:$/) do |table|

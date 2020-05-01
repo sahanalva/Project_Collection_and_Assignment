@@ -9,18 +9,21 @@ Feature: Admin userView functionalities
       | UIN          | 555555555           |
 
       Given a user
-      | Name         | User1Account        |
+      | Firstname         | User1Account        |
+      | Lastname | User1LastName |
       | Email        | ak1@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111111|
       Given a user
-      | Name         | User2Account        |
+      | Firstname         | User2Account        |
+      | Lastname | User2LastName |
       | Email        | ak2@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111112|
       
       Given a user
-      | Name         | User3Account        |
+      | Firstname         | User3Account        |
+      | Lastname | User3LastName |
       | Email        | ak3@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111113|
@@ -28,7 +31,7 @@ Feature: Admin userView functionalities
       And I am logged in as:
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
-      Then I should be on 555555555's user details page
+      Then I should be on Admin's user details page
       Given there exists a project
       |Title|ProjectA|
       | Semester|Fall|
@@ -39,7 +42,7 @@ Feature: Admin userView functionalities
 
     Scenario: All users view
     Given I am on home_page
-    When I click "Users"
+    When I click "All Users"
     Then I should be on users_page
     And I should see "All users"
     And I should see "User1Account"
@@ -54,16 +57,16 @@ Feature: Admin userView functionalities
 
     Scenario: Make/Unmake a User Admin
     Given I am on home_page
-    When I click "Users"
+    When I click "All Users"
     Then I should be on users_page
-    When I click "User1Account"
+    When I click "User1Account User1LastName"
     Then I should be on User1Account's user details page
     When I click "Make Admin"
     Then I should see "User1Account is now an Administrator!"
     When I click "Remove Admin"
     Then I should see "This administrator has been removed"
     
-    
+    # Failing because of popup
     Scenario: Delete user by admin
     Given I am on users_page
     When I click 1th "Delete"
