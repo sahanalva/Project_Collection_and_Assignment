@@ -13108,3 +13108,898 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 165ms (Views: 160.3ms | ActiveRecord: 1.2ms)
 
 
+Started GET "/migrate" for 65.127.93.161 at 2020-05-01 23:15:33 +0000
+Processing by ResetController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 103], ["LIMIT", 1]]
+  Rendering reset/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects"[0m
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" ORDER BY year DESC,semester DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered reset/index.html.erb within layouts/application (24.2ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mRelationship Load (0.2ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."user_id" = ? AND "relationships"."user_id" = ? LIMIT ?[0m  [["user_id", 103], ["user_id", 103], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 279ms (Views: 272.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/sem_info.xlsx" for 65.127.93.161 at 2020-05-01 23:29:03 +0000
+Processing by ResetController#downloadAndReset as XLSX
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 1], ["LIMIT", 1]]
+  [1m[36mRelationship Load (0.1ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 21], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 22], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 23], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 24], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 25], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 26], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 27], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 28], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 29], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 30], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 31], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 32], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 33], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 34], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 35], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 37], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 38], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 40], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 41], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 42], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 43], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 44], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 45], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 46], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 47], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 48], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 49], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 50], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 51], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 52], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 53], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 54], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 55], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 56], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 57], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 58], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 59], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 60], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 61], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 62], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 63], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 64], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 65], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 66], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 67], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 68], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 69], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 70], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 71], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 72], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 73], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 74], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 75], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 76], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 77], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 78], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 79], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 80], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 81], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 82], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 83], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 84], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 85], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 86], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 87], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 88], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 89], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 90], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 91], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 92], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 93], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 94], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.2ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 95], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 96], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 97], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 98], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 99], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 100], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 101], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 102], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 103], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 104], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 105], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 106], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 107], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 108], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 109], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 110], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 111], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 112], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 113], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 114], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 115], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 116], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 117], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 118], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 119], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 120], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  Rendering text template
+  Rendered text template (0.0ms)
+Sent data Semester-Information-202005.csv (1.1ms)
+Completed 200 OK in 125ms (Views: 0.9ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/sem_info.xlsx" for 65.127.93.161 at 2020-05-01 23:46:16 +0000
+Processing by ResetController#downloadAndReset as XLSX
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 1], ["LIMIT", 1]]
+  [1m[36mRelationship Load (0.1ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 21], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 22], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 23], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 24], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 25], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 26], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 27], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 28], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 29], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 30], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 31], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 32], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 33], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 34], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 35], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 37], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 38], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 40], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 41], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 42], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 43], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 44], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 45], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 46], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 47], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 48], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 49], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 50], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 51], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 52], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 53], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 54], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 55], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 56], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 57], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 58], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 59], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 60], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 61], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 62], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 63], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 64], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 65], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 66], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 67], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 68], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 69], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 70], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 71], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 72], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 73], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 74], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 75], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 76], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 77], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 78], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 79], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 80], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 81], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 82], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 83], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 84], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 85], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 86], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 87], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 88], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 89], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 90], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 91], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 92], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 93], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 94], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 95], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 96], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 97], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 98], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 99], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.2ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 100], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 101], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 102], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 103], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 104], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 105], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 106], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 107], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 108], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 109], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 110], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 111], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 112], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 113], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 114], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 115], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 116], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 117], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 118], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 119], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."project_id" = ? LIMIT ?[0m  [["project_id", 120], ["LIMIT", 1]]
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."team_id" IS NULL[0m
+  Rendering text template
+  Rendered text template (0.0ms)
+Sent data Semester-Information-202005.csv (0.6ms)
+Completed 200 OK in 120ms (Views: 0.4ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/sem_migrate?utf8=%E2%9C%93&semester=Spring&year=2021&commit=Migrate" for 65.127.93.161 at 2020-05-01 23:54:02 +0000
+Processing by ResetController#migrate as HTML
+  Parameters: {"utf8"=>"✓", "semester"=>"Spring", "year"=>"2021", "commit"=>"Migrate"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."isactive" = ?[0m  [["isactive", "t"]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:02.983986"], ["id", 1]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:02.991952"], ["id", 2]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:02.999021"], ["id", 3]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.005701"], ["id", 4]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.011952"], ["id", 5]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.018015"], ["id", 6]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.024022"], ["id", 7]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.031175"], ["id", 8]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.037256"], ["id", 9]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.044437"], ["id", 10]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.051728"], ["id", 11]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.059059"], ["id", 12]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.065232"], ["id", 13]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.073579"], ["id", 14]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.080827"], ["id", 15]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.088139"], ["id", 16]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.095694"], ["id", 17]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.101486"], ["id", 18]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.108880"], ["id", 19]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.116292"], ["id", 20]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.123377"], ["id", 21]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.129670"], ["id", 22]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.136505"], ["id", 23]]
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.145638"], ["id", 24]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.153130"], ["id", 25]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.159905"], ["id", 26]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.165669"], ["id", 27]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.173283"], ["id", 28]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.180611"], ["id", 29]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.187489"], ["id", 30]]
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.195889"], ["id", 31]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.201505"], ["id", 32]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.208438"], ["id", 33]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.215326"], ["id", 34]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.223199"], ["id", 35]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.229019"], ["id", 36]]
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.236368"], ["id", 37]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.243337"], ["id", 38]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.249071"], ["id", 39]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.256010"], ["id", 40]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.263224"], ["id", 41]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.269003"], ["id", 42]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.275914"], ["id", 43]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.281772"], ["id", 44]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.289090"], ["id", 45]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.296254"], ["id", 46]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.303852"], ["id", 47]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.310099"], ["id", 48]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.316345"], ["id", 49]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.323342"], ["id", 50]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.329528"], ["id", 51]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.336816"], ["id", 52]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.343807"], ["id", 53]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.351360"], ["id", 54]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.357167"], ["id", 55]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.364259"], ["id", 56]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.371073"], ["id", 57]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.376909"], ["id", 58]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.383680"], ["id", 59]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.389366"], ["id", 60]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.396279"], ["id", 61]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.403437"], ["id", 62]]
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.411564"], ["id", 63]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.417578"], ["id", 64]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.424532"], ["id", 65]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.431754"], ["id", 66]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.437580"], ["id", 67]]
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.444970"], ["id", 68]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.452083"], ["id", 69]]
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.459393"], ["id", 70]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.465564"], ["id", 71]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.473341"], ["id", 72]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.480313"], ["id", 73]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.488046"], ["id", 74]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.493920"], ["id", 75]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.500168"], ["id", 76]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.505583"], ["id", 77]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.512301"], ["id", 78]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.519355"], ["id", 79]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.525648"], ["id", 80]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.532307"], ["id", 81]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.539294"], ["id", 82]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.545042"], ["id", 83]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.551725"], ["id", 84]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.557574"], ["id", 85]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.564298"], ["id", 86]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.571178"], ["id", 87]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.577311"], ["id", 88]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.583753"], ["id", 89]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.590939"], ["id", 90]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "islegacy" = ?, "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["islegacy", "t"], ["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.596760"], ["id", 91]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.605308"], ["id", 93]]
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.614453"], ["id", 94]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "islegacy" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["islegacy", "t"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.620220"], ["id", 95]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.627143"], ["id", 96]]
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.635175"], ["id", 97]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.640962"], ["id", 98]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "islegacy" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["islegacy", "t"], ["updated_at", "2020-05-01 23:54:03.648649"], ["id", 99]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.655303"], ["id", 100]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.661295"], ["id", 101]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.667756"], ["id", 102]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.675897"], ["id", 103]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.682253"], ["id", 104]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.688034"], ["id", 105]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.695319"], ["id", 106]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.701432"], ["id", 107]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.708870"], ["id", 108]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.715916"], ["id", 109]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.721522"], ["id", 110]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.728538"], ["id", 111]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.735390"], ["id", 112]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.741108"], ["id", 113]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.747775"], ["id", 114]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.753616"], ["id", 115]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.760283"], ["id", 116]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.767437"], ["id", 117]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.773707"], ["id", 118]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["year", "2021"], ["updated_at", "2020-05-01 23:54:03.780507"], ["id", 119]]
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "projects" SET "semester" = ?, "year" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["semester", "Spring"], ["year", "2021"], ["updated_at", "2020-05-01 23:54:03.788985"], ["id", 120]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (5.5ms)[0m  [1m[31mDELETE FROM "assignments"[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."admin" = ?[0m  [["admin", "f"]]
+  [1m[35mSQL (6.1ms)[0m  [1m[31mDELETE FROM "preassignments"[0m
+  [1m[35mSQL (4.5ms)[0m  [1m[31mDELETE FROM "preferences"[0m
+  [1m[35mSQL (5.9ms)[0m  [1m[31mDELETE FROM "relationships"[0m
+  [1m[35mSQL (4.6ms)[0m  [1m[31mDELETE FROM "teams"[0m
+  Rendering reset/migrate.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects"[0m
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" ORDER BY year DESC,semester DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered reset/migrate.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mRelationship Load (0.1ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."user_id" = ? AND "relationships"."user_id" = ? LIMIT ?[0m  [["user_id", 103], ["user_id", 103], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (4.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1068ms (Views: 166.8ms | ActiveRecord: 664.2ms)
+
+
