@@ -57,7 +57,7 @@ Feature: Admin Semester Migration functionalities
     Given I am on migrate_page
     Then I should see "Migration"
     When I click "Download Current Semester Information"
-    Then I should get a download with semester information named "Semester_Information.csv"
+    Then I should get a download with semester information named "Semester_Information-202005.csv"
     
     Scenario: Migrate to next semester
     Given I am on migrate_page

@@ -28,8 +28,8 @@ class ResetController < ApplicationController
             data << i.to_s << ',' << p.title << ',' << p.semester.to_s << ' ' << p.year.to_s << ',' << p.organization.to_s.inspect << ',' << p.contact.to_s.inspect << ',' << p.description.to_s.inspect << ',' << student_data << ',' << p.github_link.to_s << ',' << p.heroku_link.to_s << ',' << p.pivotal_link.to_s << "\n"
             i += 1
         end
-        # date = Time.now.strftime('%Y%m')
-        send_data data, filename: "Semester_Information.csv"
+        date = Time.now.strftime('%Y%m')
+        send_data data, filename: "Semester_Information-#{date}.csv"
 
     end
 
