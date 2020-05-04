@@ -6,9 +6,11 @@ class TeamsController < ApplicationController
 
     def preference
         @team = current_user.is_member_of
+        
         if @team
+            @assignment = Assignment.find_by_team_id(@team.id)
             
-            if  @team.is_leader?(current_user)    
+            if  @team.is_leader?(current_user) and !@assignment 
                 if @team.preferences_filled?
                     flash[:warning] = 'Preferences have already been submitted'
                     @projects = Project.where('approved = ?', true)
@@ -21,7 +23,12 @@ class TeamsController < ApplicationController
                 @projects = Project.where('approved = ?', true)
                 render 'preference'
             else
-                flash[:warning] = 'Only team leader can change preferences'
+                if @assignment 
+                    flash[:warning] = 'Projects have been assigned'
+
+                else
+                    flash[:warning] = 'Only team leader can change preferences'
+                end
                 @projects = Project.where('approved = ?', true)
                 @title = 'Preference Selector'
                 render 'preference_user'
@@ -117,6 +124,7 @@ class TeamsController < ApplicationController
 
         @project = @assignment.nil? ? nil : Project.find(@assignment.project_id)
         @user_names = []
+        @approved_projects = Project.where('approved = ?', true)
 
         User.find_each do |user|
             if (user.admin == false) && Relationship.find_by_user_id(user.id).nil?
