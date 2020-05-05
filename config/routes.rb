@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'users/new'
 
   get 'users/no_team'
+  
+  get 'users/delete_all'
 
   root             'sessions#home'
   get    'help'    => 'static_pages#help'
