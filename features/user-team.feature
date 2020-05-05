@@ -2,54 +2,57 @@ Feature: User Team functionalities
   
      Background: User login
       Given an admin
-      | Name         | AdminAccount        |
+      | Firstname         | AdminAccount        |
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
       #7 users
       Given a user
-      | Name         | User1Account        |
+      | Firstname         | User1Account        |
       | Email        | ak1@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111111|
       Given a user
-      | Name         | User2Account        |
+      | Firstname         | User2Account        |
       | Email        | ak2@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111112|
       Given a user
-      | Name         | User3Account        |
+      | Firstname         | User3Account        |
       | Email        | ak3@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111113|
       Given a user
-      | Name         | User4Account        |
+      | Firstname         | User4Account        |
       | Email        | ak4@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111114|
       Given a user
-      | Name         | User5Account        |
+      | Firstname         | User5Account        |
       | Email        | ak5@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111115|
       Given a user
-      | Name         | User6Account        |
+      | Firstname         | User6Account        |
       | Email        | ak6@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111116|
       Given a user
-      | Name         | User7Account        |
+      | Firstname         | User7Account        |
       | Email        | ak7@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111117|
       And I am logged in as:
       | Email        | ak1@tamu.edu    |
-      Then I should be on User1Account's user details page
       And I create a team
       |Name|Navi|
       Given there exists a project
       |Title|ProjectA|
       | Semester|Fall|
       | Year|2018|
+    
+    Scenario: Can Delete Team when members not present (leader)
+    When I visit Navi's team details page
+    Then I should see "Delete"
 
     Scenario: Add more than 6 persons to a team (user case)
     Given I am on home_page
@@ -106,6 +109,11 @@ Feature: User Team functionalities
     When I visit Navi's team details page
     And I click "Leave Team"
     Then I should see "Team leader cannot leave team"
+    
+    Scenario: Cannot Delete Team when members present (leader)
+    When I visit Navi's team details page
+    Then I should not see "Delete"
+      
     
     
     

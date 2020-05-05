@@ -35,7 +35,7 @@ Feature: Admin userView functionalities
       And I am logged in as:
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
-      Then I should be on 555555555's user details page
+      Then I should be on Admin's user details page
       Given there exists a project
       |Title|ProjectA|
       | Semester|Fall|
@@ -64,7 +64,7 @@ Feature: Admin userView functionalities
     And I click "All Users"
     Then I should be on users_page
     When I click "User2Account Account2"
-    Then I should be on 555555552's user details page
+    Then I should be on User2Account's user details page
     When I click "Make Admin"
     Then I should see "User2Account is now an Administrator!"
     When I click "Remove Admin"
@@ -76,7 +76,7 @@ Feature: Admin userView functionalities
     And I click "All Users"
     Then I should be on users_page
     When I click "User1Account Account1"
-    Then I should be on 555555551's user details page
+    Then I should be on User1Account's user details page
     When I click "Make Admin"
     Then I should see "User is a member of a team and is probably a student. Cannot make them an administrator."
     
@@ -84,10 +84,11 @@ Feature: Admin userView functionalities
     Given I am on home_page
     When I click "Account"
     And I click "View Profile"
-    Then I should be on 555555555's user details page
+    Then I should be on Admin's user details page
     And I should not see "Make Admin"
     And I should not see "Delete"
     
+    # Failing because of popup
     Scenario: Delete user by admin
     Given I am on users_page
     When I click 1th "Delete"
@@ -98,10 +99,10 @@ Feature: Admin userView functionalities
     Scenario: Edit user by admin
     Given I am on users_page
     When I click 1th "Edit"
-    Then I should be on 555555551's user edit page
+    Then I should be on User1Account's user edit page
     When I press "Save Changes"
     Then I should see "Profile updated"
-    And I should be on 555555551's user details page
+    And I should be on User1Account's user details page
     
     Scenario: Download all users
     Given I am on home_page

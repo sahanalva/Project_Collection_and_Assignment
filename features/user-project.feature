@@ -2,14 +2,14 @@ Feature: User Project features
   
   	  Background: User is logged_in
       Given a user
-      | Name         | UserAccount        |
+      | Firstname         | UserAccount        |
       | Email        | ak@tamu.edu    |
       | UIN | 111111111 |
       Given an admin
-      | Name         | AdminAccount        |
+      | Firstname         | AdminAccount        |
       | Email        | akapale@tamu.edu    |
       Given a user
-      | Name         | User2Account        |
+      | Firstname         | User2Account        |
       | Email        | ak2@tamu.edu    |
       | UIN | 111111112 |
       And I am logged in as:

@@ -2,17 +2,18 @@ Feature: Admin login functionalities
   
      Background: Admin login
       Given an admin
-      | Name         | AdminAccount        |
+      | Firstname         | AdminAccount        |
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
+      | UIN          | 111111110|
       #7 users
       Given a user
-      | Name         | User1Account        |
+      | Firstname         | User1Account        |
       | Email        | ak1@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111111|
       Given a user
-      | Name         | User2Account        |
+      | Firstname         | User2Account        |
       | Email        | ak2@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111112|
@@ -77,7 +78,7 @@ Feature: Admin login functionalities
     Then I should be on Navi's team details page
     And I select "User2Account"
     And I press "Add user"
-    Then I should see "Successfully added user User2Account to team"
+    Then I should see "Successfully added user"
     And I should be on teams_page
     
     Scenario: Remove person from a team
@@ -89,11 +90,11 @@ Feature: Admin login functionalities
     And I should be on Navi's team details page
     And I select "User2Account"
     And I press "Add user"
-    Then I should see "Successfully added user User2Account to team"
+    Then I should see "Successfully added user"
     And I click "Navi"
     And I press 1th "Remove"
     Then I should be on teams_page
-    And I should see "Remove successful"
+    And I should see "You cannot remove the team leader!"
     
     Scenario: Delete team (admin)
     Given there exists a team
