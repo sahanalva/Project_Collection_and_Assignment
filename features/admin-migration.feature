@@ -35,7 +35,7 @@ Feature: Admin Semester Migration functionalities
       And I am logged in as:
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
-      Then I should be on 555555555's user details page
+      Then I should be on Admin's user details page
       Given there exists a project
       |Title|ProjectA|
       | Semester|Fall|
