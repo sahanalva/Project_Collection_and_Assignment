@@ -109,6 +109,8 @@ module NavigationHelpers
     when /contact_page/ then '/contact'
 
     when /help_page/ then '/help'
+    
+    when /migrate_page/ then '/migrate'
 
     when /unapproved_projects_page/ then '/unapproved_projects'
     when /add_projects_page/ then '/add_project'

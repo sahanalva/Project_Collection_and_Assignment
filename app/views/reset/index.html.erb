@@ -7,7 +7,7 @@
 <h4> Which semester to migrate to? Select semester and enter year in the text field</h4>
 <%= form_tag(sem_migrate_path, method: :get) do %>
   <%= select_tag(:semester,  options_for_select([['Spring', 'Spring'], ['Summer', 'Summer'], ['Fall', 'Fall']], session[:semester]))%>
-  <%= text_field_tag(:year, session[:year]) %>
+  <%= text_field_tag(:year, session[:year], :id=> 'sem_year') %>
   <%= submit_tag ("Migrate") %>
 <% end %>
 

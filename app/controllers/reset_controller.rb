@@ -29,7 +29,7 @@ class ResetController < ApplicationController
             i += 1
         end
         date = Time.now.strftime('%Y%m')
-        send_data data, filename: "Semester-Information-#{date}.csv"
+        send_data data, filename: "Semester_Information-#{date}.csv"
 
     end
 
