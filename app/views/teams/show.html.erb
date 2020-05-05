@@ -70,3 +70,18 @@
 
   </div>
 </div>
+
+<% if current_user.admin? %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+  
+      <ul class="projects">
+        <%= render 'preference_title' %>
+        <% @approved_projects.each do |project| %>
+          <%= render 'preference_selector_user', :project => project, :team => @team %>
+        <% end %>
+      </ul>
+  
+    </div>
+  </div>
+<% end %>
