@@ -51,11 +51,11 @@ class ResetController < ApplicationController
 
         # reset the DBs
         Assignment.delete_all
-        User.where(admin: false).delete_all
         Preassignment.delete_all
         Preference.delete_all
         Relationship.delete_all
         Team.delete_all
+        User.where(admin: false).delete_all
 
         @projects = Project.order('year DESC,semester DESC').all.paginate(page: params[:page])
     end
