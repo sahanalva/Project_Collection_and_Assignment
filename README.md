@@ -4,8 +4,9 @@ This is a fork of "Project Collection and Assignment" from https://github.com/Pu
 
 Heroku Link     - https://glacial-shelf-67800.herokuapp.com/
 Pivotal Tracker - https://www.pivotaltracker.com/n/projects/2436883
+Demo Video - https://drive.google.com/open?id=1klvQNPVVhwRqonlefZY39VpWKXUvpi3J
 
-Team Members - Abishalini Sivaraman
+Team Members - Abishalini Sivaraman, Abraham Gerard Sebastian, Akansha Agarwal, Aurosmita Khansama, Harish Kumar, Sahan Suresh Alva, Vaishnavi Chauhan
 
 Iteration 1 
 ===================
