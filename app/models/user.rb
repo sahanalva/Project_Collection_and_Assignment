@@ -19,11 +19,16 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: {maximum: 255},
               format: {with: VALID_EMAIL_REGEX},
               uniqueness: {case_sensitive: false}
+    validates :personal_email, presence: true, length: {maximum: 255},
+              format: {with: VALID_EMAIL_REGEX},
+              uniqueness: {case_sensitive: false}
     has_secure_password
     validates :password, length: {minimum: 6}, allow_blank: true
     validates :semester, presence: true
     validates :year, presence: true
     validates :course, presence: true
+
+    SEARCH_LIST = ["UIN", "Name", "Current Team"]
 
     # Returns the hash digest of the given string.
     def self.digest(string)
@@ -88,6 +93,11 @@ class User < ActiveRecord::Base
     def send_password_reset_email
         UserMailer.password_reset(self).deliver_now
     end
+    
+    #Reset password to uin
+    def reset_password_to_uin
+        update_attribute(:password, self.uin)
+    end
 
     private
 
@@ -95,4 +105,40 @@ class User < ActiveRecord::Base
     def downcase_email
         self.email = email.downcase
     end
+
+    def self.search_by_uin(search)
+        if search.to_s.strip.empty?
+            User.all
+        else
+            user = User.where(uin: search)
+        end
+    end
+
+    def self.search_by_name(search)
+        if search.to_s.strip.empty?
+            User.all
+        else
+            user = User.where('firstname LIKE ?', "%" + search.to_s + "%").or(User.where('lastname LIKE ?', "%" + search.to_s + "%"))
+        end
+    end
+
+    def self.search_by_currteam(search)
+        if search.to_s.strip.empty?
+            User.all
+        else
+            team = Team.find_by(name: search)
+            if !team.nil?
+                team_leader = team.id
+                team_members = Relationship.where(team_id: team_leader)
+                member_ids = []
+                team_members.each do |member|
+                    member_ids.append(member.user_id)
+                end
+                user = User.where(id: member_ids)
+            else 
+                user = User.none
+            end
+        end
+    end
+
 end

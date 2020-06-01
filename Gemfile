@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'pg'
 # Version specifications below are up-to-date as of 3/22, but arbitrary otherwise
 gem 'bcrypt', '~>3.1'
 gem 'bootstrap-sass', '~>3.3'
@@ -31,6 +31,8 @@ gem 'rubyzip', '>= 1.2.1'
 gem 'activerecord-import'
 
 gem "rails-settings-cached"
+gem 'simple_form'
+gem 'factory_bot_rails'
 
 group :development, :test do
   #  gem 'quiet_assets'  # Deprecated

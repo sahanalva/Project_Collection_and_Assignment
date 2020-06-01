@@ -2,21 +2,21 @@ Feature: Admin project functionalities
   
      Background: Admin login
       Given an admin
-      | Name         | AdminAccount        |
+      | Firstname         | AdminAccount        |
       | Email        | akapale@tamu.edu    |
       | Password     | password            |
       Given a user
-      | Name         | UserAccount        |
+      | Firstname         | UserAccount        |
       | Email        | ak@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111111|
       Given a user
-      | Name         | User2Account        |
+      | Firstname         | User2Account        |
       | Email        | ak2@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111112|
       Given a user
-      | Name         | User3Account        |
+      | Firstname         | User3Account        |
       | Email        | ak3@tamu.edu    |
       | Password     | password            |
       | UIN          | 111111113|

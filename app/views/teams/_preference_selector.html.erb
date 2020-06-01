@@ -3,16 +3,20 @@
     <%= link_to project.title, project %>
   </div>
 
-  <% check1 = false %>
-  <% check2 = true %>
-  <% check3 = false %>
+
   <% p = Preference.find_by(team_id: team.id, project_id: project.id) %>
   <% if p %>
     <% check1 = true if p.value == 1 %>
     <% check2 = true if p.value == 0 %>
     <% check3 = true if p.value == -1 %>
-  <% end %>
+    
+  <% else %>
+    <% check1 = false %>
+    <% check2 = true %>
+    <% check3 = false %>
 
+  <% end %>
+  
   <%= form_for(:preference, url: preferences_path, remote: true) do |f| %>
     <div class="col-md-2">
       <%= f.radio_button :value, "1", :onchange => "$(\'#listitemproject_#{project.id} form\').submit()", checked: check1 %>
@@ -28,5 +32,6 @@
     <%= hidden_field_tag :project_id, project.id %>
     <%= f.submit "Submit", :class => "hidden" %>
   <% end %>
+
 
 </li>

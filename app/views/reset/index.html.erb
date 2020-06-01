@@ -1,0 +1,42 @@
+<h1>Migration</h1>
+<h5>All legacy projects will be moved. You can edit the project attributes before migrating. You can also download current semester information before migration.</h5>
+
+<%= link_to 'Download Current Semester Information', sem_info_path(format: :xlsx) %>
+
+
+<h4> Which semester to migrate to? Select semester and enter year in the text field</h4>
+<%= form_tag(sem_migrate_path, method: :get) do %>
+  <%= select_tag(:semester,  options_for_select([['Spring', 'Spring'], ['Summer', 'Summer'], ['Fall', 'Fall']], session[:semester]))%>
+  <%= text_field_tag(:year, session[:year], :id=> 'sem_year') %>
+  <%= submit_tag ("Migrate") %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+  
+    <table class="table">
+    <%= will_paginate @projects %>
+      <thead>
+        <tr>
+          <th>Semester</th>
+          <th>Team Name</th>
+          <th>Legacy</th>
+          <th colspan="2">Admin Panel</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= project.semester + ' ' + project.year %></td>
+            <td><%= link_to project.title, project %></td>
+            <td><%= project.islegacy ? "Yes" : "No" %></td>
+            <td><%= link_to "Edit", edit_project_path(project) %></td>
+            <td><%= link_to "Delete", project, method: :delete, data: {confirm: "You sure?"}  %></td>
+          </tr>
+        <%end%>
+      </tbody>
+
+    </table>
+  </div>
+</div>

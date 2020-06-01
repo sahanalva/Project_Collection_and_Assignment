@@ -2,20 +2,38 @@ class TeamsController < ApplicationController
     before_action :logged_in_user, only: %i[index new create destroy]
     before_action :valid_viewer, only: [:show]
     before_action :team_leader_or_admin, only: [:destroy]
-    before_action :team_leader, only: [:preference]
+#    before_action :team_leader, only: [:preference]
 
     def preference
         @team = current_user.is_member_of
+        
         if @team
+            @assignment = Assignment.find_by_team_id(@team.id)
+            
+            if  @team.is_leader?(current_user) and !@assignment 
+                if @team.preferences_filled?
+                    flash[:warning] = 'Preferences have already been submitted'
+                    @projects = Project.where('approved = ?', true)
+                    @title = 'Preference Selector'
+                    render 'preference'
+                    return
+                
+                end
+                @title = 'Preference Selector'
+                @projects = Project.where('approved = ?', true)
+                render 'preference'
+            else
+                if @assignment 
+                    flash[:warning] = 'Projects have been assigned'
 
-            if @team.preferences_filled?
-                flash[:warning] = 'Preferences have already been submitted'
-                redirect_to user_path
+                else
+                    flash[:warning] = 'Only team leader can change preferences'
+                end
+                @projects = Project.where('approved = ?', true)
+                @title = 'Preference Selector'
+                render 'preference_user'
                 return
             end
-            @title = 'Preference Selector'
-            @projects = Project.where('approved = ?', true)
-            render 'preference'
         else
             flash[:warning] = 'You are not yet part of any team'
             redirect_to current_user
@@ -101,10 +119,12 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
         @members = @team.members
         @assignment = Assignment.find_by_team_id(@team.id)
+        @member_count = @members.count
 
 
         @project = @assignment.nil? ? nil : Project.find(@assignment.project_id)
         @user_names = []
+        @approved_projects = Project.where('approved = ?', true)
 
         User.find_each do |user|
             if (user.admin == false) && Relationship.find_by_user_id(user.id).nil?
@@ -200,7 +220,7 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
         if @team.update_attributes(team_params)
             flash[:success] = 'Team updated'
-            redirect_to @team
+            redirect_to teams_path
         else
             render 'edit'
         end

@@ -1,0 +1,19 @@
+rvm install 2.6.0
+rvm use 2.6.0
+bundle install
+nvm i v8
+heroku login
+heroku create
+git add *
+git commit -m "message"
+git push heroku master
+heroku rake db:migrate
+heroku rake db:seed
+heroku open
+
+If you want to login as admin, use the admin login credentials from db/seed.rb
+
+After all the above steps, please execute the following to enable password reset:
+
+heroku config:set DEPLOYMENT_HOST="<THE HOSTNAME WHERE THE HEROKU APP WAS DEPLOYED>"
+heroku config:set SENDGRID_API_KEY="<API KEY FOR THE SENDGRID APPLICATION>"

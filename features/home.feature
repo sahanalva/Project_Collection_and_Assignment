@@ -19,11 +19,6 @@ Feature: Homepage
         Given I am on about_page
         When I click "Log In"
         Then I should see "Log in"
-           
-    Scenario: See Login Page
-        Given I am on home_page
-        When I click "Log In (NetID)"
-        Then I should see "Log in (NetID)"
 
 	Scenario: See Sign Up Page
 		Given I am on home_page

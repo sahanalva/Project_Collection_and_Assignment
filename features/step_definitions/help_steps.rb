@@ -48,6 +48,20 @@ When(/^I press "([^"]*)"$/) do |arg1|
   click_button arg1
 end
 
+# When("I search {string} by UIN") do |string|
+#   @users = User.find_by_uin(string)
+#   @users = @users.paginate(page: params[:page])
+#   render @users
+# end
+
+When("I enter {string} into {string}") do |string, string2|
+  find_field("#{string2}").set(string)
+end
+
+When("I select {string} in {string}") do |string, string2|
+  find_field("#{string2}").set(string)
+end
+
 When(/^I select "([^"]*)"$/) do |arg1|
   select arg1
 end
@@ -57,7 +71,9 @@ Given (/^a user$/) do |table|
   @user = User.create!(
     admin: false,
     email: data['Email'] || 'user1@test.com',
-    name: data['Name'] || 'TestUser',
+    personal_email: data['Email'] || 'user1@test.com',
+    firstname: data['Firstname'] || 'TestFirstName',
+    lastname: data['Lastname'] || 'TestLastName',
     password: data['Password'] || 'password',
     uin: data['UIN'] || '111111111',
     year: data['Year'] || '2018',
@@ -71,7 +87,9 @@ Given (/^an admin$/) do |table|
   @user = User.create!(
     admin: true,
     email: data['Email'] || 'admin1@test.com',
-    name: data['Name'] || 'TestAdmin',
+    personal_email: data['Personal Email'] || 'admin1@test.com',
+    firstname: data['Firstname'] || 'TestFirstName',
+    lastname: data['Lastname'] || 'TestLastName',
     password: data['Password'] || 'password',
     uin: data['UIN'] || '123123123',
     year: data['Year'] || '2018',
@@ -98,14 +116,22 @@ end
 
 Given (/^there exists a team$/) do |table|
   data = table.rows_hash
-  @user = User.find_by_name(data['User']) if data['User']
+  @user = User.find_by_uin(data['User_UIN']) if data['User_UIN']
   Team.create!(name: data['Name'] || 'TeamName',
+               user_id: @user.id)
+end
+
+Given (/^there exists a relationship/) do |table|
+  data = table.rows_hash
+  @user = User.find_by_uin(data['User_UIN'])
+  @team = Team.find_by_name(data['TeamName'])
+  Relationship.create!(team_id: @team.id,
                user_id: @user.id)
 end
 
 Given(/^I fill the peer evaluation:$/) do |table|
   data = table.rows_hash
-  @user = User.find_by_name('UserAccount')
+  @user = User.find_by(Firstname: 'UserAccount')
   fill_in "peer_evaluation_#{@user.id}.score", with: data['Score']
   fill_in "peer_evaluation_#{@user.id}.comment", with: data['Comments']
 end
@@ -124,11 +150,13 @@ end
 
 Given(/^I fill in the following details:$/) do |table|
   data = table.rows_hash
-  fill_in 'Name', with: data['Name']
+  fill_in 'First Name', with: data['Firstname']
+  fill_in 'Last Name', with: data['Lastname']
   fill_in 'UIN', with: data['UIN']
-  fill_in 'Email', with: data['Email']
-  fill_in 'Password', with: data['Password']
-  fill_in 'Confirmation', with: data['Confirmation']
+  fill_in 'Email', with: data['Email'], match: :first
+  fill_in 'Personal Email', with: data['Personal Email']
+  fill_in 'Password', with: data['Password'], match: :first
+  fill_in 'Confirm Password', with: data['Confirm Password']
   select data['Semester'], from: 'Semester'
   select data['Year'], from: 'Year'
   select data['Course'], from: 'Course'
@@ -138,8 +166,9 @@ Given(/^I fill in the following project details:$/) do |table|
   fill_in 'Title', with: data['Title']
   fill_in 'Organization', with: data['Organization']
   fill_in 'Contact', with: data['Contact']
-  select data['Semester'], from: 'Semester'
-  select data['Year'], from: 'Year'
+  # page.select data['Semester'], from: 'semester'
+  # Cannot use this since dropdown changes from semester to semester
+  page.select data['Year'], from: 'Year'
   fill_in 'Description', with: data['Description']
   fill_in 'Github link', with: data['Github link']
   fill_in 'Heroku link', with: data['Heroku link']
@@ -167,7 +196,8 @@ end
 
 Then(/^I fill the updated details:$/) do |table|
   data = table.rows_hash
-  fill_in 'Name', with: data['Name']
+  fill_in 'First Name', with: data['Firstname']
+  fill_in 'Last Name', with: data['Lastname']
   fill_in 'Email', with: data['Email']
   fill_in 'UIN', with: data['UIN']
   fill_in 'New Password', with: data['New Password']
@@ -180,10 +210,17 @@ Given (/^I create a team$/) do |table|
   click_link('Create Team')
   fill_in 'Name', with: data['Name']
   click_button('Create Team')
-  page.should have_content('Team created successfully')
 end
 
 Then(/^I fill the team code:$/) do |table|
   data = table.rows_hash
   fill_in 'relationship_code', with: data['Code'], visible: false
+end
+
+Then(/^I should get a download with the filename "([^\"]*)"$/) do |filename|
+  page.response_headers['Content-Disposition'].should include("filename=#{filename}")
+end
+
+Then(/^I should get a download with semester information named "([^\"]*)"$/) do |filename|
+  page.response_headers['Content-Disposition'].should include("#{filename}")
 end
